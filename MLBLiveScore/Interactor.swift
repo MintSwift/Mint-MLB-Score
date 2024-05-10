@@ -1,9 +1,10 @@
 import Foundation
 import SwiftDate
 
-@Observable
-class Interactor {
-    var schedules: [Schedule] = []
+@MainActor
+class Interactor: ObservableObject {
+    @Published var schedules: [Schedule] = []
+    @Published var liveScore: LiveScore? = nil
     
     init() {
         Task {
@@ -20,8 +21,13 @@ class Interactor {
     
     
     func schedule() async {
-        let start = Date.now
+        let start = Date.now - 1.days
         
         self.schedules = await Network.schedule(startDate: start)
+    }
+    
+    func detail(id: Int) async  {
+        print(id)
+        self.liveScore = await Network.live(id: "\(id)")
     }
 }

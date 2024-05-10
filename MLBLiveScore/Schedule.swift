@@ -42,8 +42,9 @@ struct Game: Identifiable, Hashable, Equatable {
     let state: GameState
     let reason: String?
     let date: Date?
+    let gameId: Int
     
-    init(currentInning: Int, isTopInning: Bool, away: Team, home: Team, state: String, reason: String?, date: Date?) {
+    init(currentInning: Int, isTopInning: Bool, away: Team, home: Team, state: String, reason: String?, date: Date?, gameId: Int) {
         self.id = UUID().uuidString
         self.currentInning = currentInning
         self.isTopInning = isTopInning
@@ -52,6 +53,7 @@ struct Game: Identifiable, Hashable, Equatable {
         self.state = GameState(rawValue: state) ?? .final
         self.reason = reason
         self.date = date
+        self.gameId = gameId
     }
 }
 

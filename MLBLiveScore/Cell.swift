@@ -51,12 +51,21 @@ struct ContentCell: View {
                     } else if game.state == .preview {
 //                        Text("몇시?")
                         if let date = game.date {
-                            Text(date.toFormat("hh:mm", locale: Locales.korean))
-                                .font(.footnote)
+                            VStack {
+                                Text(date.toFormat("a", locale: Locales.korean))
+                                    .font(.caption2)
+                                Text(date.toFormat("hh:mm", locale: Locales.korean))
+                            }
+                            .font(.footnote)
                         }
                         
                     } else {
-                        Text("\(game.currentInning)")
+                        if game.isTopInning {
+                            Text("\(game.currentInning)회 초")
+                        } else {
+                            Text("\(game.currentInning)회 말")
+                        }
+                        
                     }
                 }
             }

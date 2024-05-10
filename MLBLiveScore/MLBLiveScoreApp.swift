@@ -20,12 +20,9 @@ struct MLBLiveScoreApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationSplitView {
-                ContentView()                
-            } detail: {
-                
-            }
-
+            
+            ContentView()                
+            
         }
     }
 }

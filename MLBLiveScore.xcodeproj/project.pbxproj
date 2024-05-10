@@ -18,6 +18,7 @@
 		3BBAEAB52BEDA83600192FED /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB42BEDA83600192FED /* Schedule.swift */; };
 		3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB62BEDCB9100192FED /* Team.swift */; };
 		3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB82BEDD9F500192FED /* Cell.swift */; };
+		3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEABA2BEDFA3100192FED /* Detail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3BBAEAB42BEDA83600192FED /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		3BBAEAB62BEDCB9100192FED /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		3BBAEAB82BEDD9F500192FED /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		3BBAEABA2BEDFA3100192FED /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */,
 				3BBAEA9D2BECB89800192FED /* ContentView.swift */,
+				3BBAEABA2BEDFA3100192FED /* Detail.swift */,
 				3BBAEAB82BEDD9F500192FED /* Cell.swift */,
 				3BBAEAAC2BED91E800192FED /* Interactor.swift */,
 				3BBAEAAA2BECB8AF00192FED /* Network.swift */,
@@ -168,6 +171,7 @@
 			files = (
 				3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */,
 				3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */,
+				3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */,
 				3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */,
 				3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */,
 				3BBAEAB52BEDA83600192FED /* Schedule.swift in Sources */,

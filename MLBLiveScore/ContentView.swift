@@ -2,34 +2,44 @@ import SwiftUI
 import Kingfisher
 
 struct ContentView: View {
-    var interactor = Interactor()
+    @StateObject var interactor = Interactor()
     
     var body: some View {
-        List {
-            ForEach(interactor.schedules) { schedule in
-                ForEach(schedule.dates) { date in
-                    Section {
-                        ForEach(date.games) { game in
-                            ContentCell(game: game)
+        NavigationStack {
+            List {
+                ForEach(interactor.schedules) { schedule in
+                    ForEach(schedule.dates) { date in
+                        Section {
+                            ForEach(date.games) { game in
+                                NavigationLink {
+                                    Detail(game: game)
+                                        .environmentObject(interactor)
+                                } label: {
+                                    ContentCell(game: game)
+                                }
+                                
+                            }
+                        } header: {
+                            Text(date.date)
                         }
-                    } header: {
-                        Text(date.date)
                     }
                 }
             }
-        }
-        .listStyle(.grouped)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    Task {
-                        await interactor.schedule()
+            
+            .listStyle(.grouped)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        Task {
+                            await interactor.schedule()
+                        }
+                    } label: {
+                        Image(systemName: "arrow.circlepath")
                     }
-                } label: {
-                    Image(systemName: "arrow.circlepath")
+                    
                 }
-
             }
+            
         }
     }
 }
