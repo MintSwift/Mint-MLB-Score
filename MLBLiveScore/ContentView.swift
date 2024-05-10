@@ -11,13 +11,14 @@ struct ContentView: View {
                     ForEach(schedule.dates) { date in
                         Section {
                             ForEach(date.games) { game in
-                                NavigationLink {
-                                    Detail(game: game)
-                                        .environmentObject(interactor)
-                                } label: {
+                                ZStack {
+                                    NavigationLink(value: game) {
+                                        EmptyView()
+                                    }
+                                    .opacity(0.0)
+                                    
                                     ContentCell(game: game)
                                 }
-                                
                             }
                         } header: {
                             Text(date.date)
@@ -39,8 +40,12 @@ struct ContentView: View {
                     
                 }
             }
-            
+            .navigationDestination(for: Game.self) { game in
+                Detail(game: game)
+                    .environmentObject(interactor)
+            }
         }
+        
     }
 }
 
