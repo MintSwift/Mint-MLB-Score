@@ -21,7 +21,7 @@ struct ContentCell: View {
                     .frame(width: 30, height: 30, alignment: .center)
                     .scaledToFit()
                 
-                if game.away.score > game.home.score {
+                if game.state == .final && game.away.score > game.home.score {
                     Text("\(game.away.score)")
                         .overlay(alignment: .top, content: {
                             Circle()
@@ -73,7 +73,7 @@ struct ContentCell: View {
             
             VStack {
                 HStack {
-                    if game.away.score < game.home.score {
+                    if game.state == .final && game.away.score < game.home.score {
                         Text("\(game.home.score)")
                             .overlay(alignment: .top, content: {
                                 Circle()
