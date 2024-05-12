@@ -4,70 +4,32 @@ import SwiftDate
 
 struct Detail: View {
     @EnvironmentObject var interactor: Interactor
+    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    @Binding var game: Game
     
-    let game: Game
-    
+    init(game: Binding<Game>) {
+        _game = game
+    }
     
     var body: some View {
-        VStack {
-            Text(verbatim: "\(game.gameId)")
-            ContentCell(game: game)
+        ScrollView {
             
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("B")
-                        .frame(width: 15)
-                    
-                    ForEach(0...2, id: \.self) { index in
-                        if (index) < Int(interactor.liveScore?.outCount.balls ?? "0") ?? 0 {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.green)
-                        } else {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.gray)
-                        }
-                    }
-                }
+            
+            VStack {
+                Text(verbatim: "\(game.gameId)")
+                ContentCell(game: .init(get: { game }, set: { _ in }))
                 
-                HStack {
-                    Text("S")
-                        .frame(width: 15)
-                    ForEach(0...1, id: \.self) { index in
-                        if (index) < Int(interactor.liveScore?.outCount.strikes ?? "0") ?? 0 {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.orange)
-                        } else {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.gray)
-                        }
-                        
-                    }
-                }
+                DiamondGroundView(runner: interactor.liveScore?.runner)
+       
+                OutCountView(outCount: interactor.liveScore?.outCount)
+                    .padding(.top, 25)
+                BoxScoreView(boxscore: .init(get: {
+                    return interactor.liveScore?.boxScore
+                }, set: { _ in }))
                 
-                HStack {
-                    Text("O")
-                        .frame(width: 15)
-                    
-                    ForEach(0...1, id: \.self) { index in
-                        if (index) < Int(interactor.liveScore?.outCount.outs ?? "0") ?? 0 {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.red)
-
-                        } else {
-                            Circle()
-                                .frame(width: 20, height: 20, alignment: .center)
-                                .foregroundStyle(.gray)
-
-                        }
-                        
-                    }
-                }
                 
+                
+                Spacer()
             }
         }
         .onAppear {
@@ -75,6 +37,9 @@ struct Detail: View {
                 await interactor.detail(id: game.gameId)
             }
         }
+        .onDisappear(perform: {
+            self.timer.upstream.connect().cancel()
+        })
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -86,6 +51,16 @@ struct Detail: View {
                     Image(systemName: "arrow.circlepath")
                 }
                 
+            }
+        }
+        .onReceive(timer) { out in
+            if game.state == .final {
+             self.timer.upstream.connect().cancel()
+            } else {
+                Task {
+                    await interactor.schedule()
+                    await interactor.detail(id: game.gameId)
+                }
             }
         }
     }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0B15052BEE709B00E91AEE /* AwayPitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15042BEE709B00E91AEE /* AwayPitcherView.swift */; };
+		3B0B15072BEECAE800E91AEE /* HomePitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15062BEECAE800E91AEE /* HomePitcherView.swift */; };
+		3B0B15092BEECBE800E91AEE /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15082BEECBE800E91AEE /* HomeCell.swift */; };
+		3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B150A2BEECC7800E91AEE /* ClubView.swift */; };
+		3B0B150D2BEED5FA00E91AEE /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B150C2BEED5FA00E91AEE /* ScoreView.swift */; };
+		3B0B150F2BEF1B4500E91AEE /* OutCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B150E2BEF1B4500E91AEE /* OutCountView.swift */; };
+		3B0B15112BF00E9700E91AEE /* BoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15102BF00E9700E91AEE /* BoxScoreView.swift */; };
+		3B0B15132BF0A5AC00E91AEE /* DiamondGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15122BF0A5AC00E91AEE /* DiamondGroundView.swift */; };
 		3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */; };
 		3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9D2BECB89800192FED /* ContentView.swift */; };
 		3BBAEAA02BECB89900192FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9F2BECB89900192FED /* Assets.xcassets */; };
@@ -22,6 +30,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0B15042BEE709B00E91AEE /* AwayPitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPitcherView.swift; sourceTree = "<group>"; };
+		3B0B15062BEECAE800E91AEE /* HomePitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePitcherView.swift; sourceTree = "<group>"; };
+		3B0B15082BEECBE800E91AEE /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		3B0B150A2BEECC7800E91AEE /* ClubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubView.swift; sourceTree = "<group>"; };
+		3B0B150C2BEED5FA00E91AEE /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		3B0B150E2BEF1B4500E91AEE /* OutCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutCountView.swift; sourceTree = "<group>"; };
+		3B0B15102BF00E9700E91AEE /* BoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreView.swift; sourceTree = "<group>"; };
+		3B0B15122BF0A5AC00E91AEE /* DiamondGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondGroundView.swift; sourceTree = "<group>"; };
 		3BBAEA982BECB89800192FED /* MLBLiveScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLBLiveScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBLiveScoreApp.swift; sourceTree = "<group>"; };
 		3BBAEA9D2BECB89800192FED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,7 +87,15 @@
 				3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */,
 				3BBAEA9D2BECB89800192FED /* ContentView.swift */,
 				3BBAEABA2BEDFA3100192FED /* Detail.swift */,
+				3B0B15122BF0A5AC00E91AEE /* DiamondGroundView.swift */,
+				3B0B15102BF00E9700E91AEE /* BoxScoreView.swift */,
+				3B0B150E2BEF1B4500E91AEE /* OutCountView.swift */,
 				3BBAEAB82BEDD9F500192FED /* Cell.swift */,
+				3B0B150A2BEECC7800E91AEE /* ClubView.swift */,
+				3B0B150C2BEED5FA00E91AEE /* ScoreView.swift */,
+				3B0B15042BEE709B00E91AEE /* AwayPitcherView.swift */,
+				3B0B15082BEECBE800E91AEE /* HomeCell.swift */,
+				3B0B15062BEECAE800E91AEE /* HomePitcherView.swift */,
 				3BBAEAAC2BED91E800192FED /* Interactor.swift */,
 				3BBAEAAA2BECB8AF00192FED /* Network.swift */,
 				3BBAEAB42BEDA83600192FED /* Schedule.swift */,
@@ -172,11 +196,19 @@
 				3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */,
 				3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */,
 				3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */,
+				3B0B15092BEECBE800E91AEE /* HomeCell.swift in Sources */,
 				3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */,
 				3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */,
+				3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */,
 				3BBAEAB52BEDA83600192FED /* Schedule.swift in Sources */,
 				3BBAEAAD2BED91E800192FED /* Interactor.swift in Sources */,
+				3B0B15132BF0A5AC00E91AEE /* DiamondGroundView.swift in Sources */,
 				3BBAEAAB2BECB8AF00192FED /* Network.swift in Sources */,
+				3B0B15052BEE709B00E91AEE /* AwayPitcherView.swift in Sources */,
+				3B0B150D2BEED5FA00E91AEE /* ScoreView.swift in Sources */,
+				3B0B15112BF00E9700E91AEE /* BoxScoreView.swift in Sources */,
+				3B0B15072BEECAE800E91AEE /* HomePitcherView.swift in Sources */,
+				3B0B150F2BEF1B4500E91AEE /* OutCountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

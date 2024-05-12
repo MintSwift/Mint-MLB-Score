@@ -63,12 +63,21 @@ struct Team: Identifiable, Hashable, Equatable {
     let locationName: String
     let clubName: String
     let symbol: String
+    let winner: String?
+    let save: String?
+    let loser: String?
     
-    init(score: Int, locationName: String, clubName: String, symbol: String) {
+    init(score: Int, locationName: String, clubName: String, symbol: String,
+         winner: String?,
+         save: String?,
+         loser: String?) {
         self.id = UUID().uuidString
         self.score = score
         self.locationName = locationName
         self.clubName = clubName
         self.symbol = symbol
+        self.winner = winner
+        self.save = save
+        self.loser = loser
     }
 }

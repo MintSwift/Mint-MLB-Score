@@ -2,8 +2,8 @@ import SwiftUI
 import Kingfisher
 
 struct ContentView: View {
+//    @EnvironmentObject var interactor: Interactor
     @StateObject var interactor = Interactor()
-    
     var body: some View {
         NavigationStack {
             List {
@@ -17,7 +17,7 @@ struct ContentView: View {
                                     }
                                     .opacity(0.0)
                                     
-                                    ContentCell(game: game)
+                                    ContentCell(game: .init(get: { game }, set: { _ in }))
                                 }
                             }
                         } header: {
@@ -41,7 +41,7 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(for: Game.self) { game in
-                Detail(game: game)
+                Detail(game: .init(get: { game }, set: { _ in }))
                     .environmentObject(interactor)
             }
         }

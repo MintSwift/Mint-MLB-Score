@@ -3,42 +3,25 @@ import Kingfisher
 import SwiftDate
 
 struct ContentCell: View {
-    let game: Game
+    @Binding var game: Game
+    
+    init(game: Binding<Game>) {
+        _game = game
+    }
     
     var body: some View {
         HStack {
-            HStack {
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text(game.away.locationName)
-                    Text(game.away.clubName)
+            VStack(alignment: .trailing) {
+                HStack {
+                    ClubView(stadium: .away, team: game.away)
+                    
+                    ScoreView(stadium: .away, game: game)
                 }
-                .font(.caption)
-                .padding(.trailing, 5)
                 
-                KFImage(URL(string: "https://a.espncdn.com/i/teamlogos/mlb/500/\(game.away.symbol).png"))
-                    .resizable()
-                    .frame(width: 30, height: 30, alignment: .center)
-                    .scaledToFit()
+                .containerRelativeFrame(.horizontal, count: 30, span: 12, spacing: 0)
                 
-                if game.state == .final && game.away.score > game.home.score {
-                    Text("\(game.away.score)")
-                        .overlay(alignment: .top, content: {
-                            Circle()
-                                .foregroundStyle(.red)
-                                .frame(width: 5, height: 5, alignment: .center)
-                                .opacity(0.6)
-                                .offset(y: -5)
-                        })
-                        .frame(width: 20)
-                } else {
-                    Text("\(game.away.score)")
-                        .frame(width: 20)
-                }
+                AwayPitcherView(game: game)
             }
-            
-            .containerRelativeFrame(.horizontal, count: 30, span: 12, spacing: 0)
-            
             
             VStack {
                 if let reason = game.reason {
@@ -49,7 +32,6 @@ struct ContentCell: View {
                         Text(game.state.rawValue)
                             .font(.footnote)
                     } else if game.state == .preview {
-//                        Text("몇시?")
                         if let date = game.date {
                             VStack {
                                 Text(date.toFormat("a", locale: Locales.korean))
@@ -61,9 +43,21 @@ struct ContentCell: View {
                         
                     } else {
                         if game.isTopInning {
-                            Text("\(game.currentInning)회 초")
+                            HStack {
+                                Text("\(game.currentInning)")
+                                Image(systemName: "arrowtriangle.up.fill")
+                                    .resizable()
+                                    .foregroundStyle(.blue)
+                                    .frame(width: 10, height: 10, alignment: .center)
+                            }
                         } else {
-                            Text("\(game.currentInning)회 말")
+                            HStack {
+                                Text("\(game.currentInning)")
+                                Image(systemName: "arrowtriangle.down.fill")
+                                    .resizable()
+                                    .foregroundStyle(.yellow)
+                                    .frame(width: 10, height: 10, alignment: .center)
+                            }
                         }
                         
                     }
@@ -73,34 +67,13 @@ struct ContentCell: View {
             
             VStack {
                 HStack {
-                    if game.state == .final && game.away.score < game.home.score {
-                        Text("\(game.home.score)")
-                            .overlay(alignment: .top, content: {
-                                Circle()
-                                    .foregroundStyle(.red)
-                                    .frame(width: 5, height: 5, alignment: .center)
-                                    .opacity(0.6)
-                                    .offset(y: -5)
-                            })
-                            .frame(width: 20)
-                    } else {
-                        Text("\(game.home.score)")
-                            .frame(width: 20)
-                    }
+                    ScoreView(stadium: .home, game: game)
                     
-                    KFImage(URL(string: "https://a.espncdn.com/i/teamlogos/mlb/500/\(game.home.symbol.lowercased()).png"))
-                        .resizable()
-                        .frame(width: 30, height: 30, alignment: .center)
-                    
-                    VStack(alignment: .leading) {
-                        Text(game.home.locationName)
-                        Text(game.home.clubName)
-                    }
-                    .font(.caption)
-                    .padding(.leading, 5)
-                    
-                    Spacer()
+                    ClubView(stadium: .home, team: game.home)
                 }
+                
+                
+                HomePitcherView(game: game)
             }
             .containerRelativeFrame(.horizontal, count: 30, span: 12, spacing: 0)
         }
