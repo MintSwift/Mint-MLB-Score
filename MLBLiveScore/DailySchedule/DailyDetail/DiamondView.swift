@@ -1,6 +1,52 @@
 import SwiftUI
 import Kingfisher
 import SwiftDate
+struct SeasonRecord: Identifiable, Hashable, Equatable {
+    var id: String
+
+        let avg: String
+        let ops: String
+    
+    init(avg: String,
+         ops: String) {
+        self.id = UUID().uuidString
+        self.avg = avg
+        self.ops = ops
+    }
+}
+
+struct TodayRecord: Identifiable, Hashable, Equatable {
+    var id: String
+
+    let ab: String
+    let r: String
+    let h: String
+
+    let rbi: String
+    let bb: String
+    let k: String
+    let lob: String
+    
+    init(name: String, 
+         number: String,
+         battingOrder: Int,
+         ab: String,
+         r: String,
+         h: String,
+         rbi: String,
+         bb: String,
+         k: String,
+         lob: String) {
+        self.id = UUID().uuidString
+        self.ab = ab
+        self.r = r
+        self.h = h
+        self.rbi = rbi
+        self.bb = bb
+        self.k = k
+        self.lob = lob
+    }
+}
 
 struct Player: Identifiable, Hashable, Equatable {
     var id: String
@@ -8,10 +54,15 @@ struct Player: Identifiable, Hashable, Equatable {
     let name: String?
     let number: String?
     
-    init(name: String?, number: String?) {
+    let seasonRecord: SeasonRecord?
+    let todayRecord: TodayRecord?
+    
+    init(name: String?, number: String?, todayRecord: TodayRecord? = nil, seasonRecord: SeasonRecord? = nil) {
         self.id = UUID().uuidString
         self.name = name
         self.number = number
+        self.todayRecord = todayRecord
+        self.seasonRecord = seasonRecord
     }
 }
 
