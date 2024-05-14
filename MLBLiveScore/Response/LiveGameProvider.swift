@@ -174,16 +174,31 @@ struct LiveGameRespone: Decodable {
     }
 }
 
+struct TeamPlayersResponse: Decodable {
+    let batters: [String]
+    
+}
+
+
+struct BoxScoreResponse: Decodable {
+    let away: TeamPlayersResponse
+    let home: TeamPlayersResponse
+    
+}
+
 struct LiveDataResponse: Decodable {
     let lineScore: LineScoreResponse
-
+    let boxScore: BoxScoreResponse
+    
     enum CodingKeys: CodingKey {
         case linescore
+        case boxscore
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.lineScore = try container.decode(LineScoreResponse.self, forKey: .linescore)
+        self.boxScore = try container.decode(BoxScoreResponse.self, forKey: .boxscore)
     }
 }
 
