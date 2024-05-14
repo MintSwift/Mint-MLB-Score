@@ -27,6 +27,24 @@
 		3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB62BEDCB9100192FED /* Team.swift */; };
 		3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB82BEDD9F500192FED /* Cell.swift */; };
 		3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEABA2BEDFA3100192FED /* Detail.swift */; };
+		3BDBEF8A2BF18CA70093592E /* DailyScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */; };
+		3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF8C2BF18D180093592E /* DailySidebar.swift */; };
+		3BDBEF902BF1962D0093592E /* DailyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF8F2BF1962D0093592E /* DailyDetailView.swift */; };
+		3BDBEF922BF19FD60093592E /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF912BF19FD60093592E /* ScoreboardView.swift */; };
+		3BDBEF952BF1A6210093592E /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF942BF1A6210093592E /* Scoreboard.swift */; };
+		3BDBEF992BF1B23B0093592E /* ScheduleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF982BF1B23B0093592E /* ScheduleResponse.swift */; };
+		3BDBEF9B2BF1B24F0093592E /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF9A2BF1B24F0093592E /* ScheduleProvider.swift */; };
+		3BDBEF9D2BF1CB760093592E /* DailyScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF9C2BF1CB760093592E /* DailyScheduleInteractor.swift */; };
+		3BDBEF9F2BF1D0360093592E /* DailyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF9E2BF1D0360093592E /* DailyCell.swift */; };
+		3BDBEFA12BF1D0CB0093592E /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA02BF1D0CB0093592E /* TeamView.swift */; };
+		3BDBEFA32BF1D47C0093592E /* GameStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA22BF1D47C0093592E /* GameStateView.swift */; };
+		3BDBEFA52BF1DBC50093592E /* PitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA42BF1DBC50093592E /* PitcherView.swift */; };
+		3BDBEFA72BF1F4270093592E /* LiveGameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA62BF1F4270093592E /* LiveGameProvider.swift */; };
+		3BDBEFAA2BF2ECFA0093592E /* AwayScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA92BF2ECFA0093592E /* AwayScoreView.swift */; };
+		3BDBEFAC2BF2ED040093592E /* HomeScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFAB2BF2ED040093592E /* HomeScoreView.swift */; };
+		3BDBEFB12BF2FBA40093592E /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */; };
+		3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */; };
+		3BDBEFB52BF33F190093592E /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB42BF33F190093592E /* DiamondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +68,24 @@
 		3BBAEAB62BEDCB9100192FED /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		3BBAEAB82BEDD9F500192FED /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		3BBAEABA2BEDFA3100192FED /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleView.swift; sourceTree = "<group>"; };
+		3BDBEF8C2BF18D180093592E /* DailySidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySidebar.swift; sourceTree = "<group>"; };
+		3BDBEF8F2BF1962D0093592E /* DailyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDetailView.swift; sourceTree = "<group>"; };
+		3BDBEF912BF19FD60093592E /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
+		3BDBEF942BF1A6210093592E /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		3BDBEF982BF1B23B0093592E /* ScheduleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResponse.swift; sourceTree = "<group>"; };
+		3BDBEF9A2BF1B24F0093592E /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
+		3BDBEF9C2BF1CB760093592E /* DailyScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleInteractor.swift; sourceTree = "<group>"; };
+		3BDBEF9E2BF1D0360093592E /* DailyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCell.swift; sourceTree = "<group>"; };
+		3BDBEFA02BF1D0CB0093592E /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		3BDBEFA22BF1D47C0093592E /* GameStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateView.swift; sourceTree = "<group>"; };
+		3BDBEFA42BF1DBC50093592E /* PitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitcherView.swift; sourceTree = "<group>"; };
+		3BDBEFA62BF1F4270093592E /* LiveGameProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveGameProvider.swift; sourceTree = "<group>"; };
+		3BDBEFA92BF2ECFA0093592E /* AwayScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayScoreView.swift; sourceTree = "<group>"; };
+		3BDBEFAB2BF2ED040093592E /* HomeScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScoreView.swift; sourceTree = "<group>"; };
+		3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
+		3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewModel.swift; sourceTree = "<group>"; };
+		3BDBEFB42BF33F190093592E /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +120,15 @@
 		3BBAEA9A2BECB89800192FED /* MLBLiveScore */ = {
 			isa = PBXGroup;
 			children = (
+				3BDBEFA82BF2ECDD0093592E /* ViewComponents */,
+				3BDBEF962BF1B2130093592E /* Response */,
+				3BDBEF932BF1A5EE0093592E /* Model */,
+				3BDBEF882BF18C640093592E /* DailySchedule */,
 				3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */,
 				3BBAEA9D2BECB89800192FED /* ContentView.swift */,
 				3BBAEABA2BEDFA3100192FED /* Detail.swift */,
 				3B0B15122BF0A5AC00E91AEE /* DiamondGroundView.swift */,
 				3B0B15102BF00E9700E91AEE /* BoxScoreView.swift */,
-				3B0B150E2BEF1B4500E91AEE /* OutCountView.swift */,
 				3BBAEAB82BEDD9F500192FED /* Cell.swift */,
 				3B0B150A2BEECC7800E91AEE /* ClubView.swift */,
 				3B0B150C2BEED5FA00E91AEE /* ScoreView.swift */,
@@ -113,6 +152,85 @@
 				3BBAEAA32BECB89900192FED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3BDBEF882BF18C640093592E /* DailySchedule */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEFAF2BF2FB970093592E /* ViewModel */,
+				3BDBEF8E2BF1961D0093592E /* DailyDetail */,
+				3BDBEF8B2BF18CEF0093592E /* Sidebar */,
+				3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */,
+				3BDBEF9C2BF1CB760093592E /* DailyScheduleInteractor.swift */,
+			);
+			path = DailySchedule;
+			sourceTree = "<group>";
+		};
+		3BDBEF8B2BF18CEF0093592E /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEF8C2BF18D180093592E /* DailySidebar.swift */,
+				3BDBEF9E2BF1D0360093592E /* DailyCell.swift */,
+				3BDBEFA42BF1DBC50093592E /* PitcherView.swift */,
+				3BDBEFA02BF1D0CB0093592E /* TeamView.swift */,
+				3BDBEFA22BF1D47C0093592E /* GameStateView.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		3BDBEF8E2BF1961D0093592E /* DailyDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEF8F2BF1962D0093592E /* DailyDetailView.swift */,
+				3BDBEF912BF19FD60093592E /* ScoreboardView.swift */,
+				3B0B150E2BEF1B4500E91AEE /* OutCountView.swift */,
+				3BDBEFB42BF33F190093592E /* DiamondView.swift */,
+			);
+			path = DailyDetail;
+			sourceTree = "<group>";
+		};
+		3BDBEF932BF1A5EE0093592E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEF942BF1A6210093592E /* Scoreboard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3BDBEF962BF1B2130093592E /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEF972BF1B22A0093592E /* ScheduleResponse */,
+				3BDBEF982BF1B23B0093592E /* ScheduleResponse.swift */,
+				3BDBEF9A2BF1B24F0093592E /* ScheduleProvider.swift */,
+				3BDBEFA62BF1F4270093592E /* LiveGameProvider.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		3BDBEF972BF1B22A0093592E /* ScheduleResponse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScheduleResponse;
+			sourceTree = "<group>";
+		};
+		3BDBEFA82BF2ECDD0093592E /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEFA92BF2ECFA0093592E /* AwayScoreView.swift */,
+				3BDBEFAB2BF2ED040093592E /* HomeScoreView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		3BDBEFAF2BF2FB970093592E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */,
+				3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,18 +314,36 @@
 				3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */,
 				3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */,
 				3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */,
+				3BDBEF922BF19FD60093592E /* ScoreboardView.swift in Sources */,
 				3B0B15092BEECBE800E91AEE /* HomeCell.swift in Sources */,
+				3BDBEFA12BF1D0CB0093592E /* TeamView.swift in Sources */,
 				3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */,
+				3BDBEFA72BF1F4270093592E /* LiveGameProvider.swift in Sources */,
 				3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */,
+				3BDBEFAA2BF2ECFA0093592E /* AwayScoreView.swift in Sources */,
+				3BDBEF8A2BF18CA70093592E /* DailyScheduleView.swift in Sources */,
+				3BDBEFAC2BF2ED040093592E /* HomeScoreView.swift in Sources */,
+				3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */,
 				3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */,
+				3BDBEFA52BF1DBC50093592E /* PitcherView.swift in Sources */,
+				3BDBEFB12BF2FBA40093592E /* DailyViewModel.swift in Sources */,
+				3BDBEFB52BF33F190093592E /* DiamondView.swift in Sources */,
+				3BDBEF952BF1A6210093592E /* Scoreboard.swift in Sources */,
 				3BBAEAB52BEDA83600192FED /* Schedule.swift in Sources */,
+				3BDBEF9F2BF1D0360093592E /* DailyCell.swift in Sources */,
 				3BBAEAAD2BED91E800192FED /* Interactor.swift in Sources */,
+				3BDBEFA32BF1D47C0093592E /* GameStateView.swift in Sources */,
+				3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */,
+				3BDBEF902BF1962D0093592E /* DailyDetailView.swift in Sources */,
 				3B0B15132BF0A5AC00E91AEE /* DiamondGroundView.swift in Sources */,
+				3BDBEF992BF1B23B0093592E /* ScheduleResponse.swift in Sources */,
 				3BBAEAAB2BECB8AF00192FED /* Network.swift in Sources */,
 				3B0B15052BEE709B00E91AEE /* AwayPitcherView.swift in Sources */,
 				3B0B150D2BEED5FA00E91AEE /* ScoreView.swift in Sources */,
+				3BDBEF9D2BF1CB760093592E /* DailyScheduleInteractor.swift in Sources */,
 				3B0B15112BF00E9700E91AEE /* BoxScoreView.swift in Sources */,
 				3B0B15072BEECAE800E91AEE /* HomePitcherView.swift in Sources */,
+				3BDBEF9B2BF1B24F0093592E /* ScheduleProvider.swift in Sources */,
 				3B0B150F2BEF1B4500E91AEE /* OutCountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

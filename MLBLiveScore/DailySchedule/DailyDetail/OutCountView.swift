@@ -4,7 +4,7 @@ import SwiftDate
 
 struct OutCountView: View {
     let outCount: OutCount
-    
+    let circleWidth: CGFloat = 15
     init(outCount: OutCount?) {
         let balls = Int( outCount?.balls ?? "0" ) ?? 0
         let strikes = Int( outCount?.strikes ?? "0" ) ?? 0
@@ -22,11 +22,11 @@ struct OutCountView: View {
                 ForEach(0...2, id: \.self) { index in
                     if (index) < Int(outCount.balls) ?? 0 {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.green)
                     } else {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.gray)
                     }
                 }
@@ -38,11 +38,11 @@ struct OutCountView: View {
                 ForEach(0...1, id: \.self) { index in
                     if (index) < Int(outCount.strikes) ?? 0 {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.orange)
                     } else {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.gray)
                     }
                     
@@ -56,12 +56,12 @@ struct OutCountView: View {
                 ForEach(0...1, id: \.self) { index in
                     if (index) < Int(outCount.outs) ?? 0 {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.red)
 
                     } else {
                         Circle()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: circleWidth, height: circleWidth, alignment: .center)
                             .foregroundStyle(.gray)
 
                     }
@@ -71,8 +71,4 @@ struct OutCountView: View {
             
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
