@@ -29,6 +29,7 @@ class ScheduleInteractor: ObservableObject {
     
     func fetch(_ game: Game) async {
         print("liveGame \(game.pk)")
+        liveScore = nil
         if let scoreBoard = await LiveGameProvider.fetch(id: game.pk) {
             liveScore = LiveScore(scoreBoard)
         }
@@ -36,6 +37,7 @@ class ScheduleInteractor: ObservableObject {
     
     func liveGame(id: String) async {
         print("liveGame \(id)")
+        liveScore = nil
         if let scoreBoard = await LiveGameProvider.fetch(id: id) {
             liveScore = LiveScore(scoreBoard)
         }

@@ -35,6 +35,13 @@ struct LiveScore: Identifiable, Hashable, Equatable {
     let runner: Runner?
     let onDeckPlayer: Player?
     
+    let awayBatters: [MPlayer]
+    let homeBatters: [MPlayer]
+    
+    let awayPitchers: [MPlayer]
+    let homePitchers: [MPlayer]
+    
+    let status: StatusState?
     
     init(_ response: LiveScoreBoard) {
         self.id = UUID().uuidString
@@ -52,5 +59,17 @@ struct LiveScore: Identifiable, Hashable, Equatable {
         
         self.runner = response.liveDataResponse.lineScore.runner
         self.onDeckPlayer = response.liveDataResponse.lineScore.onDeckPlayer
+        
+        self.awayBatters = response.liveDataResponse.boxScore.away.batters
+        self.homeBatters = response.liveDataResponse.boxScore.home.batters
+        
+        if response.gameRespone.detailedState == .warmup {
+            self.status = response.gameRespone.detailedState
+        } else {
+            self.status = response.gameRespone.abstractGameState
+        }
+        print(self.status)
+        self.awayPitchers = response.liveDataResponse.boxScore.away.pitchers
+        self.homePitchers = response.liveDataResponse.boxScore.home.pitchers
     }
 }

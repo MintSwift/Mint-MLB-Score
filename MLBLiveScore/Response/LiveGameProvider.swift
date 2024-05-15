@@ -146,9 +146,17 @@ struct LiveGameRespone: Decodable {
     let away: LiveTeamRespone
     let home: LiveTeamRespone
     
+    let abstractGameState: StatusState
+    let detailedState: StatusState?
+    
     enum TeamsCodingKeys: CodingKey {
         case away
         case home
+    }
+    
+    enum StatusCodingKeys: CodingKey {
+        case abstractGameState
+        case detailedState
     }
     
     enum GameCodingKeys: CodingKey {
@@ -159,6 +167,7 @@ struct LiveGameRespone: Decodable {
     enum CodingKeys: CodingKey {
         case teams
         case game
+        case status
     }
     
     init(from decoder: Decoder) throws {
@@ -171,12 +180,52 @@ struct LiveGameRespone: Decodable {
         let game = try container.nestedContainer(keyedBy: GameCodingKeys.self, forKey: .game)
         
         self.pk = try game.decode(Int.self, forKey: .pk)
+        
+        let statusContainer = try container.nestedContainer(keyedBy: StatusCodingKeys.self, forKey: .status)
+        let abstractGameState = try statusContainer.decode(StatusState.self, forKey: .abstractGameState)
+        let detailedState = try? statusContainer.decodeIfPresent(StatusState.self, forKey: .detailedState)
+        self.abstractGameState = abstractGameState
+        self.detailedState = detailedState
     }
 }
 
 struct TeamPlayersResponse: Decodable {
-    let batters: [String]
+    let batters: [MPlayer]
+    let players: [String: MPlayer]
+    let pitchers: [MPlayer]
     
+    enum CodingKeys: CodingKey {
+        case batters
+        case players
+        case pitchers
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let batters = try container.decode([Int].self, forKey: .batters)
+        let pitchers = try container.decode([Int].self, forKey: .pitchers)
+        
+        self.players = try container.decode([String: MPlayer].self, forKey: .players)
+        
+        var ts: [MPlayer] = []
+        for batter in batters {
+            let id = "ID\(batter)"
+            if let e = self.players[id] {
+                ts.append(e)
+            }
+        }
+        self.batters = ts
+        
+        var ps: [MPlayer] = []
+        for pitcher in pitchers {
+            let id = "ID\(pitcher)"
+            if let e = self.players[id] {
+                ps.append(e)
+            }
+        }
+        
+        self.pitchers = ps
+    }
 }
 
 
@@ -184,6 +233,22 @@ struct BoxScoreResponse: Decodable {
     let away: TeamPlayersResponse
     let home: TeamPlayersResponse
     
+    enum CodingKeys: CodingKey {
+        case teams
+    }
+    
+    enum TeamsCodingKeys: CodingKey {
+        case away
+        case home
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let teamsContainer = try container.nestedContainer(keyedBy: TeamsCodingKeys.self, forKey: .teams)
+        
+        self.away = try teamsContainer.decode(TeamPlayersResponse.self, forKey: .away)
+        self.home = try teamsContainer.decode(TeamPlayersResponse.self, forKey: .home)
+    }
 }
 
 struct LiveDataResponse: Decodable {
@@ -221,10 +286,8 @@ struct LiveScoreBoard: Decodable {
 
 struct LiveGameProvider {
     static func fetch(id: String) async -> LiveScoreBoard? {
-     
+        let endPoint = "https://statsapi.mlb.com/api/v1.1/game/\(id)/feed/live".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         do {
-            let endPoint = "https://statsapi.mlb.com/api/v1.1/game/\(id)/feed/live".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//            let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(start)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let url = URL(string: endPoint)!
             let response = try await URLSession.shared.data(from: url)
             let data = response.0
@@ -241,6 +304,7 @@ struct LiveGameProvider {
             
             return mlbSchedule
         } catch {
+            print(endPoint)
             print(error)
             return nil
         }

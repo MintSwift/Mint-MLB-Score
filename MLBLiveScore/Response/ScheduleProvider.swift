@@ -5,6 +5,8 @@ enum StatusState: String, Codable {
     case final = "Final"
     case live = "Live"
     case preview = "Preview"
+    case warmup = "Warmup"
+    case inProgress = "In Progress"
     case unknown
 }
 
