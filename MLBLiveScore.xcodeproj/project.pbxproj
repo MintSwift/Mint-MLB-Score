@@ -29,6 +29,12 @@
 		3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB62BEDCB9100192FED /* Team.swift */; };
 		3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEAB82BEDD9F500192FED /* Cell.swift */; };
 		3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEABA2BEDFA3100192FED /* Detail.swift */; };
+		3BCADD332BF5C18300340FAD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCADD322BF5C18300340FAD /* WidgetKit.framework */; };
+		3BCADD352BF5C18300340FAD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCADD342BF5C18300340FAD /* SwiftUI.framework */; };
+		3BCADD382BF5C18300340FAD /* MLBLiveWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD372BF5C18300340FAD /* MLBLiveWidgetBundle.swift */; };
+		3BCADD3A2BF5C18300340FAD /* MLBLiveWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD392BF5C18300340FAD /* MLBLiveWidget.swift */; };
+		3BCADD3C2BF5C18300340FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCADD3B2BF5C18300340FAD /* Assets.xcassets */; };
+		3BCADD402BF5C18300340FAD /* MLBLiveWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3BDBEF8A2BF18CA70093592E /* DailyScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */; };
 		3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF8C2BF18D180093592E /* DailySidebar.swift */; };
 		3BDBEF902BF1962D0093592E /* DailyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF8F2BF1962D0093592E /* DailyDetailView.swift */; };
@@ -48,6 +54,30 @@
 		3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */; };
 		3BDBEFB52BF33F190093592E /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB42BF33F190093592E /* DiamondView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3BCADD3E2BF5C18300340FAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BBAEA902BECB89800192FED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BCADD2F2BF5C18300340FAD;
+			remoteInfo = MLBLiveWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3BCADD442BF5C18300340FAD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3BCADD402BF5C18300340FAD /* MLBLiveWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3B0B15042BEE709B00E91AEE /* AwayPitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwayPitcherView.swift; sourceTree = "<group>"; };
@@ -72,6 +102,13 @@
 		3BBAEAB62BEDCB9100192FED /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		3BBAEAB82BEDD9F500192FED /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		3BBAEABA2BEDFA3100192FED /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MLBLiveWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCADD322BF5C18300340FAD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3BCADD342BF5C18300340FAD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3BCADD372BF5C18300340FAD /* MLBLiveWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBLiveWidgetBundle.swift; sourceTree = "<group>"; };
+		3BCADD392BF5C18300340FAD /* MLBLiveWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBLiveWidget.swift; sourceTree = "<group>"; };
+		3BCADD3B2BF5C18300340FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3BCADD3D2BF5C18300340FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleView.swift; sourceTree = "<group>"; };
 		3BDBEF8C2BF18D180093592E /* DailySidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySidebar.swift; sourceTree = "<group>"; };
 		3BDBEF8F2BF1962D0093592E /* DailyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDetailView.swift; sourceTree = "<group>"; };
@@ -102,6 +139,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3BCADD2D2BF5C18300340FAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCADD352BF5C18300340FAD /* SwiftUI.framework in Frameworks */,
+				3BCADD332BF5C18300340FAD /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -109,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				3BBAEA9A2BECB89800192FED /* MLBLiveScore */,
+				3BCADD362BF5C18300340FAD /* MLBLiveWidget */,
+				3BCADD312BF5C18300340FAD /* Frameworks */,
 				3BBAEA992BECB89800192FED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBAEA982BECB89800192FED /* MLBLiveScore.app */,
+				3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +205,26 @@
 				3BBAEAA32BECB89900192FED /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3BCADD312BF5C18300340FAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BCADD322BF5C18300340FAD /* WidgetKit.framework */,
+				3BCADD342BF5C18300340FAD /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BCADD362BF5C18300340FAD /* MLBLiveWidget */ = {
+			isa = PBXGroup;
+			children = (
+				3BCADD372BF5C18300340FAD /* MLBLiveWidgetBundle.swift */,
+				3BCADD392BF5C18300340FAD /* MLBLiveWidget.swift */,
+				3BCADD3B2BF5C18300340FAD /* Assets.xcassets */,
+				3BCADD3D2BF5C18300340FAD /* Info.plist */,
+			);
+			path = MLBLiveWidget;
 			sourceTree = "<group>";
 		};
 		3BDBEF882BF18C640093592E /* DailySchedule */ = {
@@ -249,10 +318,12 @@
 				3BBAEA942BECB89800192FED /* Sources */,
 				3BBAEA952BECB89800192FED /* Frameworks */,
 				3BBAEA962BECB89800192FED /* Resources */,
+				3BCADD442BF5C18300340FAD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3BCADD3F2BF5C18300340FAD /* PBXTargetDependency */,
 			);
 			name = MLBLiveScore;
 			packageProductDependencies = (
@@ -262,6 +333,23 @@
 			productName = MLBLiveScore;
 			productReference = 3BBAEA982BECB89800192FED /* MLBLiveScore.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3BCADD2F2BF5C18300340FAD /* MLBLiveWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BCADD412BF5C18300340FAD /* Build configuration list for PBXNativeTarget "MLBLiveWidgetExtension" */;
+			buildPhases = (
+				3BCADD2C2BF5C18300340FAD /* Sources */,
+				3BCADD2D2BF5C18300340FAD /* Frameworks */,
+				3BCADD2E2BF5C18300340FAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MLBLiveWidgetExtension;
+			productName = MLBLiveWidgetExtension;
+			productReference = 3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -274,6 +362,9 @@
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					3BBAEA972BECB89800192FED = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					3BCADD2F2BF5C18300340FAD = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
@@ -296,6 +387,7 @@
 			projectRoot = "";
 			targets = (
 				3BBAEA972BECB89800192FED /* MLBLiveScore */,
+				3BCADD2F2BF5C18300340FAD /* MLBLiveWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -307,6 +399,14 @@
 			files = (
 				3BBAEAA42BECB89900192FED /* Preview Assets.xcassets in Resources */,
 				3BBAEAA02BECB89900192FED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BCADD2E2BF5C18300340FAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCADD3C2BF5C18300340FAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +456,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3BCADD2C2BF5C18300340FAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCADD382BF5C18300340FAD /* MLBLiveWidgetBundle.swift in Sources */,
+				3BCADD3A2BF5C18300340FAD /* MLBLiveWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3BCADD3F2BF5C18300340FAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3BCADD2F2BF5C18300340FAD /* MLBLiveWidgetExtension */;
+			targetProxy = 3BCADD3E2BF5C18300340FAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3BBAEAA52BECB89900192FED /* Debug */ = {
@@ -476,6 +593,7 @@
 		3BBAEAA82BECB89900192FED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MLBLiveScore/MLBLiveScore.entitlements;
@@ -499,12 +617,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.kr.coolmint.weekly.MLBLiveScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,6 +634,7 @@
 		3BBAEAA92BECB89900192FED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MLBLiveScore/MLBLiveScore.entitlements;
@@ -537,15 +658,76 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.kr.coolmint.weekly.MLBLiveScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3BCADD422BF5C18300340FAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74W3A2V78T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MLBLiveWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MLBLiveWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.kr.coolmint.weekly.MLBLiveScore.MLBLiveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3BCADD432BF5C18300340FAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74W3A2V78T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MLBLiveWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MLBLiveWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.kr.coolmint.weekly.MLBLiveScore.MLBLiveWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -566,6 +748,15 @@
 			buildConfigurations = (
 				3BBAEAA82BECB89900192FED /* Debug */,
 				3BBAEAA92BECB89900192FED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BCADD412BF5C18300340FAD /* Build configuration list for PBXNativeTarget "MLBLiveWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCADD422BF5C18300340FAD /* Debug */,
+				3BCADD432BF5C18300340FAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
