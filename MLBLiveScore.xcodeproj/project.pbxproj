@@ -20,6 +20,12 @@
 		3B0B15192BF6325300E91AEE /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15182BF6325300E91AEE /* Teams.swift */; };
 		3BAFBCE62BF73D100077FB82 /* TeamScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */; };
 		3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */; };
+		3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */; };
+		3BAFBCEC2BF746BD0077FB82 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF9A2BF1B24F0093592E /* ScheduleProvider.swift */; };
+		3BAFBCEF2BF747270077FB82 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 3BAFBCEE2BF747270077FB82 /* SwiftDate */; };
+		3BAFBCF02BF747520077FB82 /* LiveGameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFA62BF1F4270093592E /* LiveGameProvider.swift */; };
+		3BAFBCF22BF747810077FB82 /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */; };
+		3BAFBCF32BF748EA0077FB82 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */; };
 		3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */; };
 		3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9D2BECB89800192FED /* ContentView.swift */; };
 		3BBAEAA02BECB89900192FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9F2BECB89900192FED /* Assets.xcassets */; };
@@ -97,6 +103,7 @@
 		3B0B15182BF6325300E91AEE /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleView.swift; sourceTree = "<group>"; };
 		3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleSidebarView.swift; sourceTree = "<group>"; };
+		3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
 		3BBAEA982BECB89800192FED /* MLBLiveScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLBLiveScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBLiveScoreApp.swift; sourceTree = "<group>"; };
 		3BBAEA9D2BECB89800192FED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +160,7 @@
 			files = (
 				3BCADD352BF5C18300340FAD /* SwiftUI.framework in Frameworks */,
 				3BCADD332BF5C18300340FAD /* WidgetKit.framework in Frameworks */,
+				3BAFBCEF2BF747270077FB82 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +247,7 @@
 			children = (
 				3BCADD372BF5C18300340FAD /* MLBLiveWidgetBundle.swift */,
 				3BCADD392BF5C18300340FAD /* MLBLiveWidget.swift */,
+				3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */,
 				3BCADD3B2BF5C18300340FAD /* Assets.xcassets */,
 				3BCADD3D2BF5C18300340FAD /* Info.plist */,
 			);
@@ -359,6 +368,9 @@
 			dependencies = (
 			);
 			name = MLBLiveWidgetExtension;
+			packageProductDependencies = (
+				3BAFBCEE2BF747270077FB82 /* SwiftDate */,
+			);
 			productName = MLBLiveWidgetExtension;
 			productReference = 3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -476,7 +488,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BAFBCF22BF747810077FB82 /* WidgetProvider.swift in Sources */,
+				3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */,
+				3BAFBCEC2BF746BD0077FB82 /* ScheduleProvider.swift in Sources */,
+				3BAFBCF02BF747520077FB82 /* LiveGameProvider.swift in Sources */,
 				3BCADD382BF5C18300340FAD /* MLBLiveWidgetBundle.swift in Sources */,
+				3BAFBCF32BF748EA0077FB82 /* DailyViewModel.swift in Sources */,
 				3BCADD3A2BF5C18300340FAD /* MLBLiveWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +816,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3BAFBCEE2BF747270077FB82 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3BBAEAB12BED936F00192FED /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
 		3BBAEAAF2BED935600192FED /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3BBAEAAE2BED935600192FED /* XCRemoteSwiftPackageReference "Kingfisher" */;

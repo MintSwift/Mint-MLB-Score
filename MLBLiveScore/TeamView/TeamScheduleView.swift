@@ -9,7 +9,7 @@ struct TeamScheduleView: View {
         NavigationSplitView {
             TeamScheduleSidebarView()
         } detail: {
-            if let selection = interactor.selection {
+            if let selection = interactor.planSelection {
                 DailyDetailView(gamePk: selection)
             }
         }

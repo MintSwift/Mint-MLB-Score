@@ -5,12 +5,12 @@ struct TeamScheduleSidebarView: View {
     @EnvironmentObject var interactor: ScheduleInteractor
     
     var body: some View {
-        List(selection: $interactor.selection) {
+        List(selection: $interactor.planSelection) {
             ForEach(interactor.teamDateSections) { section in
                 Section {
                     ForEach(section.games) { game in
                         Button {
-                            interactor.selection = game.pk
+                            interactor.planSelection = game.pk
                         } label: {
                             DailyCell(game)
                         }
