@@ -25,6 +25,9 @@ class ScheduleInteractor: ObservableObject {
         
         self.dateSections = sections.map { DateSection($0) }
         
+        
+        let i = await TeamScheduleProvider.fetch(teamId: 119)
+        print(i.count)
     }
     
     func liveGame(id: String) async {
