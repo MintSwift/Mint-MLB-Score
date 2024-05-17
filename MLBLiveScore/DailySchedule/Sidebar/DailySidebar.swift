@@ -22,17 +22,8 @@ struct DailySidebar: View {
             }
         }
         .listStyle(.grouped)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    Task {
-                        await interactor.schedule()
-                    }
-                } label: {
-                    Image(systemName: "arrow.circlepath")
-                }
-                
-            }
+        .refreshable {
+            await interactor.schedule()
         }
     }
 }

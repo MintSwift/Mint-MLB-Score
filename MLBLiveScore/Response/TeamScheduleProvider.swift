@@ -2,7 +2,7 @@ import Foundation
 import SwiftDate
 
 struct TeamScheduleProvider {
-    static func fetch(teamId: Int) async -> [GameRespone] {
+    static func fetch(teamId: Int) async -> [DateResponse] {
         let today = Date.now
         let startDate = today - 2.days
         
@@ -17,7 +17,7 @@ struct TeamScheduleProvider {
             
             let decoder = JSONDecoder()
             let mlbSchedule = try decoder.decode(MLBSchedule.self, from: data)
-            let game = mlbSchedule.date.flatMap { $0.games }
+            let game = mlbSchedule.date
             return game
         } catch {
             print(endPoint)

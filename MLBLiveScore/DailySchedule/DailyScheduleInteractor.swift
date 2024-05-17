@@ -11,6 +11,8 @@ class ScheduleInteractor: ObservableObject {
     
     @Published var dateSections: [DateSection] = []
     
+    @Published var teamDateSections: [DateSection] = []
+    
     
     
     init() {
@@ -26,8 +28,9 @@ class ScheduleInteractor: ObservableObject {
         self.dateSections = sections.map { DateSection($0) }
         
         
-        let i = await TeamScheduleProvider.fetch(teamId: 119)
-        print(i.count)
+        let items = await TeamScheduleProvider.fetch(teamId: 119)
+        self.teamDateSections = items.map { DateSection($0) }
+    
     }
     
     func liveGame(id: String) async {

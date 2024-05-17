@@ -10,6 +10,8 @@ import SwiftDate
 
 @main
 struct MLBLiveScoreApp: App {
+    @StateObject var interactor = ScheduleInteractor()
+    
     init() {
         let timezone: Zones = Zones.asiaSeoul
         let calendar: Calendars = Calendars.gregorian
@@ -20,7 +22,28 @@ struct MLBLiveScoreApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DailyScheduleView()
+            TabView {
+                DailyScheduleView()
+                    .tabItem {
+                        Label {
+                            Text("매일 일정")
+                        } icon: {
+                            Image(systemName: "baseball.fill")
+                            
+                        }
+
+                    }
+                TeamScheduleView()
+                    .tabItem {
+                        Label {
+                            Text("팀 일정")
+                        } icon: {
+                            Image(systemName: "calendar")
+                        }
+
+                    }
+            }
+            .environmentObject(interactor)
         }
     }
 }

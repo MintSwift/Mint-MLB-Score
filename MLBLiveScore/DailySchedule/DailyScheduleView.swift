@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DailyScheduleView: View {
-    @StateObject var interactor = ScheduleInteractor()
+    @EnvironmentObject var interactor: ScheduleInteractor
     
     var body: some View {
         NavigationSplitView {

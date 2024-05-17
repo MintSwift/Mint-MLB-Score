@@ -67,4 +67,10 @@ struct DateSection: Identifiable, Hashable, Equatable {
         self.title = first ?? "-"
         self.games = games.map { Game($0) }
     }
+    
+    init(_ title: String, games: [Game]) {
+        self.id = UUID().uuidString
+        self.title = title
+        self.games = games
+    }
 }
