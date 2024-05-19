@@ -18,6 +18,12 @@
 		3B0B15152BF3921600E91AEE /* BoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15142BF3921600E91AEE /* BoxScoreView.swift */; };
 		3B0B15172BF4B67300E91AEE /* PitcherBoxScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15162BF4B67300E91AEE /* PitcherBoxScoreView.swift */; };
 		3B0B15192BF6325300E91AEE /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15182BF6325300E91AEE /* Teams.swift */; };
+		3B0B151C2BF7E98200E91AEE /* WidgetLiveStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B151A2BF7E97E00E91AEE /* WidgetLiveStatusView.swift */; };
+		3B0B151D2BF817A700E91AEE /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15182BF6325300E91AEE /* Teams.swift */; };
+		3B0B15202BF88AFD00E91AEE /* WLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B151F2BF88AFD00E91AEE /* WLiveView.swift */; };
+		3B0B15222BF88C4B00E91AEE /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
+		3B5847FD2BF9ECF500098ABF /* WFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5847FC2BF9ECF500098ABF /* WFinalView.swift */; };
+		3B5847FE2BF9F39F00098ABF /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
 		3BAFBCE62BF73D100077FB82 /* TeamScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */; };
 		3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */; };
 		3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */; };
@@ -101,6 +107,10 @@
 		3B0B15142BF3921600E91AEE /* BoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScoreView.swift; sourceTree = "<group>"; };
 		3B0B15162BF4B67300E91AEE /* PitcherBoxScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitcherBoxScoreView.swift; sourceTree = "<group>"; };
 		3B0B15182BF6325300E91AEE /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
+		3B0B151A2BF7E97E00E91AEE /* WidgetLiveStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveStatusView.swift; sourceTree = "<group>"; };
+		3B0B151F2BF88AFD00E91AEE /* WLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLiveView.swift; sourceTree = "<group>"; };
+		3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNextGameView.swift; sourceTree = "<group>"; };
+		3B5847FC2BF9ECF500098ABF /* WFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFinalView.swift; sourceTree = "<group>"; };
 		3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleView.swift; sourceTree = "<group>"; };
 		3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleSidebarView.swift; sourceTree = "<group>"; };
 		3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
@@ -167,6 +177,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0B151E2BF88AE100E91AEE /* StatusView */ = {
+			isa = PBXGroup;
+			children = (
+				3B0B151F2BF88AFD00E91AEE /* WLiveView.swift */,
+				3B5847FC2BF9ECF500098ABF /* WFinalView.swift */,
+				3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */,
+			);
+			path = StatusView;
+			sourceTree = "<group>";
+		};
 		3BAFBCE42BF73CFA0077FB82 /* TeamView */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,8 +265,10 @@
 		3BCADD362BF5C18300340FAD /* MLBLiveWidget */ = {
 			isa = PBXGroup;
 			children = (
+				3B0B151E2BF88AE100E91AEE /* StatusView */,
 				3BCADD372BF5C18300340FAD /* MLBLiveWidgetBundle.swift */,
 				3BCADD392BF5C18300340FAD /* MLBLiveWidget.swift */,
+				3B0B151A2BF7E97E00E91AEE /* WidgetLiveStatusView.swift */,
 				3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */,
 				3BCADD3B2BF5C18300340FAD /* Assets.xcassets */,
 				3BCADD3D2BF5C18300340FAD /* Info.plist */,
@@ -443,6 +465,7 @@
 			files = (
 				3BBAEAB72BEDCB9100192FED /* Team.swift in Sources */,
 				3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */,
+				3B5847FE2BF9F39F00098ABF /* WNextGameView.swift in Sources */,
 				3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */,
 				3BDBEF922BF19FD60093592E /* ScoreboardView.swift in Sources */,
 				3B0B15092BEECBE800E91AEE /* HomeCell.swift in Sources */,
@@ -488,10 +511,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0B151D2BF817A700E91AEE /* Teams.swift in Sources */,
+				3B0B151C2BF7E98200E91AEE /* WidgetLiveStatusView.swift in Sources */,
+				3B0B15222BF88C4B00E91AEE /* WNextGameView.swift in Sources */,
 				3BAFBCF22BF747810077FB82 /* WidgetProvider.swift in Sources */,
 				3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */,
 				3BAFBCEC2BF746BD0077FB82 /* ScheduleProvider.swift in Sources */,
 				3BAFBCF02BF747520077FB82 /* LiveGameProvider.swift in Sources */,
+				3B5847FD2BF9ECF500098ABF /* WFinalView.swift in Sources */,
+				3B0B15202BF88AFD00E91AEE /* WLiveView.swift in Sources */,
 				3BCADD382BF5C18300340FAD /* MLBLiveWidgetBundle.swift in Sources */,
 				3BAFBCF32BF748EA0077FB82 /* DailyViewModel.swift in Sources */,
 				3BCADD3A2BF5C18300340FAD /* MLBLiveWidget.swift in Sources */,

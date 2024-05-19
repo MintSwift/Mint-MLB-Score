@@ -9,7 +9,7 @@ struct TeamInfomation {
 }
 
 struct MLBTeam {
-    var all: [TeamInfomation] = [
+    static var all: [TeamInfomation] = [
         MLBTeam.orioles,
         MLBTeam.redsox,
         MLBTeam.yankees,

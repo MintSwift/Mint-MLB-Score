@@ -7,40 +7,55 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftDate
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date.now, game: nil, awayStanding: nil, homeStanding: nil)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry(date: Date.now, game: nil, awayStanding: nil, homeStanding: nil)
         completion(entry)
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             var entries: [SimpleEntry] = []
-            let items = await WidgetProvider.fetch(teamId: nil)
-            print(items)
-            let currentDate = Date()
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, emoji: "😀")
-                entries.append(entry)
+            let (item, awayStanding, homeStanding) = await WidgetProvider.fetch(teamId: nil)
+            if let item {
+                if item.state == .final {
+                    
+                    let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)!
+                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
+                    completion(timeline)
+                    
+                } else if item.state == .preview {
+                    let entryDate = item.date
+                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
+                    completion(timeline)
+                    
+                } else if item.state == .live {
+                    let now = Date.now
+                    let entryDate = now.dateByAdding(5, .minute).date
+                    entries = [SimpleEntry(date: now, game: item, awayStanding: awayStanding, homeStanding: homeStanding)]
+                    
+                    let timeline = Timeline(entries: entries, policy: .after(entryDate))
+                    completion(timeline)
+                }
             }
             
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
         }
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
+    let game: Game?
+    let awayStanding: TeamStandings?
+    let homeStanding: TeamStandings?
 }
 
 struct InningsView : View {
@@ -93,73 +108,35 @@ struct InningsView : View {
 
 struct MLBLiveWidgetEntryView : View {
     var entry: Provider.Entry
+    var game: Game?
+    
+    init(entry: Provider.Entry) {
+        self.entry = entry
+        self.game = entry.game
+    }
     
     var body: some View {
-        VStack {
-//            Text("MLB")
-//                .font(.body)
-//                .frame(maxWidth: .infinity, alignment: .leading)
-                
-            
-            HStack {
-                
-                VStack(spacing: 10) {
-                    
-                    VStack {
-                        Text("Pittsburgh")
-                        Text("Pirates")
-                    }
-                    .font(.caption2)
-                    
-                    Image("LAA")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
-                    
-                    
-                    VStack {
-                        Text("20 - 23")
-                        Text("3rd NL Central")
-                        Text("Next Generation")
-                    }
-                    .foregroundStyle(.secondary)
-                    .font(.caption2)
-      
-                }
-                .containerRelativeFrame(.horizontal, count: 30, span: 9, spacing: 0)
-                
+        
+        if let game {
+            switch game.state {
+            case .final:
+                WFinalView(game: game, away: entry.awayStanding, home: entry.homeStanding)
+            case .live:
                 VStack {
-                    Text("05.22")
-                    Text("AM 11:23")
-                }
-                .foregroundStyle(.secondary)
-                .font(.footnote)
-                .containerRelativeFrame(.horizontal, count: 30, span: 7, spacing: 0)
-                
-                VStack(spacing: 10) {
-                    
-                    VStack {
-                        Text("Pittsburgh")
-                        Text("Pirates")
-                    }
-                    .font(.caption2)
-                    
-                    Image("LAD")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
-                    
-                    
-                    VStack {
-                        Text("12 - 23")
-                        Text("3rd AL Central")
-                        Text("Next Generation")
-                    }
-                    .foregroundStyle(.secondary)
-                    .font(.caption2)
+                    WLiveView(game: game)
+                    Text(entry.date.toFormat("MM/dd hh:mm ss", locale: Locales.korean))
+                        .foregroundStyle(.secondary)
+                        .font(.caption2)
                     
                 }
-                .containerRelativeFrame(.horizontal, count: 30, span: 9, spacing: 0)
+            case .preview:
+                WNextGameView(game: game, away: entry.awayStanding, home: entry.homeStanding)
+            case .warmup:
+                WidgetLiveStatusView(game: game)
+            case .inProgress:
+                WidgetLiveStatusView(game: game)
+            case .unknown:
+                WidgetLiveStatusView(game: game)
             }
         }
     }
@@ -187,5 +164,5 @@ struct MLBLiveWidget: Widget {
 #Preview(as: .systemMedium) {
     MLBLiveWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
+    SimpleEntry(date: .now, game: nil, awayStanding: nil, homeStanding: nil)
 }

@@ -520,6 +520,7 @@ struct LiveGameProvider {
     static func fetch(id: String) async -> LiveScoreBoard? {
         let endPoint = "https://statsapi.mlb.com/api/v1.1/game/\(id)/feed/live".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         do {
+            print(endPoint)
             let url = URL(string: endPoint)!
             let response = try await URLSession.shared.data(from: url)
             let data = response.0

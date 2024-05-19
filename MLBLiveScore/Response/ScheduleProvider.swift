@@ -42,6 +42,8 @@ struct TeamResponse: Identifiable, Hashable, Decodable {
     let isWinner: Bool?
     let score: Int?
     
+    let probablePitcher: MLBPlayer?
+    
     enum CodingKeys: CodingKey {
         case leagueRecord
         case record
@@ -58,6 +60,11 @@ struct TeamResponse: Identifiable, Hashable, Decodable {
         case wins
         case losses
         case pct
+    }
+    
+    enum ProbablePitcherCodingKeys: CodingKey {
+        case fullName
+        case id
     }
     
     enum TeamCodingKeys: CodingKey {
@@ -91,7 +98,8 @@ struct TeamResponse: Identifiable, Hashable, Decodable {
         
         self.isWinner = try container.decodeIfPresent(Bool.self, forKey: .isWinner)
         self.teamID = try teamContainer.decode(Int.self, forKey: .id)
-//        self.firstPitcher = try container.decodeIfPresent(MLBPlayer.self, forKey: .probablePitcher)
+        
+        self.probablePitcher = try? container.decodeIfPresent(MLBPlayer.self, forKey: .probablePitcher)
     }
 }
 
@@ -278,13 +286,17 @@ struct GameRespone: Identifiable, Decodable {
     let state: StatusState
     let stateReason: String?
     
+    let winnerPitcher: MLBPlayer?
+    let loserPitcher: MLBPlayer?
+    let savePitcher: MLBPlayer?
+    
     enum CodingKeys: CodingKey {
         case gamePk
         case gameDate
         case status
         case teams
         case linescore
-//        case decisions
+        case decisions
     }
     
     enum StatusCodingKeys: CodingKey {
@@ -297,12 +309,12 @@ struct GameRespone: Identifiable, Decodable {
         case home
     }
 
-//    
-//    enum DecisionsCodingKeys: CodingKey {
-//        case winner
-//        case loser
-//        case save
-//    }
+    
+    enum DecisionsCodingKeys: CodingKey {
+        case winner
+        case loser
+        case save
+    }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -324,10 +336,10 @@ struct GameRespone: Identifiable, Decodable {
 //        let currentInning = try linescoreContainer?.decodeIfPresent(String.self, forKey: .currentInningOrdinal) ?? "-"
 //        let  inningState = try linescoreContainer?.decodeIfPresent(InningState.self, forKey: .inningState) ?? .end
         
-//        let decisionsContainer = try? container.nestedContainer(keyedBy: DecisionsCodingKeys.self, forKey: .decisions)
-//        self.winnerPitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .winner)
-//        self.loserPitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .loser)
-//        self.savePitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .save)
+        let decisionsContainer = try? container.nestedContainer(keyedBy: DecisionsCodingKeys.self, forKey: .decisions)
+        self.winnerPitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .winner)
+        self.loserPitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .loser)
+        self.savePitcher = try decisionsContainer?.decodeIfPresent(MLBPlayer.self, forKey: .save)
         
     }
 }
