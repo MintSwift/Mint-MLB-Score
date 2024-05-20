@@ -49,8 +49,6 @@
 		3BB8C4612BFB1F79007F545D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BB8C4602BFB1F79007F545D /* Assets.xcassets */; };
 		3BB8C4652BFB1F79007F545D /* LiveActivitiesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3BB8C4562BFB1F78007F545D /* LiveActivitiesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3BB8C4692BFB2062007F545D /* LiveActivitiesLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB8C45C2BFB1F78007F545D /* LiveActivitiesLiveActivity.swift */; };
-		3BB8C46D2BFB4197007F545D /* MLBStatsProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 3BB8C46C2BFB4197007F545D /* MLBStatsProvider */; };
-		3BB8C46F2BFB41AC007F545D /* MLBResponse in Frameworks */ = {isa = PBXBuildFile; productRef = 3BB8C46E2BFB41AC007F545D /* MLBResponse */; };
 		3BBAEA9C2BECB89800192FED /* MLBLiveScoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */; };
 		3BBAEA9E2BECB89800192FED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9D2BECB89800192FED /* ContentView.swift */; };
 		3BBAEAA02BECB89900192FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBAEA9F2BECB89900192FED /* Assets.xcassets */; };
@@ -170,8 +168,8 @@
 		3BB8C45E2BFB1F78007F545D /* LiveActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivities.swift; sourceTree = "<group>"; };
 		3BB8C4602BFB1F79007F545D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BB8C4622BFB1F79007F545D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3BB8C46A2BFB2AA5007F545D /* MLBTeams */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBTeams; sourceTree = "<group>"; };
-		3BB8C46B2BFB307C007F545D /* MLBStatsProvider */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBStatsProvider; sourceTree = "<group>"; };
+		3BB8C4702BFC1573007F545D /* MLBStatsAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBStatsAPI; sourceTree = "<group>"; };
+		3BB8C4712BFC158C007F545D /* MLBTeams */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBTeams; sourceTree = "<group>"; };
 		3BBAEA982BECB89800192FED /* MLBLiveScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLBLiveScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBAEA9B2BECB89800192FED /* MLBLiveScoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBLiveScoreApp.swift; sourceTree = "<group>"; };
 		3BBAEA9D2BECB89800192FED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,9 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBAEAB32BED936F00192FED /* SwiftDate in Frameworks */,
-				3BB8C46F2BFB41AC007F545D /* MLBResponse in Frameworks */,
 				3BBAEAB02BED935600192FED /* Kingfisher in Frameworks */,
-				3BB8C46D2BFB4197007F545D /* MLBStatsProvider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,8 +293,8 @@
 		3BBAEA8F2BECB89800192FED = {
 			isa = PBXGroup;
 			children = (
-				3BB8C46B2BFB307C007F545D /* MLBStatsProvider */,
-				3BB8C46A2BFB2AA5007F545D /* MLBTeams */,
+				3BB8C4712BFC158C007F545D /* MLBTeams */,
+				3BB8C4702BFC1573007F545D /* MLBStatsAPI */,
 				3BBAEA9A2BECB89800192FED /* MLBLiveScore */,
 				3BCADD362BF5C18300340FAD /* MLBLiveWidget */,
 				3BB8C4402BFAD4A4007F545D /* MLBTeamIntents */,
@@ -515,8 +511,6 @@
 			packageProductDependencies = (
 				3BBAEAAF2BED935600192FED /* Kingfisher */,
 				3BBAEAB22BED936F00192FED /* SwiftDate */,
-				3BB8C46C2BFB4197007F545D /* MLBStatsProvider */,
-				3BB8C46E2BFB41AC007F545D /* MLBResponse */,
 			);
 			productName = MLBLiveScore;
 			productReference = 3BBAEA982BECB89800192FED /* MLBLiveScore.app */;
@@ -1185,14 +1179,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3BBAEAB12BED936F00192FED /* XCRemoteSwiftPackageReference "SwiftDate" */;
 			productName = SwiftDate;
-		};
-		3BB8C46C2BFB4197007F545D /* MLBStatsProvider */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MLBStatsProvider;
-		};
-		3BB8C46E2BFB41AC007F545D /* MLBResponse */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MLBResponse;
 		};
 		3BBAEAAF2BED935600192FED /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
