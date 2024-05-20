@@ -24,6 +24,9 @@
 		3B0B15222BF88C4B00E91AEE /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
 		3B5847FD2BF9ECF500098ABF /* WFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5847FC2BF9ECF500098ABF /* WFinalView.swift */; };
 		3B5847FE2BF9F39F00098ABF /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
+		3B58DEED2BFC163800558AB0 /* MLBResponse in Frameworks */ = {isa = PBXBuildFile; productRef = 3B58DEEC2BFC163800558AB0 /* MLBResponse */; };
+		3B58DEEF2BFC163800558AB0 /* MLBStatsAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */; };
+		3B58DEF12BFC163800558AB0 /* MLBTeams in Frameworks */ = {isa = PBXBuildFile; productRef = 3B58DEF02BFC163800558AB0 /* MLBTeams */; };
 		3BAFBCE62BF73D100077FB82 /* TeamScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */; };
 		3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */; };
 		3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */; };
@@ -234,6 +237,9 @@
 			files = (
 				3BBAEAB32BED936F00192FED /* SwiftDate in Frameworks */,
 				3BBAEAB02BED935600192FED /* Kingfisher in Frameworks */,
+				3B58DEF12BFC163800558AB0 /* MLBTeams in Frameworks */,
+				3B58DEED2BFC163800558AB0 /* MLBResponse in Frameworks */,
+				3B58DEEF2BFC163800558AB0 /* MLBStatsAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +517,9 @@
 			packageProductDependencies = (
 				3BBAEAAF2BED935600192FED /* Kingfisher */,
 				3BBAEAB22BED936F00192FED /* SwiftDate */,
+				3B58DEEC2BFC163800558AB0 /* MLBResponse */,
+				3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */,
+				3B58DEF02BFC163800558AB0 /* MLBTeams */,
 			);
 			productName = MLBLiveScore;
 			productReference = 3BBAEA982BECB89800192FED /* MLBLiveScore.app */;
@@ -1175,6 +1184,18 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3B58DEEC2BFC163800558AB0 /* MLBResponse */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBResponse;
+		};
+		3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBStatsAPI;
+		};
+		3B58DEF02BFC163800558AB0 /* MLBTeams */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBTeams;
+		};
 		3BAFBCEE2BF747270077FB82 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3BBAEAB12BED936F00192FED /* XCRemoteSwiftPackageReference "SwiftDate" */;

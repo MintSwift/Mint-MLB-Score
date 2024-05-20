@@ -1,6 +1,6 @@
 import Foundation
 import SwiftDate
-import MLBStatsProvider
+import MLBStatsAPI
 import MLBResponse
 
 @MainActor
