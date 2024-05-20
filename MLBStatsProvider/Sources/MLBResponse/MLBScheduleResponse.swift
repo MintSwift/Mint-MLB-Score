@@ -86,6 +86,18 @@ public struct MLBDecisionsResponse: Decodable {
 }
 
 
+public struct MLBLinescoreResponse: Decodable {
+    let currentInning: Int
+    let currentInningOrdinal: String
+    let inningState: String?
+    
+    enum CodingKeys: CodingKey {
+        case currentInning
+        case currentInningOrdinal
+        case inningState
+    }
+}
+
 
 public struct MLBGameResponse: Decodable {
     let gamePk: Int
