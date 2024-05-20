@@ -9,38 +9,40 @@ import WidgetKit
 import SwiftUI
 import SwiftDate
 
-struct Provider: TimelineProvider {
+struct IntentsTeamProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date.now, game: nil, awayStanding: nil, homeStanding: nil)
+        SimpleEntry(date: Date.now, info: nil)
     }
-    
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date.now, game: nil, awayStanding: nil, homeStanding: nil)
+    func getSnapshot(for configuration: TeamIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date.now, info: nil)
         completion(entry)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: TeamIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
-            var entries: [SimpleEntry] = []
-            let (item, awayStanding, homeStanding) = await WidgetProvider.fetch(teamId: nil)
-            if let item {
+            
+            let teamInfo = MLBTeam.all
+                .first(where: { $0.name == configuration.team?.displayString })
+            
+            let info = await WidgetProvider.fetch(teamId: teamInfo?.code)
+            if let info = info, let item = info.game {
                 if item.state == .final {
                     
                     let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)!
-                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+                    let entries = SimpleEntry(date: entryDate, info: info)
                     let timeline = Timeline(entries: [entries], policy: .after(entryDate))
                     completion(timeline)
                     
                 } else if item.state == .preview {
                     let entryDate = item.date
-                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+                    let entries = SimpleEntry(date: entryDate, info: info)
                     let timeline = Timeline(entries: [entries], policy: .after(entryDate))
                     completion(timeline)
                     
                 } else if item.state == .live {
                     let now = Date.now
                     let entryDate = now.dateByAdding(5, .minute).date
-                    entries = [SimpleEntry(date: now, game: item, awayStanding: awayStanding, homeStanding: homeStanding)]
+                    let entries = [SimpleEntry(date: now, info: info)]
                     
                     let timeline = Timeline(entries: entries, policy: .after(entryDate))
                     completion(timeline)
@@ -51,11 +53,51 @@ struct Provider: TimelineProvider {
     }
 }
 
+//struct Provider: TimelineProvider {
+//    func placeholder(in context: Context) -> SimpleEntry {
+//        SimpleEntry(date: Date.now, info: nil)
+//    }
+//    
+//    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+//        let entry = SimpleEntry(date: Date.now, info: nil)
+//        completion(entry)
+//    }
+//    
+//    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+//        Task {
+//            var entries: [SimpleEntry] = []
+//            let (item, awayStanding, homeStanding) = await WidgetProvider.fetch(teamId: nil)
+//            if let item {
+//                if item.state == .final {
+//                    
+//                    let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)!
+//                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+//                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
+//                    completion(timeline)
+//                    
+//                } else if item.state == .preview {
+//                    let entryDate = item.date
+//                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
+//                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
+//                    completion(timeline)
+//                    
+//                } else if item.state == .live {
+//                    let now = Date.now
+//                    let entryDate = now.dateByAdding(5, .minute).date
+//                    entries = [SimpleEntry(date: now, game: item, awayStanding: awayStanding, homeStanding: homeStanding)]
+//                    
+//                    let timeline = Timeline(entries: entries, policy: .after(entryDate))
+//                    completion(timeline)
+//                }
+//            }
+//            
+//        }
+//    }
+//}
+
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let game: Game?
-    let awayStanding: TeamStandings?
-    let homeStanding: TeamStandings?
+    let info: GameInfo?
 }
 
 struct InningsView : View {
@@ -107,12 +149,12 @@ struct InningsView : View {
 }
 
 struct MLBLiveWidgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: IntentsTeamProvider.Entry
     var game: Game?
     
-    init(entry: Provider.Entry) {
+    init(entry: IntentsTeamProvider.Entry) {
         self.entry = entry
-        self.game = entry.game
+        self.game = entry.info?.game
     }
     
     var body: some View {
@@ -120,17 +162,11 @@ struct MLBLiveWidgetEntryView : View {
         if let game {
             switch game.state {
             case .final:
-                WFinalView(game: game, away: entry.awayStanding, home: entry.homeStanding)
+                WFinalView(info: entry.info)
             case .live:
-                VStack {
-                    WLiveView(game: game)
-                    Text(entry.date.toFormat("MM/dd hh:mm ss", locale: Locales.korean))
-                        .foregroundStyle(.secondary)
-                        .font(.caption2)
-                    
-                }
+                WLiveView(game: game)
             case .preview:
-                WNextGameView(game: game, away: entry.awayStanding, home: entry.homeStanding)
+                WNextGameView(info: entry.info)
             case .warmup:
                 WidgetLiveStatusView(game: game)
             case .inProgress:
@@ -143,20 +179,15 @@ struct MLBLiveWidgetEntryView : View {
 }
 
 struct MLBLiveWidget: Widget {
-    let kind: String = "MLBLiveWidget"
+    let kind: String = "MLBLiveMediumWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                MLBLiveWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                MLBLiveWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+        IntentConfiguration(kind: kind, intent: TeamIntent.self , provider: IntentsTeamProvider()) { entry in
+            MLBLiveWidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("My Widget")
+        .supportedFamilies([.systemMedium])
         .description("This is an example widget.")
     }
 }
@@ -164,5 +195,5 @@ struct MLBLiveWidget: Widget {
 #Preview(as: .systemMedium) {
     MLBLiveWidget()
 } timeline: {
-    SimpleEntry(date: .now, game: nil, awayStanding: nil, homeStanding: nil)
+    SimpleEntry(date: .now, info: nil)
 }

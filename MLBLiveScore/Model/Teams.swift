@@ -61,7 +61,7 @@ struct MLBTeam {
     static let marlins = TeamInfomation(code: 146, name: "Malins", location: "Miami", abbreviation: "MIA", division: .east, league: .national)
     static let mets = TeamInfomation(code: 121, name: "Mets", location: "New York", abbreviation: "NYM", division: .east, league: .national)
     static let phillies = TeamInfomation(code: 143, name: "Phillies", location: "Philadelphia", abbreviation: "PHI", division: .east, league: .national)
-    static let nationals = TeamInfomation(code: 120, name: "Nationals", location: "Washington", abbreviation: "was", division: .east, league: .national)
+    static let nationals = TeamInfomation(code: 120, name: "Nationals", location: "Washington", abbreviation: "WAS", division: .east, league: .national)
     static let cubs = TeamInfomation(code: 112, name: "Cubs", location: "Chicago", abbreviation: "CHC", division: .central, league: .national)
     static let reds = TeamInfomation(code: 113, name: "Reds", location: "Cincinnati", abbreviation: "CIN", division: .central, league: .national)
     static let brewers = TeamInfomation(code: 158, name: "Brewers", location: "Milwaukee", abbreviation: "MIL", division: .central, league: .national)

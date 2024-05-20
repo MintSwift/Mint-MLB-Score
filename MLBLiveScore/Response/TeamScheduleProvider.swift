@@ -112,6 +112,102 @@ struct Standings: Decodable {
 }
 
 
+struct PitcherSplitsStat: Decodable {
+    let wins: Int
+    let losses: Int
+    let era: String
+}
+
+struct PitcherSplits: Decodable {
+    let stat: PitcherSplitsStat
+    enum CodingKeys: CodingKey {
+        case stat
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.stat = try container.decode(PitcherSplitsStat.self, forKey: .stat)
+    }
+}
+
+
+struct PitcherStats: Decodable {
+    let splits: [PitcherSplits]
+    
+    enum CodingKeys: CodingKey {
+        case splits
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.splits = try container.decode([PitcherSplits].self, forKey: .splits)
+    }
+}
+
+
+struct PitcherPeople: Decodable {
+    let stats: [PitcherStats]
+    
+    enum CodingKeys: CodingKey {
+        case stats
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.stats = try container.decode([PitcherStats].self, forKey: .stats)
+    }
+}
+
+struct PitcherPerson: Decodable {
+    let people: [PitcherPeople]
+    
+    let wins: Int
+    let losses: Int
+    let era: String
+    
+    
+    enum CodingKeys: CodingKey {
+        case people
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.people = try container.decode([PitcherPeople].self, forKey: .people)
+        
+        self.wins = self.people.first?.stats.first?.splits.first?.stat.wins ?? 0
+        self.losses = self.people.first?.stats.first?.splits.first?.stat.losses ?? 0
+        self.era = self.people.first?.stats.first?.splits.first?.stat.era ?? "-"
+    }
+}
+
+
+
+struct PitchingProvider {
+    static func fetch(id: String) async -> PitcherPerson? {
+
+        let endPoint = "https://statsapi.mlb.com/api/v1/people/\(id)?hydrate=stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        do {
+            print(endPoint)
+            let url = URL(string: endPoint)!
+            let response = try await URLSession.shared.data(from: url)
+            let data = response.0
+            
+            let decoder = JSONDecoder()
+            let mlbSchedule = try decoder.decode(PitcherPerson.self, from: data)
+            print(mlbSchedule)
+            
+            return mlbSchedule
+        } catch {
+            print(endPoint)
+            print(error)
+            return nil
+        }
+        
+    }
+}
+
+
+
 
 struct StandingsProvider {
     static func fetch() async -> [TeamStandings] {

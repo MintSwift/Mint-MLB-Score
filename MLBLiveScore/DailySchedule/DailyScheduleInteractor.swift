@@ -1,5 +1,7 @@
 import Foundation
 import SwiftDate
+import MLBStatsProvider
+import MLBResponse
 
 @MainActor
 class ScheduleInteractor: ObservableObject {
@@ -30,6 +32,8 @@ class ScheduleInteractor: ObservableObject {
         let items = await TeamScheduleProvider.fetch(teamId: 119)
         self.teamDateSections = items.map { DateSection($0) }
     
+        let provier = await StatsProvider.allSchedule()
+        
     }
     
     func liveGame(id: String) async {

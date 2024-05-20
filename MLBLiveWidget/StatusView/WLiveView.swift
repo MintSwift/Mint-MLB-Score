@@ -13,9 +13,11 @@ struct WLiveView: View {
                 
                 VStack {
                     Text(game.currentInning)
-                    Text(game.inningState.rawValue)
+                    Text(game.inningState.text())
                 }
-                .font(.footnote)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 5)
                 
                 VStack {
                     TeamView(stadium: .home, team: game.home, score: game.homeScore)
@@ -24,10 +26,32 @@ struct WLiveView: View {
             }
             
             HStack {
+                VStack(spacing: 5) {
+                    Text(" ")
+                        .font(.callout)
+                    
+                    if let team = MLBTeam.all.first(where: { $0 .code == Int(game.away.teamID) }) {
+                        Text(team.abbreviation.uppercased())
+                            .frame(maxWidth: .infinity)
+                            .font(.callout)
+                            
+                    }
+                 
+                    if let team = MLBTeam.all.first(where: { $0 .code == Int(game.home.teamID) }) {
+                        Text(team.abbreviation.uppercased())
+                            .frame(maxWidth: .infinity)
+                            .font(.callout)
+                    }
+                }
+                
                 ForEach(game.innings) { inning in
-                    VStack {
+                    VStack(spacing: 5) {
                         Text(String( inning.num ))
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                        
                         Text( inning.away.runs == nil ? " " : String(inning.away.runs ?? 0))
+                            .font(.body)
                             .padding(.horizontal, 3)
                             .background {
                                 if game.currentInning == inning.ordinalNum && (game.inningState == .top) {
@@ -38,6 +62,7 @@ struct WLiveView: View {
                                 }
                             }
                         Text( inning.home.runs == nil ? " " : String(inning.home.runs ?? 0))
+                            .font(.body)
                             .padding(.horizontal, 3)
                             .background {
                                 if game.currentInning == inning.ordinalNum && (game.inningState == .bottom || game.inningState == .middle) {
@@ -52,6 +77,7 @@ struct WLiveView: View {
                 }
                 
             }
+            .padding(.top, 5)
         }
     }
 }

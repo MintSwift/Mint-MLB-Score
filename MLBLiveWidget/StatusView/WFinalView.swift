@@ -1,21 +1,28 @@
 import SwiftUI
 
 struct WFinalView: View {
+    var info: GameInfo?
+    
     var game: Game?
     var away: TeamStandings?
     var home: TeamStandings?
     
-    init(game: Game?, away: TeamStandings?, home: TeamStandings?) {
-        self.game = game
-        self.away = away
-        self.home = home
+    let winnerRecord: PitcherPerson?
+    let loserRecord: PitcherPerson?
+    
+    init(info: GameInfo?) {
+        self.game = info?.game
+        self.away = info?.awayTeamStandings
+        self.home = info?.homeTeamStandings
+        self.winnerRecord = info?.winnerPlayerRecord
+        self.loserRecord = info?.loserPlayerRecord
     }
     
     var body: some View {
         HStack {
             if let game {
                 VStack {
-                    FinalGameTeamView(stadium: .away, team: game.away, score: game.awayScore, standings: away, game: game)
+                    FinalGameTeamView(stadium: .away, team: game.away, score: game.awayScore, standings: away, game: game, winnerRecord: winnerRecord, loserRecord: loserRecord)
                 }
                 
                 VStack {
@@ -24,7 +31,7 @@ struct WFinalView: View {
                 .font(.footnote)
                 
                 VStack {
-                    FinalGameTeamView(stadium: .home, team: game.home, score: game.homeScore, standings: home, game: game)
+                    FinalGameTeamView(stadium: .home, team: game.home, score: game.homeScore, standings: home, game: game, winnerRecord: winnerRecord, loserRecord: loserRecord)
                 }
             }
         }
@@ -36,13 +43,18 @@ struct FinalGameTeamView: View {
     let standings: TeamStandings?
     let score: String
     let game: Game
+    let winnerRecord: PitcherPerson?
+    let loserRecord: PitcherPerson?
     
-    init(stadium: Stadium, team: Team, score: String, standings: TeamStandings?, game: Game) {
+    init(stadium: Stadium, team: Team, score: String, standings: TeamStandings?, game: Game, winnerRecord: PitcherPerson?, loserRecord: PitcherPerson?) {
         self.stadium = stadium
         self.team = team
         self.standings = standings
         self.score = score
         self.game = game
+        
+        self.winnerRecord = loserRecord
+        self.loserRecord = loserRecord
     }
     
     var body: some View {

@@ -52,13 +52,13 @@ struct TeamView: View {
                 }
                 .font(.caption)
                 .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(0.5)
                 .padding(.trailing, 5)
             }
             
             if stadium == .home {
                 Text(score)
-                    .font(team.isWinner == true ? .title2 : .subheadline)
+                    .font(team.isWinner == true ? .title2 : .title)
                     .frame(width: 25, alignment: .center)
                     .background {
                         if team.isWinner == true {
@@ -71,13 +71,13 @@ struct TeamView: View {
             if let team = MLBTeam.all.first(where: { $0 .code == Int(team.teamID) }) {
                 Image(team.abbreviation)
                     .resizable()
-                    .frame(width: 30, height: 30, alignment: .center)
+                    .frame(width: 25, height: 25, alignment: .center)
                     .scaledToFit()
             }
             
             if stadium == .away {
                 Text(score)
-                    .font(team.isWinner == true ? .title2 : .subheadline)
+                    .font(team.isWinner == true ? .title2 : .title)
                     .frame(width: 25, alignment: .center)
                     .background {
                         if team.isWinner == true {
@@ -86,22 +86,23 @@ struct TeamView: View {
                                 .opacity(0.5)
                         }
                     }
-                
-                if stadium == .home {
-                    
-                    VStack(alignment: .leading) {
-                        Text(team.franchiseName)
-                        Text(team.teamName)
-                    }
-                    .font(.caption)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                    .padding(.leading, 5)
-                    
-                    Spacer()
-                }
-                
             }
+            
+            if stadium == .home {
+                
+                VStack(alignment: .leading) {
+                    Text(team.franchiseName)
+                    Text(team.teamName)
+                }
+                .font(.caption)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+                .padding(.leading, 5)
+                
+                Spacer()
+            }
+            
         }
     }
 }
+
