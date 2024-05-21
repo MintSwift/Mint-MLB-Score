@@ -20,7 +20,6 @@ struct IntentsTeamProvider: IntentTimelineProvider {
     
     func getTimeline(for configuration: TeamIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
-            
             let teamInfo = MLBTeam.all
                 .first(where: { $0.name == configuration.team?.displayString })
             

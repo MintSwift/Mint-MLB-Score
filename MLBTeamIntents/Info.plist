@@ -12,6 +12,7 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
+				<string>LeagueIntent</string>
 				<string>TeamIntent</string>
 			</array>
 		</dict>

@@ -15,7 +15,7 @@ struct WidgetProvider {
         let items = await TeamScheduleProvider.fetch(teamId: teamId ?? 135)
         let dates = items.map { DateSection($0) }
         
-        let standings = await StandingsProvider.fetch()
+        let standings = await StandingsProvider.fetch(leagueId: 103)
         
         
         
@@ -71,5 +71,25 @@ struct WidgetProvider {
                 return info
             }
         }
+    }
+}
+
+
+extension WidgetProvider {
+    static func standings(league: Int) async -> ([TeamStandings], [TeamStandings]) {
+
+        let standings = await StandingsProvider.fetch(leagueId: league == 1 ? 103 : 104)
+        let league = league == 1 ? "AL" : "NL"
+        let ALDivisionLeaders = standings.filter({ team in
+            return team.divisionShortName.hasPrefix(league) && team.divisionRank == "1"
+        }).sorted(by: { $0.winningPercentage > $1.winningPercentage })
+        
+        let wildCards = standings.filter({ team in
+            return team.divisionShortName.hasPrefix(league)
+        }).sorted(by: { Int($0.wildCardRank ?? "90") ?? 90 < Int($1.wildCardRank ?? "90") ?? 90 })
+        
+        let wildCardRanks = Array( wildCards.prefix(6) )
+          
+        return (ALDivisionLeaders, wildCardRanks)
     }
 }

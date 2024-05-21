@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "C_SEA.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

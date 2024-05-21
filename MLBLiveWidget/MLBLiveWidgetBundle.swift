@@ -22,5 +22,6 @@ struct MLBLiveWidgetBundle: WidgetBundle {
     
     var body: some Widget {
         MLBLiveWidget()
+        MLBPostSeasonWidget()
     }
 }

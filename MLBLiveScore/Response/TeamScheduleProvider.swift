@@ -29,11 +29,14 @@ struct TeamScheduleProvider {
 }
 
 
-struct TeamStandings: Decodable {
+struct TeamStandings: Decodable, Hashable {
     let divisionRank: String
     let leagueRank: String
+    let wildCardRank: String?
     let wins: Int
     let losses: Int
+    let winningPercentage: String
+    let wildCardGamesBack: String
     
     let name: String
     let abbreviation: String
@@ -57,14 +60,20 @@ struct TeamStandings: Decodable {
         case wins
         case losses
         case team
+        case winningPercentage
+        case wildCardRank
+        case wildCardGamesBack
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.divisionRank = try container.decode(String.self, forKey: .divisionRank)
         self.leagueRank = try container.decode(String.self, forKey: .leagueRank)
+        self.wildCardRank = try container.decodeIfPresent(String.self, forKey: .wildCardRank)
         self.wins = try container.decode(Int.self, forKey: .wins)
         self.losses = try container.decode(Int.self, forKey: .losses)
+        self.winningPercentage = try container.decode(String.self, forKey: .winningPercentage)
+        self.wildCardGamesBack = try container.decode(String.self, forKey: .wildCardGamesBack)
         let teamContainer = try container.nestedContainer(keyedBy: TeamCodingKeys.self, forKey: .team)
         self.name = try teamContainer.decode(String.self, forKey: .name)
         self.abbreviation = try teamContainer.decode(String.self, forKey: .abbreviation)
@@ -210,9 +219,9 @@ struct PitchingProvider {
 
 
 struct StandingsProvider {
-    static func fetch() async -> [TeamStandings] {
+    static func fetch(leagueId: Int) async -> [TeamStandings] {
 
-        let endPoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&season=2024&standingsTypes=regularSeason&hydrate=team(division)&fields=records,standingsType,teamRecords,team,name,division,id,nameShort,abbreviation,divisionRank,gamesBack,wildCardRank,wildCardGamesBack,wildCardEliminationNumber,divisionGamesBack,clinched,eliminationNumber,winningPercentage,type,wins,losses,leagueRank,sportRank".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let endPoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=\(leagueId)&season=2024&standingsTypes=regularSeason&hydrate=team(division)&fields=records,standingsType,teamRecords,team,name,division,id,nameShort,abbreviation,divisionRank,gamesBack,wildCardRank,wildCardGamesBack,wildCardEliminationNumber,divisionGamesBack,clinched,eliminationNumber,winningPercentage,type,wins,losses,leagueRank,sportRank".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         do {
             print(endPoint)
             let url = URL(string: endPoint)!
