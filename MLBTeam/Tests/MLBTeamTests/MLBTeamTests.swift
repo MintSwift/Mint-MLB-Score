@@ -1,7 +1,7 @@
 import XCTest
-@testable import MLBTeams
+@testable import MLBTeam
 
-final class MLBTeamsTests: XCTestCase {
+final class MLBTeamTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

@@ -68,7 +68,7 @@ struct LiveScore: Identifiable, Hashable, Equatable {
         } else {
             self.status = response.gameRespone.abstractGameState
         }
-        print(self.status)
+
         self.awayPitchers = response.liveDataResponse.boxScore.away.pitchers
         self.homePitchers = response.liveDataResponse.boxScore.home.pitchers
     }

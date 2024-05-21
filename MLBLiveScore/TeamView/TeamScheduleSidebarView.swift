@@ -10,6 +10,7 @@ struct TeamScheduleSidebarView: View {
                 Section {
                     ForEach(section.games) { game in
                         Button {
+                            print(game.pk)
                             interactor.planSelection = game.pk
                         } label: {
                             DailyCell(game)
