@@ -58,7 +58,7 @@ struct FinalGameTeamView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
+        VStack(alignment: .center, spacing: 10) {
             HStack {
                 if stadium == .home {
                     Text(score)
@@ -133,6 +133,7 @@ struct FinalGameTeamView: View {
                         }
                     }
                 }
+                .frame(height: 30)
             }
             if stadium == .away && game.home.isWinner == true {
                 // Away팀 패배했고, 패전투수
@@ -147,6 +148,7 @@ struct FinalGameTeamView: View {
                             .foregroundStyle(.gray)
                             .frame(width: 12, height: 12, alignment: .center)
                     }
+                    .frame(height: 30)
                 }
             }
             
@@ -176,6 +178,7 @@ struct FinalGameTeamView: View {
                         }
                     }
                 }
+                .frame(height: 30)
             }
             
             if stadium == .home && game.away.isWinner == true {
@@ -190,6 +193,7 @@ struct FinalGameTeamView: View {
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                     }
+                    .frame(height: 30)
                 }
             }
         

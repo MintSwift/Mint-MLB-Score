@@ -49,6 +49,17 @@ struct MLBTeamStandingsView : View {
     
     var body: some View {
         VStack {
+            VStack(spacing: 3) {
+                HStack {
+                    Spacer()
+                    Text(entry.date.toFormat("yyyy.MM.dd HH:mm", locale: Locales.korean))
+                        .foregroundStyle(.tertiary)
+                        .font(.caption2)
+                }
+                
+                Divider()
+            }
+            
             VStack(spacing: 8) {
                 HStack(spacing: 0) {
                     Text("\(entry.league) Leaders")

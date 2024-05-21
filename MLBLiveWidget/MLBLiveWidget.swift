@@ -52,48 +52,6 @@ struct IntentsTeamProvider: IntentTimelineProvider {
     }
 }
 
-//struct Provider: TimelineProvider {
-//    func placeholder(in context: Context) -> SimpleEntry {
-//        SimpleEntry(date: Date.now, info: nil)
-//    }
-//    
-//    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-//        let entry = SimpleEntry(date: Date.now, info: nil)
-//        completion(entry)
-//    }
-//    
-//    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-//        Task {
-//            var entries: [SimpleEntry] = []
-//            let (item, awayStanding, homeStanding) = await WidgetProvider.fetch(teamId: nil)
-//            if let item {
-//                if item.state == .final {
-//                    
-//                    let entryDate = Calendar.current.date(byAdding: .hour, value: 1, to: .now)!
-//                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
-//                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
-//                    completion(timeline)
-//                    
-//                } else if item.state == .preview {
-//                    let entryDate = item.date
-//                    let entries = SimpleEntry(date: entryDate, game: item, awayStanding: awayStanding, homeStanding: homeStanding)
-//                    let timeline = Timeline(entries: [entries], policy: .after(entryDate))
-//                    completion(timeline)
-//                    
-//                } else if item.state == .live {
-//                    let now = Date.now
-//                    let entryDate = now.dateByAdding(5, .minute).date
-//                    entries = [SimpleEntry(date: now, game: item, awayStanding: awayStanding, homeStanding: homeStanding)]
-//                    
-//                    let timeline = Timeline(entries: entries, policy: .after(entryDate))
-//                    completion(timeline)
-//                }
-//            }
-//            
-//        }
-//    }
-//}
-
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let info: GameInfo?

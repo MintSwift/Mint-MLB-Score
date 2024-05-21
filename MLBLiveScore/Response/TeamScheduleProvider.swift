@@ -219,7 +219,7 @@ struct PitchingProvider {
 
 
 struct StandingsProvider {
-    static func fetch(leagueId: Int) async -> [TeamStandings] {
+    static func fetch(leagueId: String) async -> [TeamStandings] {
 
         let endPoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=\(leagueId)&season=2024&standingsTypes=regularSeason&hydrate=team(division)&fields=records,standingsType,teamRecords,team,name,division,id,nameShort,abbreviation,divisionRank,gamesBack,wildCardRank,wildCardGamesBack,wildCardEliminationNumber,divisionGamesBack,clinched,eliminationNumber,winningPercentage,type,wins,losses,leagueRank,sportRank".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         do {
