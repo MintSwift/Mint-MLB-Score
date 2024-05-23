@@ -13,10 +13,46 @@ public struct StatusDTO: Decodable {
 public struct PlayerDTO: Decodable {
     public let id: Int
     public let fullName: String
-
+    public let stats: [PlayerStatsDTO]
     enum CodingKeys: CodingKey {
         case id
         case fullName
+        case stats
+    }
+    
+    public struct PlayerStatsDTO: Decodable {
+        public let group: StatsGroupDTO // hitting, pitching
+        public let type: StatsGroupDTO // statsSingleSeason, gameLog
+        public let stats: StatsDTO
+
+        enum CodingKeys: CodingKey {
+            case group
+            case stats
+            case type
+        }
+        
+        public struct StatsDTO: Decodable {
+            public let summary: String?
+            public let era: String?
+            
+            public let wins: Int?
+            public let losses: Int?
+
+            enum CodingKeys: CodingKey {
+                case summary
+                case era
+                case wins
+                case losses
+            }
+        }
+        
+        public struct StatsGroupDTO: Decodable {
+            public let displayName: String
+
+            enum CodingKeys: CodingKey {
+                case displayName
+            }
+        }
     }
 }
 

@@ -28,7 +28,7 @@ public enum EndPoint {
             let startDate = today - 2.days
             
             let start = DateInRegion(startDate, region: .UTC).toFormat("MM/dd/yyyy")
-            let end = DateInRegion(today, region: .UTC).dateByAdding(14, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
+            let end = DateInRegion(today, region: .UTC).dateByAdding(10, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
             let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(start)&endDate=\(end)&teamId=\(teamId)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore,stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
             
