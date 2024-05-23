@@ -11,6 +11,8 @@ struct GameInfo {
 }
 
 struct WidgetProvider {
+    
+    
     static func fetch(teamId: Int?) async -> (GameInfo?) {
         let items = await TeamScheduleProvider.fetch(teamId: teamId ?? 135)
         let dates = items.map { DateSection($0) }

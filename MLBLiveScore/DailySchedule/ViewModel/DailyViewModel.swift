@@ -126,7 +126,8 @@ struct Game: Identifiable, Hashable, Equatable {
             }
         }
         
-        self.innings = newIn
+        let maxCount = Array(newIn.suffix(9))
+        self.innings = maxCount
         
         self.winnerPitcher = Player(name: response.winnerPitcher?.name, number: String( response.winnerPitcher?.number ?? 0))
         self.savePitcher = Player(name: response.savePitcher?.name, number: String( response.savePitcher?.number ?? 0))

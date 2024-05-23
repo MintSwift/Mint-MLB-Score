@@ -24,26 +24,30 @@ struct MLBLiveScoreApp: App {
         WindowGroup {
             TabView {
                 DailyScheduleView()
-                    .tabItem {
-                        Label {
-                            Text("매일 일정")
-                        } icon: {
-                            Image(systemName: "baseball.fill")
-                            
-                        }
-
-                    }
-                TeamScheduleView()
-                    .tabItem {
-                        Label {
-                            Text("팀 일정")
-                        } icon: {
-                            Image(systemName: "calendar")
-                        }
-
-                    }
+                    .environmentObject(interactor)
+                
+                AllScheduleView()
             }
-            .environmentObject(interactor)
+//                    .tabItem {
+//                        Label {
+//                            Text("매일 일정")
+//                        } icon: {
+//                            Image(systemName: "baseball.fill")
+//                            
+//                        }
+//
+//                    }
+//                TeamScheduleView()
+//                    .tabItem {
+//                        Label {
+//                            Text("팀 일정")
+//                        } icon: {
+//                            Image(systemName: "calendar")
+//                        }
+//
+//                    }
+//            }
+            
         }
     }
 }

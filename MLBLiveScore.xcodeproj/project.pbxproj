@@ -24,9 +24,16 @@
 		3B0B15222BF88C4B00E91AEE /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
 		3B5847FD2BF9ECF500098ABF /* WFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5847FC2BF9ECF500098ABF /* WFinalView.swift */; };
 		3B5847FE2BF9F39F00098ABF /* WNextGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B15212BF88C4B00E91AEE /* WNextGameView.swift */; };
-		3B58DEED2BFC163800558AB0 /* MLBResponse in Frameworks */ = {isa = PBXBuildFile; productRef = 3B58DEEC2BFC163800558AB0 /* MLBResponse */; };
-		3B58DEEF2BFC163800558AB0 /* MLBStatsAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */; };
 		3B58DEF62BFC4C1D00558AB0 /* MLBPostSeasonWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B58DEF52BFC4C1D00558AB0 /* MLBPostSeasonWidget.swift */; };
+		3B9615F12BFF02C700F6E865 /* ScheduleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9615F02BFF02C700F6E865 /* ScheduleFactory.swift */; };
+		3B9615F32BFF032400F6E865 /* MLBAPIDataSource in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9615F22BFF032400F6E865 /* MLBAPIDataSource */; };
+		3B9615F52BFF032400F6E865 /* MLBAPIUseCase in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9615F42BFF032400F6E865 /* MLBAPIUseCase */; };
+		3B9615F72BFF032400F6E865 /* MLBDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9615F62BFF032400F6E865 /* MLBDomain */; };
+		3B9615F92BFF03CB00F6E865 /* MLBResponse in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9615F82BFF03CB00F6E865 /* MLBResponse */; };
+		3B9615FB2BFF03CB00F6E865 /* MLBStatsAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9615FA2BFF03CB00F6E865 /* MLBStatsAPI */; };
+		3B9615FE2BFF065A00F6E865 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9615FD2BFF065A00F6E865 /* ScheduleInteractor.swift */; };
+		3B9616012BFF190D00F6E865 /* MLBPresenter in Frameworks */ = {isa = PBXBuildFile; productRef = 3B9616002BFF190D00F6E865 /* MLBPresenter */; };
+		3B9616032BFF1EB000F6E865 /* AllScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9616022BFF1EB000F6E865 /* AllScheduleView.swift */; };
 		3BAFBCE62BF73D100077FB82 /* TeamScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */; };
 		3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */; };
 		3BAFBCEB2BF746B30077FB82 /* TeamScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */; };
@@ -143,6 +150,13 @@
 		3B0E2FDD2BFD6B7900C15BB0 /* MLBTeam */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBTeam; sourceTree = "<group>"; };
 		3B5847FC2BF9ECF500098ABF /* WFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFinalView.swift; sourceTree = "<group>"; };
 		3B58DEF52BFC4C1D00558AB0 /* MLBPostSeasonWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBPostSeasonWidget.swift; sourceTree = "<group>"; };
+		3B9615EC2BFEDB8800F6E865 /* MLBDomain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBDomain; sourceTree = "<group>"; };
+		3B9615ED2BFEEEE200F6E865 /* MLBAPIDataSource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBAPIDataSource; sourceTree = "<group>"; };
+		3B9615EE2BFEFF7000F6E865 /* MLBAPIUseCase */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBAPIUseCase; sourceTree = "<group>"; };
+		3B9615F02BFF02C700F6E865 /* ScheduleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFactory.swift; sourceTree = "<group>"; };
+		3B9615FD2BFF065A00F6E865 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
+		3B9615FF2BFF155F00F6E865 /* MLBPresenter */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MLBPresenter; sourceTree = "<group>"; };
+		3B9616022BFF1EB000F6E865 /* AllScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllScheduleView.swift; sourceTree = "<group>"; };
 		3BAFBCE52BF73D100077FB82 /* TeamScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleView.swift; sourceTree = "<group>"; };
 		3BAFBCE92BF73EA50077FB82 /* TeamScheduleSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleSidebarView.swift; sourceTree = "<group>"; };
 		3BAFBCF12BF747810077FB82 /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
@@ -205,10 +219,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9615FB2BFF03CB00F6E865 /* MLBStatsAPI in Frameworks */,
 				3BBAEAB32BED936F00192FED /* SwiftDate in Frameworks */,
+				3B9615F32BFF032400F6E865 /* MLBAPIDataSource in Frameworks */,
+				3B9615F72BFF032400F6E865 /* MLBDomain in Frameworks */,
 				3BBAEAB02BED935600192FED /* Kingfisher in Frameworks */,
-				3B58DEED2BFC163800558AB0 /* MLBResponse in Frameworks */,
-				3B58DEEF2BFC163800558AB0 /* MLBStatsAPI in Frameworks */,
+				3B9615F52BFF032400F6E865 /* MLBAPIUseCase in Frameworks */,
+				3B9615F92BFF03CB00F6E865 /* MLBResponse in Frameworks */,
+				3B9616012BFF190D00F6E865 /* MLBPresenter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +253,23 @@
 			path = StatusView;
 			sourceTree = "<group>";
 		};
+		3B9615EF2BFF02B100F6E865 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				3B9615F02BFF02C700F6E865 /* ScheduleFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		3B9615FC2BFF063E00F6E865 /* ScheduleInteractor */ = {
+			isa = PBXGroup;
+			children = (
+				3B9615FD2BFF065A00F6E865 /* ScheduleInteractor.swift */,
+				3B9616022BFF1EB000F6E865 /* AllScheduleView.swift */,
+			);
+			path = ScheduleInteractor;
+			sourceTree = "<group>";
+		};
 		3BAFBCE42BF73CFA0077FB82 /* TeamView */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +291,10 @@
 		3BBAEA8F2BECB89800192FED = {
 			isa = PBXGroup;
 			children = (
+				3B9615EC2BFEDB8800F6E865 /* MLBDomain */,
+				3B9615ED2BFEEEE200F6E865 /* MLBAPIDataSource */,
+				3B9615EE2BFEFF7000F6E865 /* MLBAPIUseCase */,
+				3B9615FF2BFF155F00F6E865 /* MLBPresenter */,
 				3B0E2FDD2BFD6B7900C15BB0 /* MLBTeam */,
 				3BB8C4702BFC1573007F545D /* MLBStatsAPI */,
 				3BBAEA9A2BECB89800192FED /* MLBLiveScore */,
@@ -279,6 +318,8 @@
 		3BBAEA9A2BECB89800192FED /* MLBLiveScore */ = {
 			isa = PBXGroup;
 			children = (
+				3B9615FC2BFF063E00F6E865 /* ScheduleInteractor */,
+				3B9615EF2BFF02B100F6E865 /* Factory */,
 				3BAFBCE42BF73CFA0077FB82 /* TeamView */,
 				3BDBEFA82BF2ECDD0093592E /* ViewComponents */,
 				3BDBEF962BF1B2130093592E /* Response */,
@@ -455,8 +496,12 @@
 			packageProductDependencies = (
 				3BBAEAAF2BED935600192FED /* Kingfisher */,
 				3BBAEAB22BED936F00192FED /* SwiftDate */,
-				3B58DEEC2BFC163800558AB0 /* MLBResponse */,
-				3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */,
+				3B9615F22BFF032400F6E865 /* MLBAPIDataSource */,
+				3B9615F42BFF032400F6E865 /* MLBAPIUseCase */,
+				3B9615F62BFF032400F6E865 /* MLBDomain */,
+				3B9615F82BFF03CB00F6E865 /* MLBResponse */,
+				3B9615FA2BFF03CB00F6E865 /* MLBStatsAPI */,
+				3B9616002BFF190D00F6E865 /* MLBPresenter */,
 			);
 			productName = MLBLiveScore;
 			productReference = 3BBAEA982BECB89800192FED /* MLBLiveScore.app */;
@@ -586,6 +631,7 @@
 				3B0B15192BF6325300E91AEE /* Teams.swift in Sources */,
 				3BDBEF8A2BF18CA70093592E /* DailyScheduleView.swift in Sources */,
 				3BDBEFAC2BF2ED040093592E /* HomeScoreView.swift in Sources */,
+				3B9616032BFF1EB000F6E865 /* AllScheduleView.swift in Sources */,
 				3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */,
 				3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */,
 				3BB8C4512BFB077B007F545D /* WidgetProvider.swift in Sources */,
@@ -597,9 +643,11 @@
 				3BBAEAB52BEDA83600192FED /* Schedule.swift in Sources */,
 				3BDBEF9F2BF1D0360093592E /* DailyCell.swift in Sources */,
 				3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */,
+				3B9615F12BFF02C700F6E865 /* ScheduleFactory.swift in Sources */,
 				3BBAEAAD2BED91E800192FED /* Interactor.swift in Sources */,
 				3BDBEFA32BF1D47C0093592E /* GameStateView.swift in Sources */,
 				3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */,
+				3B9615FE2BFF065A00F6E865 /* ScheduleInteractor.swift in Sources */,
 				3BDBEF902BF1962D0093592E /* DailyDetailView.swift in Sources */,
 				3B0B15132BF0A5AC00E91AEE /* DiamondGroundView.swift in Sources */,
 				3BDBEF992BF1B23B0093592E /* ScheduleResponse.swift in Sources */,
@@ -1026,13 +1074,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B58DEEC2BFC163800558AB0 /* MLBResponse */ = {
+		3B9615F22BFF032400F6E865 /* MLBAPIDataSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBAPIDataSource;
+		};
+		3B9615F42BFF032400F6E865 /* MLBAPIUseCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBAPIUseCase;
+		};
+		3B9615F62BFF032400F6E865 /* MLBDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBDomain;
+		};
+		3B9615F82BFF03CB00F6E865 /* MLBResponse */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MLBResponse;
 		};
-		3B58DEEE2BFC163800558AB0 /* MLBStatsAPI */ = {
+		3B9615FA2BFF03CB00F6E865 /* MLBStatsAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MLBStatsAPI;
+		};
+		3B9616002BFF190D00F6E865 /* MLBPresenter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MLBPresenter;
 		};
 		3BAFBCEE2BF747270077FB82 /* SwiftDate */ = {
 			isa = XCSwiftPackageProductDependency;

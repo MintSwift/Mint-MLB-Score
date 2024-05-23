@@ -1,11 +1,17 @@
 import Foundation
 import SwiftDate
 
+public enum League {
+    case all
+    case american
+    case national
+}
+
 public enum EndPoint {
     case allSchedule
     case teamSchedule(teamId: Int)
     case pitcherStats(plyerId: String)
-    case leagueStandings
+    case leagueStandings(league: League)
     case live(pk: String)
     
     package func url() -> URL? {
@@ -14,8 +20,7 @@ public enum EndPoint {
             let start = Date.now - 1.days
             let startString = DateInRegion(start, region: .UTC).toFormat("MM/dd/yyyy")
             let end = DateInRegion(.now, region: .UTC).dateByAdding(2, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
-            let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(startString)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    
+            let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(startString)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore,stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
             
         case .teamSchedule(let teamId):
@@ -24,14 +29,26 @@ public enum EndPoint {
             
             let start = DateInRegion(startDate, region: .UTC).toFormat("MM/dd/yyyy")
             let end = DateInRegion(today, region: .UTC).dateByAdding(14, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
-            let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(start)&endDate=\(end)&teamId=\(teamId)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(start)&endDate=\(end)&teamId=\(teamId)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore,stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
+            
         case .pitcherStats(let plyerId):
             let endPoint = "https://statsapi.mlb.com/api/v1/people/\(plyerId)?hydrate=stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
-        case .leagueStandings:
-            let endPoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&season=2024&standingsTypes=regularSeason&hydrate=team(division)&fields=records,standingsType,teamRecords,team,name,division,id,nameShort,abbreviation,divisionRank,gamesBack,wildCardRank,wildCardGamesBack,wildCardEliminationNumber,divisionGamesBack,clinched,eliminationNumber,winningPercentage,type,wins,losses,leagueRank,sportRank".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            
+        case .leagueStandings(let league):
+            var leagueId = "103,104"
+            switch league {
+            case .all:
+                leagueId = "103,104"
+            case .american:
+                leagueId = "103"
+            case .national:
+                leagueId = "104"
+            }
+            let endPoint = "https://statsapi.mlb.com/api/v1/standings?leagueId=\(leagueId)&season=2024&standingsTypes=regularSeason&hydrate=team(division)&fields=records,standingsType,teamRecords,team,name,division,id,nameShort,abbreviation,divisionRank,gamesBack,wildCardRank,wildCardGamesBack,wildCardEliminationNumber,divisionGamesBack,clinched,eliminationNumber,winningPercentage,type,wins,losses,leagueRank,sportRank".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
+            
         case .live(let pk):
             let endPoint = "https://statsapi.mlb.com/api/v1.1/game/\(pk)/feed/live".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)

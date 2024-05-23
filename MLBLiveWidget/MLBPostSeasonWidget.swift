@@ -5,27 +5,43 @@ import SwiftDate
 
 struct IntentsPostSeasonProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> TeamStandingsEntry {
-        TeamStandingsEntry(date: .now, leaders: [], wildCardRanks: [], league: "AL")
+        TeamStandingsEntry(date: .now, leaders: [], wildCardRanks: [], league: "AL", refreshDate: .now)
     }
     func getSnapshot(for configuration: LeagueIntent, in context: Context, completion: @escaping (TeamStandingsEntry) -> ()) {
-        let entry = TeamStandingsEntry(date: .now, leaders: [], wildCardRanks: [],  league: "AL")
+        let entry = TeamStandingsEntry(date: .now, leaders: [], wildCardRanks: [],  league: "AL", refreshDate: .now)
         completion(entry)
     }
     
     func getTimeline(for configuration: LeagueIntent, in context: Context, completion: @escaping (Timeline<TeamStandingsEntry>) -> ()) {
         Task {
             let league = configuration.League
-            let (leader, wildcardRanks) = await WidgetProvider.standings(league: league.rawValue)
-            let now = Date.now
-            let ceilDate = now.dateRoundedAt(at: .toFloorMins(60)).date
-            let refresh = ceilDate.dateByAdding(2, .hour).date
             
+            let all =  await TeamScheduleProvider.fetchAll()
+            let games = all.flatMap { $0.games }
+            let isEmptyliveGames = games.filter { $0.state == .live }.isEmpty
+            let now = Date.now
+            var refreshDate: Date = now.dateRoundedAt(at: .toCeil30Mins).date
+            if isEmptyliveGames == true {
+                //라이브 게임 없음.
+                let tomorrowFirstGame = games.filter { $0.date.isTomorrow }.first
+                refreshDate = tomorrowFirstGame?.date ?? now.dateAt(.tomorrowAtStart)
+
+                
+            } else {
+                // 30분 마다 갱신
+                refreshDate = now.dateRoundedAt(at: .toCeil30Mins).date
+                
+            }
+            
+            let (leader, wildcardRanks) = await WidgetProvider.standings(league: league.rawValue)
             let entries = TeamStandingsEntry(date: now,
                                              leaders: leader,
                                              wildCardRanks: wildcardRanks,
-                                             league: league.rawValue == 1 ? "AL" : "NL")
-            let timeline = Timeline(entries: [entries], policy: .after(refresh))
+                                             league: league.rawValue == 1 ? "AL" : "NL",
+                                             refreshDate: refreshDate)
+            let timeline = Timeline(entries: [entries], policy: .after(refreshDate))
             completion(timeline)
+            
         }
     }
 }
@@ -37,6 +53,7 @@ struct TeamStandingsEntry: TimelineEntry {
     let leaders: [TeamStandings]
     let wildCardRanks: [TeamStandings]
     let league: String
+    let refreshDate: Date
 }
 
 
@@ -51,6 +68,9 @@ struct MLBTeamStandingsView : View {
         VStack {
             VStack(spacing: 3) {
                 HStack {
+                    Text(entry.refreshDate.toFormat("yyyy.MM.dd HH:mm", locale: Locales.korean))
+                        .foregroundStyle(.tertiary)
+                        .font(.caption2)
                     Spacer()
                     Text(entry.date.toFormat("yyyy.MM.dd HH:mm", locale: Locales.korean))
                         .foregroundStyle(.tertiary)
@@ -94,7 +114,7 @@ struct MLBTeamStandingsView : View {
                     
             
                 
-                ForEach(entry.leaders, id: \.self) { leader in
+                ForEach(entry.leaders) { leader in
                     HStack(spacing: 0) {
                         HStack {
                             if let team = MLBTeam.all.first(where: { leader.name.contains($0.name) }) {
@@ -164,7 +184,7 @@ struct MLBTeamStandingsView : View {
                 
                 Divider()
                 
-                ForEach(Array( entry.wildCardRanks.prefix(3) ) , id: \.self) { leader in
+                ForEach(Array( entry.wildCardRanks.prefix(3) )) { leader in
                     HStack(spacing: 0) {
                         HStack {
                             if let team = MLBTeam.all.first(where: { leader.name.contains($0.name) }) {
@@ -200,7 +220,7 @@ struct MLBTeamStandingsView : View {
                     .foregroundStyle(.gray)
                     .frame(height: 2)
                 
-                ForEach(Array( entry.wildCardRanks.suffix(3) ), id: \.self) { leader in
+                ForEach(Array( entry.wildCardRanks.suffix(3) )) { leader in
                     HStack(spacing: 0) {
                         HStack {
                             if let team = MLBTeam.all.first(where: { leader.name.contains($0.name) }) {

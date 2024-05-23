@@ -9,6 +9,7 @@ struct DailyDetailView: View {
     
     var timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
     let gamePk: String
+    
     init(gamePk: String) {
         print("DailyDetailView", gamePk)
         self.gamePk = gamePk
@@ -124,10 +125,11 @@ struct DailyDetailView: View {
             await interactor.liveGame(id: gamePk)
         }
         .onAppear {
-            UIApplication.shared.isIdleTimerDisabled = true
+            print("DailyDetailView onAppear", interactor.selection)
+//            UIApplication.shared.isIdleTimerDisabled = true
         }
         .onDisappear(perform: {
-            UIApplication.shared.isIdleTimerDisabled = false
+//            UIApplication.shared.isIdleTimerDisabled = false
             Task {
                 await interactor.schedule()
             }

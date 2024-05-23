@@ -7,7 +7,11 @@ import MLBResponse
 class ScheduleInteractor: ObservableObject {
 //    @Published var sections: [SectionDate] = []
     
-    @Published var selection: String? = nil
+    @Published var selection: String? = nil {
+        didSet {
+            print(selection)
+        }
+    }
     @Published var planSelection: String? = nil
     
     @Published var liveScore: LiveScore? = nil
@@ -32,7 +36,7 @@ class ScheduleInteractor: ObservableObject {
         let items = await TeamScheduleProvider.fetch(teamId: 119)
         self.teamDateSections = items.map { DateSection($0) }
     
-        let provier = await StatsProvider.allSchedule()
+//        let provier = await StatsProvider.allSchedule()
         
     }
     

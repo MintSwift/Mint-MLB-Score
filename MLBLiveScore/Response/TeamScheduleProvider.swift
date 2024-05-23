@@ -2,6 +2,31 @@ import Foundation
 import SwiftDate
 
 struct TeamScheduleProvider {
+    static func fetchAll() async -> [DateResponse] {
+        let today = Date.now - 1.days
+        let startDate = today - 2.days
+        
+        let start = DateInRegion(startDate, region: .UTC).toFormat("MM/dd/yyyy")
+        let end = DateInRegion(today, region: .UTC).dateByAdding(2, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
+        let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(start)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        do {
+            print(endPoint)
+            let url = URL(string: endPoint)!
+            let response = try await URLSession.shared.data(from: url)
+            let data = response.0
+            
+            let decoder = JSONDecoder()
+            let mlbSchedule = try decoder.decode(MLBSchedule.self, from: data)
+            let game = mlbSchedule.date
+            return game
+        } catch {
+            print(endPoint)
+            print(error)
+            return []
+        }
+        
+    }
+    
     static func fetch(teamId: Int) async -> [DateResponse] {
         let today = Date.now
         let startDate = today - 2.days
@@ -29,7 +54,8 @@ struct TeamScheduleProvider {
 }
 
 
-struct TeamStandings: Decodable, Hashable {
+struct TeamStandings: Identifiable, Decodable, Hashable {
+    var id: String
     let divisionRank: String
     let leagueRank: String
     let wildCardRank: String?
@@ -66,6 +92,7 @@ struct TeamStandings: Decodable, Hashable {
     }
     
     init(from decoder: Decoder) throws {
+        self.id = UUID().uuidString
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.divisionRank = try container.decode(String.self, forKey: .divisionRank)
         self.leagueRank = try container.decode(String.self, forKey: .leagueRank)

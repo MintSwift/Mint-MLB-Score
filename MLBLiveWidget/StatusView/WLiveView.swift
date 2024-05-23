@@ -13,7 +13,11 @@ struct WLiveView: View {
                 
                 VStack {
                     Text(game.currentInning)
-                    Text(game.inningState.text())
+                    if game.state == .warmup {
+                        Text("Warmup")
+                    } else {
+                        Text(game.inningState.text())
+                    }
                 }
                 .font(.caption)
                 .foregroundStyle(.secondary)
