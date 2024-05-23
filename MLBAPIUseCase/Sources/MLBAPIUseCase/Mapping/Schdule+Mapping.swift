@@ -20,9 +20,29 @@ extension TeamsDTO.TeamDTO.LeagueRecordDTO {
     }
 }
 
+extension PlayerDTO.PlayerStatsDTO {
+    func toDomain() -> Player.PlayerStats {
+        Player.PlayerStats(group: group.toDomain(),
+                           type: type.toDomain(),
+                           stats: stats.toDomain())
+    }
+}
+
+extension PlayerDTO.PlayerStatsDTO.StatsGroupDTO {
+    func toDomain() -> Player.PlayerStats.StatsGroup {
+        Player.PlayerStats.StatsGroup(displayName: displayName)
+    }
+}
+extension PlayerDTO.PlayerStatsDTO.StatsDTO {
+    func toDomain() -> Player.PlayerStats.Stats {
+        Player.PlayerStats.Stats(summary: summary, era: era, wins: wins, losses: losses)
+    }
+}
+
+
 extension PlayerDTO {
     func toDomain() -> Player {
-        Player(number: id, fullName: fullName)
+        Player(number: id, fullName: fullName, stats: stats.map { $0.toDomain() })
     }
 }
 
@@ -62,6 +82,8 @@ extension GameDTO {
 
 extension StatusDTO {
      func toDomain() -> Status {
-         Status(abstractGameState: abstractGameState, detailedState: detailedState)
+         Status(abstractGameState: abstractGameState,
+                detailedState: detailedState,
+                reason: reason)
     }
 }

@@ -3,10 +3,12 @@ import Foundation
 public struct StatusDTO: Decodable {
     public let abstractGameState: String
     public let detailedState: String
+    public let reason: String?
     
     enum CodingKeys: CodingKey {
         case abstractGameState
         case detailedState
+        case reason
     }
 }
 

@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../MLBDomain/MLBDomain"),
+        .package(url: "https://github.com/malcommac/SwiftDate", from: "7.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,7 +22,8 @@ let package = Package(
         .target(
             name: "MLBPresenter",
             dependencies: [
-                .byName(name: "MLBDomain")
+                .byName(name: "MLBDomain"),
+                .product(name: "SwiftDate", package: "SwiftDate")
             ]
         ),
         .testTarget(
