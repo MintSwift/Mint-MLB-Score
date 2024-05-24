@@ -6,13 +6,13 @@ import MLBStatsAPI
 import MLBPresenter
 
 @MainActor
-class ModuleScheduleInteractor: ObservableObject {
-    static func create() -> ModuleScheduleInteractor {
+class SeasonInteractor: ObservableObject {
+    static func create() -> SeasonInteractor {
         let provier = MLBProvider()
         let dataSource = BaseScheduleDataSource(provier: provier)
         let repository = BaseScheduleRepository(dataSource: dataSource)
         let usecase = BaseScheduleUseCase(repository: repository)
-        return ModuleScheduleInteractor(usecase: usecase)
+        return SeasonInteractor(usecase: usecase)
     }
     
     @Published var schedules: [SchedulePresenter] = []
@@ -27,7 +27,7 @@ class ModuleScheduleInteractor: ObservableObject {
         Task {
             let schedules = await usecase.all()
             let presenters = SchedulePresenter.create(schedules)
-            self.schedules = presenters            
+            self.schedules = presenters
         }
     }
 }

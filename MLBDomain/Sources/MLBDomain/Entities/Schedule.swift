@@ -85,11 +85,13 @@ public struct Teams: Equatable, Hashable {
         
         
         public struct EachTeam: Equatable, Hashable {
+            public let id: Int
             public let abbreviation: String
             public let teamName: String
             public let locationName: String
             
-            public init(abbreviation: String, teamName: String, locationName: String) {
+            public init(id: Int, abbreviation: String, teamName: String, locationName: String) {
+                self.id = id
                 self.abbreviation = abbreviation
                 self.teamName = teamName
                 self.locationName = locationName
@@ -122,17 +124,47 @@ public struct Decisions: Equatable, Hashable {
     }
 }
 
-//public struct LineScoreDTO: Decodable {
-//    public let currentInning: Int
-//    public let currentInningOrdinal: String
-//    public let inningState: String?
-//    
-//    enum CodingKeys: CodingKey {
-//        case currentInning
-//        case currentInningOrdinal
-//        case inningState
-//    }
-//}
+public struct InningTeam: Equatable, Hashable {
+    public let runs: Int?
+    public let hits: Int?
+    public let errors: Int?
+
+    public init(runs: Int?, hits: Int?, errors: Int?) {
+        self.runs = runs
+        self.hits = hits
+        self.errors = errors
+    }
+}
+
+public struct Inning: Equatable, Hashable {
+    public let num: Int
+    public let ordinalNum: String
+    public let away: InningTeam
+    public let home: InningTeam
+    
+    public init(num: Int, ordinalNum: String, away: InningTeam, home: InningTeam) {
+        self.num = num
+        self.ordinalNum = ordinalNum
+        self.away = away
+        self.home = home
+    }
+}
+
+
+public struct LineScore: Equatable, Hashable {
+    public let currentInning: Int?
+    public let currentInningOrdinal: String?
+    public let inningState: String?
+    public let innings: [Inning]
+    
+    public init(currentInning: Int?, currentInningOrdinal: String?, inningState: String?, innings: [Inning]) {
+        self.currentInning = currentInning
+        self.currentInningOrdinal = currentInningOrdinal
+        self.inningState = inningState
+        self.innings = innings
+    }
+}
+
 
 public struct Game: Equatable, Hashable {
     public let gamePk: Int
@@ -140,13 +172,15 @@ public struct Game: Equatable, Hashable {
     public let status: Status
     public let teams: Teams
     public let decisions: Decisions?
+    public let linescore: LineScore
     
-    public init(gamePk: Int, gameDate: String, status: Status, teams: Teams, decisions: Decisions?) {
+    public init(gamePk: Int, gameDate: String, status: Status, teams: Teams, decisions: Decisions?, linescore: LineScore) {
         self.gamePk = gamePk
         self.gameDate = gameDate
         self.status = status
         self.teams = teams
         self.decisions = decisions
+        self.linescore = linescore
     }
 }
 

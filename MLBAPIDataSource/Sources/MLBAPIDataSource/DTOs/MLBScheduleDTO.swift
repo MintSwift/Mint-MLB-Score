@@ -81,10 +81,9 @@ public struct TeamsDTO: Decodable {
             case probablePitcher
             case team
         }
-        
-        
-        
+    
         public struct EachTeamDTO: Decodable {
+            public let id: Int
             public let abbreviation: String
             public let teamName: String
             public let locationName: String
@@ -93,6 +92,7 @@ public struct TeamsDTO: Decodable {
                 case abbreviation
                 case teamName
                 case locationName
+                case id
             }
         }
         
@@ -122,16 +122,44 @@ public struct DecisionsDTO: Decodable {
     }
 }
 
+public struct InningTeamDTO: Decodable {
+    public let runs: Int?
+    public let hits: Int?
+    public let errors: Int?
+    
+    enum CodingKeys: CodingKey {
+        case runs
+        case hits
+        case errors
+    }
+}
+
+public struct InningDTO: Decodable {
+    public let num: Int
+    public let ordinalNum: String
+    public let away: InningTeamDTO
+    public let home: InningTeamDTO
+    
+    enum CodingKeys: CodingKey {
+        case num
+        case ordinalNum
+        case away
+        case home
+    }
+}
+
 
 public struct LineScoreDTO: Decodable {
-    public let currentInning: Int
-    public let currentInningOrdinal: String
+    public let currentInning: Int?
+    public let currentInningOrdinal: String?
     public let inningState: String?
+    public let innings: [InningDTO]
     
     enum CodingKeys: CodingKey {
         case currentInning
         case currentInningOrdinal
         case inningState
+        case innings
     }
 }
 
@@ -142,6 +170,7 @@ public struct GameDTO: Decodable {
     public let status: StatusDTO
     public let teams: TeamsDTO
     public let decisions: DecisionsDTO?
+    public let linescore: LineScoreDTO
     
     enum CodingKeys: CodingKey {
         case gamePk
@@ -149,6 +178,7 @@ public struct GameDTO: Decodable {
         case status
         case teams
         case decisions
+        case linescore
     }
 }
 

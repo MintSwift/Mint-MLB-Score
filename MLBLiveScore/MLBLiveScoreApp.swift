@@ -26,7 +26,7 @@ struct MLBLiveScoreApp: App {
                 DailyScheduleView()
                     .environmentObject(interactor)
                 
-                AllScheduleView()
+                SeasonScheduleView()
             }
 //                    .tabItem {
 //                        Label {

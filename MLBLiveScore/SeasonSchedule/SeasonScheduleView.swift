@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct AllScheduleView: View {
-    @StateObject var interactor = ModuleScheduleInteractor.create()
+struct SeasonScheduleView: View {
+    @StateObject var interactor = SeasonInteractor.create()
     
     var body: some View {
         NavigationSplitView {
-            AllScheduleSidebar()
+            ScheduleSidebar()
         } detail: {
             
         }
@@ -14,8 +14,4 @@ struct AllScheduleView: View {
             interactor.retrieveSchedule()
         }
     }
-}
-
-#Preview {
-    AllScheduleView()
 }

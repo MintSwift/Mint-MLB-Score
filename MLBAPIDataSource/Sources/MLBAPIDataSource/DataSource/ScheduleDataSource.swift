@@ -1,15 +1,15 @@
 import Foundation
 import MLBStatsAPI
 
-public protocol ScheduleDataSourceProtocol {
+public protocol ScheduleDataSource {
     func all() async -> MLBScheduleDTO?
-    func team(id: Int) async -> MLBScheduleDTO?
+    func team(_ id: Int) async -> MLBScheduleDTO?
 }
 
-public class ScheduleDataSource: ScheduleDataSourceProtocol {
-    let provier: Providable
+public class BaseScheduleDataSource: ScheduleDataSource {
+    let provier: Provider
     
-    public init(provier: Providable) {
+    public init(provier: Provider) {
         self.provier = provier
     }
     
@@ -17,7 +17,7 @@ public class ScheduleDataSource: ScheduleDataSourceProtocol {
         await provier.fetch(.allSchedule, type: MLBScheduleDTO.self)
     }
     
-    public func team(id: Int) async -> MLBScheduleDTO? {
+    public func team(_ id: Int) async -> MLBScheduleDTO? {
         await provier.fetch(.teamSchedule(teamId: id), type: MLBScheduleDTO.self)
     }
 }

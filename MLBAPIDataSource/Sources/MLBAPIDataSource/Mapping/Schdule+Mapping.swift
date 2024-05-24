@@ -1,5 +1,4 @@
 import Foundation
-import MLBAPIDataSource
 import MLBDomain
 
 extension MLBScheduleDTO {
@@ -48,7 +47,7 @@ extension PlayerDTO {
 
 extension TeamsDTO.TeamDTO.EachTeamDTO {
     func toDomain() -> Teams.Team.EachTeam {
-        Teams.Team.EachTeam(abbreviation: abbreviation, teamName: teamName, locationName: locationName)
+        Teams.Team.EachTeam(id: id, abbreviation: abbreviation, teamName: teamName, locationName: locationName)
     }
 }
 
@@ -70,20 +69,40 @@ extension DecisionsDTO {
     }
 }
 
+extension InningTeamDTO {
+     func toDomain() -> InningTeam {
+         InningTeam(runs: runs, hits: hits, errors: errors)
+    }
+}
+
+extension InningDTO {
+     func toDomain() -> Inning {
+         Inning(num: num, ordinalNum: ordinalNum, away: away.toDomain(), home: home.toDomain())
+    }
+}
+
+extension LineScoreDTO {
+     func toDomain() -> LineScore {
+         LineScore(currentInning: currentInning, currentInningOrdinal: currentInningOrdinal, inningState: inningState, innings: innings.map { $0.toDomain() })
+    }
+}
+
+
 extension GameDTO {
      func toDomain() -> Game {
          Game(gamePk: gamePk,
               gameDate: gameDate,
               status: status.toDomain(),
               teams: teams.toDomain(),
-              decisions: decisions?.toDomain())
+              decisions: decisions?.toDomain(),
+              linescore: linescore.toDomain())
     }
 }
 
 extension StatusDTO {
-     func toDomain() -> Status {
-         Status(abstractGameState: abstractGameState,
-                detailedState: detailedState,
-                reason: reason)
+    func toDomain() -> Status {
+        Status(abstractGameState: abstractGameState,
+               detailedState: detailedState,
+               reason: reason)
     }
 }

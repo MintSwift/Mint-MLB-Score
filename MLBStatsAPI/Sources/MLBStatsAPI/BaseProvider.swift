@@ -1,10 +1,10 @@
 import Foundation
 
-public protocol Providable {
+public protocol Provider {
     func fetch<T>(_ endpoint: EndPoint, type: T.Type) async -> T? where T: Decodable
 }
 
-public class MLBProvider: Providable {
+public class MLBProvider: Provider {
     
     public init() {}
     
