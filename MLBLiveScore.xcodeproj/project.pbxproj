@@ -98,6 +98,7 @@
 		3BDBEFB12BF2FBA40093592E /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */; };
 		3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */; };
 		3BDBEFB52BF33F190093592E /* DiamondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEFB42BF33F190093592E /* DiamondView.swift */; };
+		3BEDFD772C0153F800767638 /* LineScoreBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDFD762C0153F800767638 /* LineScoreBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +225,7 @@
 		3BDBEFB02BF2FBA40093592E /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		3BDBEFB22BF32FD50093592E /* LiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewModel.swift; sourceTree = "<group>"; };
 		3BDBEFB42BF33F190093592E /* DiamondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondView.swift; sourceTree = "<group>"; };
+		3BEDFD762C0153F800767638 /* LineScoreBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineScoreBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 				3B9616142C007FE600F6E865 /* TeamInfoView.swift */,
 				3B9616192C0086BC00F6E865 /* ProbablePitcherView.swift */,
 				3B96161B2C008B3100F6E865 /* DecisionsPitcherView.swift */,
+				3BEDFD762C0153F800767638 /* LineScoreBoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				3BDBEFB32BF32FD50093592E /* LiveViewModel.swift in Sources */,
 				3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */,
 				3B96161A2C0086BC00F6E865 /* ProbablePitcherView.swift in Sources */,
+				3BEDFD772C0153F800767638 /* LineScoreBoardView.swift in Sources */,
 				3B9616052C004C0200F6E865 /* AllScheduleSidebar.swift in Sources */,
 				3B96160C2C006F8500F6E865 /* ScheduleSidebar.swift in Sources */,
 				3BB8C4512BFB077B007F545D /* WidgetProvider.swift in Sources */,

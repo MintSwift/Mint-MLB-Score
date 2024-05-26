@@ -13,10 +13,12 @@ struct ScheduleSidebar: View {
                 } header: {
                     Text(schedule.date)
                         .frame(height: 30, alignment: .center)
+                        .padding(.leading, 15)
                 }
             }
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
         }
         .navigationBarTitleDisplayMode(.inline)
         .listStyle(.plain)
@@ -40,4 +42,9 @@ struct ScheduleSidebar: View {
 //            await interactor.schedule()
         }
     }
+}
+
+
+#Preview {
+    SeasonScheduleView()
 }

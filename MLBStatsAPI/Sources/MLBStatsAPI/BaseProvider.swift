@@ -10,6 +10,7 @@ public class MLBProvider: Provider {
     
     public func fetch<T>(_ endpoint: EndPoint, type: T.Type) async -> T? where T : Decodable {
         guard let url = endpoint.url() else { return nil }
+        print("StatsProvider EndPoint: \(endpoint.url()?.absoluteString ?? "nil")")
         do {
             let response = try await URLSession.shared.data(from: url)
             let data = response.0

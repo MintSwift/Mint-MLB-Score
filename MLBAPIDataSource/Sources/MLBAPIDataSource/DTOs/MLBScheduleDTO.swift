@@ -87,12 +87,14 @@ public struct TeamsDTO: Decodable {
             public let abbreviation: String
             public let teamName: String
             public let locationName: String
-        
+            public let franchiseName: String
+            
             enum CodingKeys: CodingKey {
                 case abbreviation
                 case teamName
                 case locationName
                 case id
+                case franchiseName
             }
         }
         
@@ -148,18 +150,30 @@ public struct InningDTO: Decodable {
     }
 }
 
+public struct LineScoreTeamsDTO: Decodable {
+    public let away: InningTeamDTO
+    public let home: InningTeamDTO
+    
+    enum CodingKeys: CodingKey {
+        case away
+        case home
+    }
+}
 
 public struct LineScoreDTO: Decodable {
     public let currentInning: Int?
     public let currentInningOrdinal: String?
     public let inningState: String?
     public let innings: [InningDTO]
+    public let teams: LineScoreTeamsDTO
+    
     
     enum CodingKeys: CodingKey {
         case currentInning
         case currentInningOrdinal
         case inningState
         case innings
+        case teams
     }
 }
 
@@ -170,7 +184,7 @@ public struct GameDTO: Decodable {
     public let status: StatusDTO
     public let teams: TeamsDTO
     public let decisions: DecisionsDTO?
-    public let linescore: LineScoreDTO
+    public let linescore: LineScoreDTO?
     
     enum CodingKeys: CodingKey {
         case gamePk

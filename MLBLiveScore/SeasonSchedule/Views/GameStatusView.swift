@@ -17,9 +17,15 @@ struct GameStatusView: View {
             } else if status.status == .final {
                 Text(status.status.rawValue)
                     .font(.caption2)
-            } else if status.status == .scheduled {
+            } else if status.status == .scheduled || status.status == .preGame {
                 Text(status.date.toFormat("HH:mm", locale: Locales.korean))
                     .font(.footnote)
+            } else if status.status == .warmup {
+                VStack {
+                    Text(status.status.rawValue)
+                    Text(status.date.toFormat("HH:mm", locale: Locales.korean))
+                }
+                .font(.footnote)
             } else {
                 VStack {
                     Text(status.currentInning ?? "")

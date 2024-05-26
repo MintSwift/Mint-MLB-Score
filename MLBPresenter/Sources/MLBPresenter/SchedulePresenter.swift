@@ -9,6 +9,8 @@ public enum GameStatus: String, Codable {
     case warmup = "Warmup"
     case inProgress = "In Progress"
     case scheduled = "Scheduled"
+    case preGame = "Pre-Game"
+    case postponed = "Postponed"
     case unknown
 }
 
@@ -22,7 +24,11 @@ public struct StatusPresenter: Identifiable, Equatable, Hashable {
     
     init(status: Status, startDate: Date, currentInning: String?, inningState: InningState) {
         self.id = UUID().uuidString
-        self.status = GameStatus(rawValue: status.detailedState) ?? .unknown
+        if let status = GameStatus(rawValue: status.detailedState) {
+            self.status = status
+        }
+        self.status = .unknown
+        
         self.date = startDate
         self.reason = status.reason
         self.currentInning = currentInning
@@ -83,7 +89,7 @@ public struct TeamPresenter : Equatable, Hashable {
         
         self.abbreviation = team.team.abbreviation
         self.teamName = team.team.teamName
-        self.locationName = team.team.locationName
+        self.locationName = team.team.franchiseName
         
         if team.isWinner == true {
             self.winner = PlayerPresenter(decisions?.winner)
@@ -123,9 +129,9 @@ public struct InningTeamPresenter: Equatable, Hashable {
     public let errors: String
     
     public init(_ inningTeam: InningTeam) {
-        self.runs = inningTeam.runs?.toString() ?? "0"
-        self.hits = inningTeam.hits?.toString() ?? "0"
-        self.errors = inningTeam.errors?.toString() ?? "0"
+        self.runs = inningTeam.runs?.toString() ?? " "
+        self.hits = inningTeam.hits?.toString() ?? " "
+        self.errors = inningTeam.errors?.toString() ?? " "
     }
 }
 
@@ -145,20 +151,75 @@ public struct InningPresenter: Identifiable, Equatable, Hashable {
     }
 }
 
+public struct LinescoreTeamPresenter: Equatable, Hashable {
+    public let away: InningTeamPresenter
+    public let home: InningTeamPresenter
+    
+    public init(away: InningTeamPresenter, home: InningTeamPresenter) {
+        self.away = away
+        self.home = home
+    }
+}
+
 public struct LinescorePresenter: Identifiable, Equatable, Hashable {
     public var id: String
-    public let currentInning: String?
-    public let currentInningOrdinal: String?
-    public let inningState: InningState
-    public let innings: [InningPresenter]
+    public var currentInning: String? = nil
+    public var currentInningOrdinal: String? = nil
+    public var inningState: InningState = .top
+    public var innings: [InningPresenter] = []
+    public var teams: LinescoreTeamPresenter? = nil
     
-    public init(_ lineScore: LineScore) {
+    public init(_ lineScore: LineScore?) {
         id = UUID().uuidString
-        self.currentInning =  String( lineScore.currentInning ?? 1 )
-        self.currentInningOrdinal = lineScore.currentInningOrdinal
-        let state = lineScore.inningState ?? ""
-        self.inningState = InningState(rawValue: state) ?? .top
-        self.innings = lineScore.innings.map { InningPresenter($0) }
+        
+        if let lineScore {
+            let away = InningTeamPresenter(lineScore.teams.away)
+            let home = InningTeamPresenter(lineScore.teams.home)
+            self.teams = LinescoreTeamPresenter(away: away, home: home)
+            
+            self.currentInning =  String( lineScore.currentInning ?? 1 )
+            self.currentInningOrdinal = lineScore.currentInningOrdinal
+            let state = lineScore.inningState ?? ""
+            self.inningState = InningState(rawValue: state) ?? .top
+            self.innings = lineScore.innings.map { InningPresenter($0) }
+            
+            
+            var allInnings: [InningPresenter] = []
+            for inning in lineScore.innings {
+                allInnings.append(InningPresenter(inning))
+            }
+            
+            if allInnings.count < 9 {
+                let number = 9 - allInnings.count
+                for _ in 1...number {
+                    let number = Int( allInnings.last?.num ?? "0" ) ?? 0
+                    let lastNumber = number + 1
+                    let stringLast = String(lastNumber).ordinal()
+                    
+                    let inning = Inning(num: lastNumber,
+                                        ordinalNum: stringLast ?? "",
+                                        away: InningTeam(runs: nil, hits: nil, errors: nil),
+                                        home: InningTeam(runs: nil, hits: nil, errors: nil))
+                    allInnings.append(InningPresenter(inning))
+                }
+            }
+            
+            let maxCount = Array(allInnings.suffix(9))
+            self.innings = maxCount
+        }
+        
+    }
+}
+
+extension String {
+    func ordinal() -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .ordinal
+        if let e = Int(self) {
+            return formatter.string(from: NSNumber(integerLiteral: e))
+        }
+        
+        return nil
     }
 }
 
@@ -175,7 +236,7 @@ public struct GamePresenter: Identifiable, Equatable, Hashable {
         startDate = game.gameDate.toISODate(region: .UTC)?.date ?? .now
         away = TeamPresenter(game.teams.away, decisions: game.decisions)
         home = TeamPresenter(game.teams.home, decisions: game.decisions)
-        
+     
         linescore = LinescorePresenter(game.linescore)
         
         

@@ -47,7 +47,7 @@ extension PlayerDTO {
 
 extension TeamsDTO.TeamDTO.EachTeamDTO {
     func toDomain() -> Teams.Team.EachTeam {
-        Teams.Team.EachTeam(id: id, abbreviation: abbreviation, teamName: teamName, locationName: locationName)
+        Teams.Team.EachTeam(id: id, abbreviation: abbreviation, teamName: teamName, locationName: locationName, franchiseName: franchiseName)
     }
 }
 
@@ -81,9 +81,15 @@ extension InningDTO {
     }
 }
 
+extension LineScoreTeamsDTO {
+     func toDomain() -> LineScoreTeams {
+         LineScoreTeams(away: away.toDomain(), home: home.toDomain())
+    }
+}
+
 extension LineScoreDTO {
      func toDomain() -> LineScore {
-         LineScore(currentInning: currentInning, currentInningOrdinal: currentInningOrdinal, inningState: inningState, innings: innings.map { $0.toDomain() })
+         LineScore(currentInning: currentInning, currentInningOrdinal: currentInningOrdinal, inningState: inningState, innings: innings.map { $0.toDomain() }, teams: teams.toDomain())
     }
 }
 
@@ -95,7 +101,7 @@ extension GameDTO {
               status: status.toDomain(),
               teams: teams.toDomain(),
               decisions: decisions?.toDomain(),
-              linescore: linescore.toDomain())
+              linescore: linescore?.toDomain())
     }
 }
 
