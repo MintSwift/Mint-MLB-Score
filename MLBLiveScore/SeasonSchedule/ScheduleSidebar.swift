@@ -12,16 +12,15 @@ struct ScheduleSidebar: View {
                     }
                 } header: {
                     Text(schedule.date)
-                        .frame(height: 30, alignment: .center)
-                        .padding(.leading, 15)
+                        .frame(height: 20, alignment: .center)
+                        .padding(.leading, 10)
                 }
             }
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .listRowSeparator(.hidden)
-            .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .navigationBarTitleDisplayMode(.inline)
-        .listStyle(.plain)
+        .listStyle(.grouped)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 HStack {

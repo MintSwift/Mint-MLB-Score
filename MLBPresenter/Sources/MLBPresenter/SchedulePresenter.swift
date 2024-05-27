@@ -2,35 +2,25 @@ import Foundation
 import MLBDomain
 import SwiftDate
 
-public enum GameStatus: String, Codable {
-    case final = "Final"
-    case live = "Live"
-    case preview = "Preview"
-    case warmup = "Warmup"
-    case inProgress = "In Progress"
-    case scheduled = "Scheduled"
-    case preGame = "Pre-Game"
-    case postponed = "Postponed"
-    case unknown
-}
-
 public struct StatusPresenter: Identifiable, Equatable, Hashable {
     public var id: String
     public var date: Date
     public var status: GameStatus
-    public let reason: String?
+    public var reason: String?
     public let currentInning: String?
     public let inningState: InningState
     
     init(status: Status, startDate: Date, currentInning: String?, inningState: InningState) {
         self.id = UUID().uuidString
+        self.reason = status.reason
         if let status = GameStatus(rawValue: status.detailedState) {
             self.status = status
+        } else {
+            self.status = .unknown
+            self.reason = status.detailedState
         }
-        self.status = .unknown
         
         self.date = startDate
-        self.reason = status.reason
         self.currentInning = currentInning
         self.inningState = inningState
     }

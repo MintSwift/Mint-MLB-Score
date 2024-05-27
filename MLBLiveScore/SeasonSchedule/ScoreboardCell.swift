@@ -2,69 +2,76 @@ import SwiftUI
 import MLBPresenter
 
 struct ScoreboardCell: View {
+    @StateObject private var expansionHandler = ExpansionHandler<ExpandableSection>()
+    @State var isOpen: Bool = false
+    @State private var rotationAngle: Double = 0
+    
     let game: GamePresenter
     
     var body: some View {
-        HStack {
+        VStack(spacing: 0) {
             VStack {
+                CollableScoreboardCell(game: game)
+                    .animation(nil, value: UUID())
+                
                 HStack {
-                    VStack(alignment: .trailing) {
-                        TeamInfoView(position: .away, team: game.away)
-                    }
-                    
-                    GameStatusView(game.status)
-                    
-                    VStack(alignment: .leading) {
-                        TeamInfoView(position: .home, team: game.home)
+                    Image(systemName: "chevron.up")
+                        .scaledToFit()
+                        .padding(.vertical, 3)
+                        .foregroundStyle(.tertiary)
+                        .rotationEffect(Angle(degrees: rotationAngle))
+                        .frame(maxWidth: .infinity)
+                }
+                .background(.white)
+                .onTapGesture {
+                    Task {
+                        isOpen.toggle()
                         
-                    }
-                }
-                
-                HStack(alignment: .top) {
-                    VStack(alignment: .trailing) {
-                        if game.status.status == .final {
-                            DecisionsPitcherView(position: .away, team: game.away)
-                        } else if game.status.status == .live || game.status.status == .inProgress {
-                            
-                        } else {
-                            ProbablePitcherView(pitcher: game.away.probablePitcher)
+                        try? await Task.sleep(for: .milliseconds(100))
+                        
+                        withAnimation {
+                            rotationAngle += 180
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    GameStatusView(game.status)
-                        .opacity(0.0)
-                    
-                    VStack(alignment: .leading) {
-                        if game.status.status == .final {
-                            DecisionsPitcherView(position: .home, team: game.home)
-                        } else if game.status.status == .live || game.status.status == .inProgress {
-                            
-                        } else {
-                            ProbablePitcherView(pitcher: game.home.probablePitcher)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                
-                if game.status.status == .inProgress ||
-                    game.status.status == .warmup {
-                    LineScoreBoardView(linescore: game.linescore,
-                                       awayTeamName: game.away.abbreviation,
-                                       homwTeamName: game.home.abbreviation)
-                }
-                
             }
-            .padding(.vertical, 15)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.white)
-            .clipShape(.rect(cornerRadius: 5))
-            .padding(5)
-            .shadow(color: .black.opacity(0.3), radius: 3, x: 3, y: 3)
+            .frame(maxWidth: .infinity)
+            
+            Spacer()
+            
+            VStack {
+                if isOpen {
+                    VStack {
+                        if game.status.status == .inProgress {
+                            
+                        } else if game.status.status == .final {
+                            DecisionsContainerView(game: game)
+
+                        } else {
+                            ProbableContainerView(game: game)
+
+                        }
+                        
+                        if game.status.status == .inProgress || game.status.status == .final {
+                            LineScoreBoardView(linescore: game.linescore,
+                                               awayTeamName: game.away.abbreviation,
+                                               homwTeamName: game.home.abbreviation)
+
+                            
+                        }
+                    }
+
+                    .padding(.vertical, 10)
+                }
+            }
+           
+            .frame(height: isOpen ? nil : 0, alignment: .bottom)
+            .clipped()
+            
+            Divider()
         }
     }
 }
-
 
 #Preview {
     SeasonScheduleView()

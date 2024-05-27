@@ -23,11 +23,19 @@ struct MLBLiveScoreApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
+                SeasonScheduleView()
+                    .tabItem {
+                        Label(
+                            title: { Text("Schedule") },
+                            icon: { Image(systemName: "calendar") }
+                        )
+                    }
+                
                 DailyScheduleView()
                     .environmentObject(interactor)
                 
-                SeasonScheduleView()
             }
+            
 //                    .tabItem {
 //                        Label {
 //                            Text("매일 일정")

@@ -48,12 +48,14 @@ struct TeamInfoView: View {
                 .font(.caption)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
+                
                 .padding(.leading, 5)
                 
                 Spacer()
             }
             
         }
+        .frame(maxWidth: .infinity)
     }
 }
 

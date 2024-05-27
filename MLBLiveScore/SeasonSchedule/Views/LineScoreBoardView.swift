@@ -15,11 +15,13 @@ struct LineScoreBoardView: View {
                         .font(.callout)
                     Image(awayTeamName)
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .scaledToFit()
+                        .frame(width: 30, height: 20)
                 
                     Image(homwTeamName)
                         .resizable()
-                        .frame(width: 20, height: 20)
+                        .scaledToFit()
+                        .frame(width: 30, height: 20)
                 }
                 
                 ForEach(linescore.innings) { inning in
@@ -69,7 +71,7 @@ struct LineScoreBoardView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.callout)
                     }
-                    .frame(width: 20)
+                    .frame(width: 25)
                     
                     VStack(alignment: .center, spacing: 5) {
                         Text("H")
@@ -85,7 +87,7 @@ struct LineScoreBoardView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.callout)
                     }
-                    .frame(width: 20)
+                    .frame(width: 25)
                     
                     
                     VStack(alignment: .center, spacing: 5) {
@@ -101,7 +103,7 @@ struct LineScoreBoardView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .font(.callout)
                     }
-                    .frame(width: 20)
+                    .frame(width: 25)
                     
                 }
             }
