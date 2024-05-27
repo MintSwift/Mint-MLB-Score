@@ -2,7 +2,6 @@ import SwiftUI
 import MLBPresenter
 
 struct ScoreboardCell: View {
-    @StateObject private var expansionHandler = ExpansionHandler<ExpandableSection>()
     @State var isOpen: Bool = false
     @State private var rotationAngle: Double = 0
     
@@ -11,7 +10,7 @@ struct ScoreboardCell: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack {
-                CollableScoreboardCell(game: game)
+                HeaderScoreboardCell(game: game)
                 
                 HStack {
                     Image(systemName: "chevron.up")
@@ -38,31 +37,25 @@ struct ScoreboardCell: View {
             
             Spacer()
             
-            VStack {
-                if isOpen {
-                    VStack {
-                        if game.status.status == .inProgress {
-                            
-                        } else if game.status.status == .final {
-                            DecisionsContainerView(game: game)
-
-                        } else {
-                            ProbableContainerView(game: game)
-
-                        }
+            if isOpen {
+                VStack {
+                    if game.status.status == .inProgress {
                         
-                        if game.status.status == .inProgress || game.status.status == .final {
-                            LineScoreBoardView(linescore: game.linescore,
-                                               awayTeamName: game.away.abbreviation,
-                                               homwTeamName: game.home.abbreviation)
-                        }
+                        
+                    } else if game.status.status == .final {
+                        DecisionsContainerView(game: game)
+                    } else {
+                        ProbableContainerView(game: game)
                     }
-
-                    .padding(.vertical, 10)
+                    
+                    if game.status.status == .inProgress || game.status.status == .final {
+                        LineScoreBoardView(linescore: game.linescore,
+                                           awayTeamName: game.away.abbreviation,
+                                           homwTeamName: game.home.abbreviation)
+                    }
                 }
+                .padding(.vertical, 10)
             }
-            .frame(height: isOpen ? nil : 0, alignment: .bottom)
-            .clipped()
             
             Divider()
         }
