@@ -8,7 +8,9 @@ import MLBPresenter
 @MainActor
 class SeasonInteractor: ObservableObject {
     static func create() -> SeasonInteractor {
-        let provier = MLBProvider()
+//        let provier = MLBProvider()
+        let provier = MLBMockProvider()
+        
         let dataSource = BaseScheduleDataSource(provier: provier)
         let repository = BaseScheduleRepository(dataSource: dataSource)
         let usecase = BaseScheduleUseCase(repository: repository)

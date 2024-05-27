@@ -4,7 +4,7 @@ import MLBPresenter
 struct ScoreboardCell: View {
     @State var isOpen: Bool = false
     @State private var rotationAngle: Double = 0
-    
+    @Environment(\.colorScheme) var colorScheme
     let game: GamePresenter
     
     var body: some View {
@@ -18,9 +18,9 @@ struct ScoreboardCell: View {
                         .padding(.vertical, 3)
                         .foregroundStyle(.tertiary)
                         .rotationEffect(Angle(degrees: rotationAngle))
-                        .frame(maxWidth: .infinity)
                 }
-                .background(.white)
+                .frame(maxWidth: .infinity)
+                .background(colorScheme == .light ?  Color.background : Color.secondaryBackground)
                 .onTapGesture {
                     Task {
                         isOpen.toggle()

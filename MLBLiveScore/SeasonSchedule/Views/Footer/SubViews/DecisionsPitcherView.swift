@@ -64,12 +64,14 @@ struct PitcherView: View {
     var body: some View {
         VStack(alignment: position == .away ? .trailing : .leading, spacing: 2) {
             if let player = player {
-                HStack {
+                HStack(alignment: .top) {
                     if position == .away {
                         VStack(alignment: .trailing) {
-                            HStack {
+                            HStack(alignment: .top) {
                                 Text(player.name)
-                                        .font(.caption2)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                                    .font(.caption2)
                                 
                                 Image(systemName: "\(decisions.text()).square.fill")
                                     .resizable()
@@ -83,22 +85,22 @@ struct PitcherView: View {
                         }
                     }
                     KFImage(URL(string: "https://midfield.mlbstatic.com/v1/people/\(player.id)/silo/80"))
-                                
-//                                https:midfield.mlbstatic.com/v1/people/\(player.id)/spots/90"))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30, height: 30, alignment: .center)
                     
                     if position == .home {
                         VStack(alignment: .leading) {
-                            HStack {
+                            HStack(alignment: .top) {
                                 Image(systemName: "\(decisions.text()).square.fill")
                                     .resizable()
                                     .foregroundStyle(decisions.color())
                                     .frame(width: 12, height: 12, alignment: .center)
 
                                 Text(player.name)
-                                        .font(.caption2)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.8)
+                                    .font(.caption2)
                             }
                         
                             Text(player.recordSummary)

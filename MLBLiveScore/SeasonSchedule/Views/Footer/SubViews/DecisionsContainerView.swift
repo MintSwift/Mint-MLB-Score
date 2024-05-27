@@ -5,7 +5,7 @@ struct DecisionsContainerView: View {
     let game: GamePresenter
     
     var body: some View {
-        HStack(alignment: .top, spacing: 60) {
+        HStack(alignment: .top, spacing: 30) {
             VStack(alignment: .trailing) {
                 DecisionsPitcherView(position: .away, team: game.away)
             }
