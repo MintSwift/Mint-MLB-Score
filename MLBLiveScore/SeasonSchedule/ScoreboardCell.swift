@@ -12,7 +12,6 @@ struct ScoreboardCell: View {
         VStack(spacing: 0) {
             VStack {
                 CollableScoreboardCell(game: game)
-                    .animation(nil, value: UUID())
                 
                 HStack {
                     Image(systemName: "chevron.up")
@@ -27,7 +26,7 @@ struct ScoreboardCell: View {
                     Task {
                         isOpen.toggle()
                         
-                        try? await Task.sleep(for: .milliseconds(100))
+                        try? await Task.sleep(for: .milliseconds(50))
                         
                         withAnimation {
                             rotationAngle += 180
@@ -56,15 +55,12 @@ struct ScoreboardCell: View {
                             LineScoreBoardView(linescore: game.linescore,
                                                awayTeamName: game.away.abbreviation,
                                                homwTeamName: game.home.abbreviation)
-
-                            
                         }
                     }
 
                     .padding(.vertical, 10)
                 }
             }
-           
             .frame(height: isOpen ? nil : 0, alignment: .bottom)
             .clipped()
             
