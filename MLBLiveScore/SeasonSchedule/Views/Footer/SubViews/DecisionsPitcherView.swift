@@ -78,10 +78,16 @@ struct PitcherView: View {
                                     .foregroundStyle(decisions.color())
                                     .frame(width: 12, height: 12, alignment: .center)
                             }
-                        
-                            Text(player.recordSummary)
-                                .font(.caption2)
-                                .foregroundStyle(.tertiary)
+                            if decisions == .save {
+                                Text("\(player.saves ?? "-") | \(player.era) ERA")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            } else {
+                                Text(player.recordSummary)
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            }
+                            
                         }
                     }
                     KFImage(URL(string: "https://midfield.mlbstatic.com/v1/people/\(player.id)/silo/80"))
@@ -103,9 +109,15 @@ struct PitcherView: View {
                                     .font(.caption2)
                             }
                         
-                            Text(player.recordSummary)
-                                .font(.caption2)
-                                .foregroundStyle(.tertiary)
+                            if decisions == .save {
+                                Text("\(player.saves ?? "-") | \(player.era) ERA")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            } else {
+                                Text(player.recordSummary)
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            }
                         }
                     }
                     

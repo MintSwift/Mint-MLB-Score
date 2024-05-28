@@ -8,20 +8,21 @@ struct ProbableContainerView: View {
         HStack(alignment: .top) {
             VStack(alignment: .trailing) {
                 
-                ProbablePitcherView(pitcher: game.away.probablePitcher)
+                ProbablePitcherView(position: .away, pitcher: game.away.probablePitcher)
                 
             }
-            .frame(maxWidth: .infinity, alignment: .center)
-            
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        
             GameStatusView(game.status)
                 .opacity(0.0)
             
             VStack(alignment: .leading) {
                 
-                ProbablePitcherView(pitcher: game.home.probablePitcher)
+                ProbablePitcherView(position: .home, pitcher: game.home.probablePitcher)
                 
             }
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
         }
     }
 }

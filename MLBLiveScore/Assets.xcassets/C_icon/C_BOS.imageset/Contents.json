@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "C_BOS.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -8,8 +8,8 @@ import MLBPresenter
 @MainActor
 class SeasonInteractor: ObservableObject {
     static func create() -> SeasonInteractor {
-//        let provier = MLBProvider()
-        let provier = MLBMockProvider()
+        let provier = MLBProvider()
+//        let provier = MLBMockProvider()
         
         let dataSource = BaseScheduleDataSource(provier: provier)
         let repository = BaseScheduleRepository(dataSource: dataSource)
@@ -25,11 +25,10 @@ class SeasonInteractor: ObservableObject {
         self.usecase = usecase
     }
     
-    func retrieveSchedule() {
-        Task {
-            let schedules = await usecase.all()
-            let presenters = SchedulePresenter.create(schedules)
-            self.schedules = presenters
-        }
+    func retrieveSchedule() async {
+        let schedules = await usecase.all()
+        let presenters = SchedulePresenter.create(schedules)
+        self.schedules = presenters
+        
     }
 }

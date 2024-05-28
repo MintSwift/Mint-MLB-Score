@@ -38,7 +38,7 @@ struct ScheduleSidebar: View {
             }
         }
         .refreshable {
-//            await interactor.schedule()
+            await interactor.retrieveSchedule()
         }
     }
 }

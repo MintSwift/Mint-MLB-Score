@@ -1,18 +1,16 @@
-//
-//  FooterInfoCell.swift
-//  MLBLiveScore
-//
-//  Created by Junghoon on 5/27/24.
-//
-
 import SwiftUI
+import MLBPresenter
 
-struct FooterInfoCell: View {
+struct PitcherInfoView: View {
+    let game: GamePresenter
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if game.status.status == .inProgress {
+            
+        } else if game.status.status == .final {
+            DecisionsContainerView(game: game)
+        } else {
+            ProbableContainerView(game: game)
+        }
     }
-}
-
-#Preview {
-    FooterInfoCell()
 }

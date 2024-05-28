@@ -42,6 +42,8 @@ public struct PlayerPresenter : Equatable, Hashable {
     public var id: String = ""
     public var name: String = ""
     public var recordSummary: String = ""
+    public var saves: String?
+    public var era: String = "-"
     
     public init?(_ player: Player?) {
         guard let player else { return nil }
@@ -52,6 +54,13 @@ public struct PlayerPresenter : Equatable, Hashable {
             .filter { $0.group.displayName == "pitching" && $0.type.displayName == "statsSingleSeason" }
             .first
     
+        if let saves = stats?.stats.saves {
+            self.saves = String( saves )
+        } else {
+            self.saves = nil
+        }
+        
+        self.era = stats?.stats.era ?? "-"
         self.recordSummary = stats?.stats.summary ?? ""
     }
 }

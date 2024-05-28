@@ -104,6 +104,15 @@
 		3BFD1D8F2C04681100B9C4B7 /* DecisionsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D8E2C04681100B9C4B7 /* DecisionsContainerView.swift */; };
 		3BFD1D912C04685400B9C4B7 /* ProbableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D902C04685400B9C4B7 /* ProbableContainerView.swift */; };
 		3BFD1D932C047F8700B9C4B7 /* FooterInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D922C047F8700B9C4B7 /* FooterInfoCell.swift */; };
+		3BFD1D9A2C055D8200B9C4B7 /* WildCardRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D992C055D8200B9C4B7 /* WildCardRankView.swift */; };
+		3BFD1D9C2C055DA300B9C4B7 /* WildCardRankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D9B2C055DA300B9C4B7 /* WildCardRankInteractor.swift */; };
+		3BFD1D9E2C0576F600B9C4B7 /* WildCardRankSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1D9D2C0576F600B9C4B7 /* WildCardRankSidebar.swift */; };
+		3BFD1DA12C05907300B9C4B7 /* LeagueWildCardRanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA02C05907300B9C4B7 /* LeagueWildCardRanksView.swift */; };
+		3BFD1DA42C059B5500B9C4B7 /* PostSeasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA32C059B5500B9C4B7 /* PostSeasonView.swift */; };
+		3BFD1DA62C059C6200B9C4B7 /* PostSeasonSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA52C059C6200B9C4B7 /* PostSeasonSidebar.swift */; };
+		3BFD1DA82C059CCA00B9C4B7 /* PostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA72C059CCA00B9C4B7 /* PostNode.swift */; };
+		3BFD1DAA2C059D2E00B9C4B7 /* PostScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA92C059D2E00B9C4B7 /* PostScrollview.swift */; };
+		3BFD1DAC2C05A59400B9C4B7 /* PostSeasonInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DAB2C05A59400B9C4B7 /* PostSeasonInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +245,15 @@
 		3BFD1D8E2C04681100B9C4B7 /* DecisionsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionsContainerView.swift; sourceTree = "<group>"; };
 		3BFD1D902C04685400B9C4B7 /* ProbableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbableContainerView.swift; sourceTree = "<group>"; };
 		3BFD1D922C047F8700B9C4B7 /* FooterInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterInfoCell.swift; sourceTree = "<group>"; };
+		3BFD1D992C055D8200B9C4B7 /* WildCardRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildCardRankView.swift; sourceTree = "<group>"; };
+		3BFD1D9B2C055DA300B9C4B7 /* WildCardRankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildCardRankInteractor.swift; sourceTree = "<group>"; };
+		3BFD1D9D2C0576F600B9C4B7 /* WildCardRankSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildCardRankSidebar.swift; sourceTree = "<group>"; };
+		3BFD1DA02C05907300B9C4B7 /* LeagueWildCardRanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueWildCardRanksView.swift; sourceTree = "<group>"; };
+		3BFD1DA32C059B5500B9C4B7 /* PostSeasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSeasonView.swift; sourceTree = "<group>"; };
+		3BFD1DA52C059C6200B9C4B7 /* PostSeasonSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSeasonSidebar.swift; sourceTree = "<group>"; };
+		3BFD1DA72C059CCA00B9C4B7 /* PostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNode.swift; sourceTree = "<group>"; };
+		3BFD1DA92C059D2E00B9C4B7 /* PostScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScrollview.swift; sourceTree = "<group>"; };
+		3BFD1DAB2C05A59400B9C4B7 /* PostSeasonInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSeasonInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +398,8 @@
 		3BBAEA9A2BECB89800192FED /* MLBLiveScore */ = {
 			isa = PBXGroup;
 			children = (
+				3BFD1DA22C059B4800B9C4B7 /* PostSeason */,
+				3BFD1D982C055D6F00B9C4B7 /* WildCardRank */,
 				3BD1C3942C04BD8F00B72180 /* Extension */,
 				3B9616082C006E6C00F6E865 /* SeasonSchedule */,
 				3B9615FC2BFF063E00F6E865 /* ScheduleInteractor */,
@@ -567,6 +587,37 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		3BFD1D982C055D6F00B9C4B7 /* WildCardRank */ = {
+			isa = PBXGroup;
+			children = (
+				3BFD1D9F2C05905E00B9C4B7 /* LeaguePicker */,
+				3BFD1D992C055D8200B9C4B7 /* WildCardRankView.swift */,
+				3BFD1D9D2C0576F600B9C4B7 /* WildCardRankSidebar.swift */,
+				3BFD1D9B2C055DA300B9C4B7 /* WildCardRankInteractor.swift */,
+			);
+			path = WildCardRank;
+			sourceTree = "<group>";
+		};
+		3BFD1D9F2C05905E00B9C4B7 /* LeaguePicker */ = {
+			isa = PBXGroup;
+			children = (
+				3BFD1DA02C05907300B9C4B7 /* LeagueWildCardRanksView.swift */,
+			);
+			path = LeaguePicker;
+			sourceTree = "<group>";
+		};
+		3BFD1DA22C059B4800B9C4B7 /* PostSeason */ = {
+			isa = PBXGroup;
+			children = (
+				3BFD1DA32C059B5500B9C4B7 /* PostSeasonView.swift */,
+				3BFD1DA52C059C6200B9C4B7 /* PostSeasonSidebar.swift */,
+				3BFD1DA72C059CCA00B9C4B7 /* PostNode.swift */,
+				3BFD1DA92C059D2E00B9C4B7 /* PostScrollview.swift */,
+				3BFD1DAB2C05A59400B9C4B7 /* PostSeasonInteractor.swift */,
+			);
+			path = PostSeason;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -730,10 +781,12 @@
 				3B5847FE2BF9F39F00098ABF /* WNextGameView.swift in Sources */,
 				3BBAEABB2BEDFA3100192FED /* Detail.swift in Sources */,
 				3BFD1D8D2C0438F000B9C4B7 /* CollableScoreboardCell.swift in Sources */,
+				3BFD1D9A2C055D8200B9C4B7 /* WildCardRankView.swift in Sources */,
 				3BDBEF922BF19FD60093592E /* ScoreboardView.swift in Sources */,
 				3B0B15092BEECBE800E91AEE /* HomeCell.swift in Sources */,
 				3B96160A2C006E8D00F6E865 /* SeasonScheduleView.swift in Sources */,
 				3BD1C3962C04BD9C00B72180 /* Color+Ex.swift in Sources */,
+				3BFD1DA42C059B5500B9C4B7 /* PostSeasonView.swift in Sources */,
 				3BDBEFA12BF1D0CB0093592E /* TeamView.swift in Sources */,
 				3BBAEAB92BEDD9F500192FED /* Cell.swift in Sources */,
 				3BDBEFA72BF1F4270093592E /* LiveGameProvider.swift in Sources */,
@@ -750,6 +803,7 @@
 				3B0B150B2BEECC7800E91AEE /* ClubView.swift in Sources */,
 				3B96161A2C0086BC00F6E865 /* ProbablePitcherView.swift in Sources */,
 				3BEDFD772C0153F800767638 /* LineScoreBoardView.swift in Sources */,
+				3BFD1DA62C059C6200B9C4B7 /* PostSeasonSidebar.swift in Sources */,
 				3B9616052C004C0200F6E865 /* AllScheduleSidebar.swift in Sources */,
 				3B96160C2C006F8500F6E865 /* ScheduleSidebar.swift in Sources */,
 				3BB8C4512BFB077B007F545D /* WidgetProvider.swift in Sources */,
@@ -764,6 +818,8 @@
 				3BDBEF9F2BF1D0360093592E /* DailyCell.swift in Sources */,
 				3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */,
 				3B9615F12BFF02C700F6E865 /* ScheduleFactory.swift in Sources */,
+				3BFD1D9C2C055DA300B9C4B7 /* WildCardRankInteractor.swift in Sources */,
+				3BFD1DA82C059CCA00B9C4B7 /* PostNode.swift in Sources */,
 				3B9616102C0075D500F6E865 /* ScoreboardCell.swift in Sources */,
 				3BFD1D912C04685400B9C4B7 /* ProbableContainerView.swift in Sources */,
 				3BBAEAAD2BED91E800192FED /* Interactor.swift in Sources */,
@@ -771,18 +827,22 @@
 				3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */,
 				3B96160E2C0073D000F6E865 /* SeasonInteractor.swift in Sources */,
 				3B9615FE2BFF065A00F6E865 /* ScheduleInteractor.swift in Sources */,
+				3BFD1DAC2C05A59400B9C4B7 /* PostSeasonInteractor.swift in Sources */,
 				3BDBEF902BF1962D0093592E /* DailyDetailView.swift in Sources */,
+				3BFD1D9E2C0576F600B9C4B7 /* WildCardRankSidebar.swift in Sources */,
 				3BFD1D8F2C04681100B9C4B7 /* DecisionsContainerView.swift in Sources */,
 				3B0B15132BF0A5AC00E91AEE /* DiamondGroundView.swift in Sources */,
 				3BDBEF992BF1B23B0093592E /* ScheduleResponse.swift in Sources */,
 				3BBAEAAB2BECB8AF00192FED /* Network.swift in Sources */,
 				3B9616072C004C4500F6E865 /* AllScheduleCell.swift in Sources */,
+				3BFD1DA12C05907300B9C4B7 /* LeagueWildCardRanksView.swift in Sources */,
 				3B0B15052BEE709B00E91AEE /* AwayPitcherView.swift in Sources */,
 				3B0B150D2BEED5FA00E91AEE /* ScoreView.swift in Sources */,
 				3BDBEF9D2BF1CB760093592E /* DailyScheduleInteractor.swift in Sources */,
 				3B0B15112BF00E9700E91AEE /* BoxScoreView1.swift in Sources */,
 				3B0B15072BEECAE800E91AEE /* HomePitcherView.swift in Sources */,
 				3B0B15152BF3921600E91AEE /* BoxScoreView.swift in Sources */,
+				3BFD1DAA2C059D2E00B9C4B7 /* PostScrollview.swift in Sources */,
 				3BDBEF9B2BF1B24F0093592E /* ScheduleProvider.swift in Sources */,
 				3BFD1D932C047F8700B9C4B7 /* FooterInfoCell.swift in Sources */,
 				3B9616152C007FE600F6E865 /* TeamInfoView.swift in Sources */,

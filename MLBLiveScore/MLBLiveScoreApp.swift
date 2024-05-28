@@ -31,9 +31,21 @@ struct MLBLiveScoreApp: App {
                         )
                     }
                 
-                DailyScheduleView()
-                    .environmentObject(interactor)
+                WildCardRankView()
+                    .tabItem {
+                        Label(
+                            title: { Text("Wild Card") },
+                            icon: { Image(systemName: "chart.line.uptrend.xyaxis") }
+                        )
+                    }
                 
+                PostSeasonView()
+                    .tabItem {
+                        Label(
+                            title: { Text("Post-Season") },
+                            icon: { Image(systemName: "trophy.fill") }
+                        )
+                    }
             }
             
 //                    .tabItem {

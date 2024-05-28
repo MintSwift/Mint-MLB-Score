@@ -11,7 +11,9 @@ struct SeasonScheduleView: View {
         }
         .environmentObject(interactor)
         .onAppear {
-            interactor.retrieveSchedule()
+            Task {
+              await interactor.retrieveSchedule()
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ extension PlayerDTO.PlayerStatsDTO.StatsGroupDTO {
 }
 extension PlayerDTO.PlayerStatsDTO.StatsDTO {
     func toDomain() -> Player.PlayerStats.Stats {
-        Player.PlayerStats.Stats(summary: summary, era: era, wins: wins, losses: losses)
+        Player.PlayerStats.Stats(summary: summary, era: era, wins: wins, losses: losses, saves: saves)
     }
 }
 

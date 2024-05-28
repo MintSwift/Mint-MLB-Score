@@ -12,25 +12,10 @@ struct ScoreboardCell: View {
             VStack {
                 HeaderScoreboardCell(game: game)
                 
-                HStack {
-                    Image(systemName: "chevron.up")
-                        .scaledToFit()
-                        .padding(.vertical, 3)
-                        .foregroundStyle(.tertiary)
-                        .rotationEffect(Angle(degrees: rotationAngle))
-                }
-                .frame(maxWidth: .infinity)
-                .background(colorScheme == .light ?  Color.background : Color.secondaryBackground)
-                .onTapGesture {
-                    Task {
-                        isOpen.toggle()
-                        
-                        try? await Task.sleep(for: .milliseconds(50))
-                        
-                        withAnimation {
-                            rotationAngle += 180
-                        }
-                    }
+                PitcherInfoView(game: game)
+                
+                if game.status.status == .inProgress || game.status.status == .final {
+                    chevronImage
                 }
             }
             .frame(maxWidth: .infinity)
@@ -39,15 +24,6 @@ struct ScoreboardCell: View {
             
             if isOpen {
                 VStack {
-                    if game.status.status == .inProgress {
-                        
-                        
-                    } else if game.status.status == .final {
-                        DecisionsContainerView(game: game)
-                    } else {
-                        ProbableContainerView(game: game)
-                    }
-                    
                     if game.status.status == .inProgress || game.status.status == .final {
                         LineScoreBoardView(linescore: game.linescore,
                                            awayTeamName: game.away.abbreviation,
@@ -58,6 +34,29 @@ struct ScoreboardCell: View {
             }
             
             Divider()
+        }
+    }
+    
+    var chevronImage: some View {
+        HStack {
+            Image(systemName: "chevron.up")
+                .scaledToFit()
+                .padding(.vertical, 3)
+                .foregroundStyle(.tertiary)
+                .rotationEffect(Angle(degrees: rotationAngle))
+        }
+        .frame(maxWidth: .infinity)
+        .background(colorScheme == .light ?  Color.background : Color.secondaryBackground)
+        .onTapGesture {
+            Task {
+                isOpen.toggle()
+                
+                try? await Task.sleep(for: .milliseconds(50))
+                
+                withAnimation {
+                    rotationAngle += 180
+                }
+            }
         }
     }
 }

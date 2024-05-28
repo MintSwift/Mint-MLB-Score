@@ -39,12 +39,14 @@ public struct PlayerDTO: Decodable {
             
             public let wins: Int?
             public let losses: Int?
+            public let saves: Int?
 
             enum CodingKeys: CodingKey {
                 case summary
                 case era
                 case wins
                 case losses
+                case saves
             }
         }
         

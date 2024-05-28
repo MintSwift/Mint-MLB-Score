@@ -28,11 +28,13 @@ public struct Player: Equatable, Hashable {
             
             public let wins: Int?
             public let losses: Int?
-            public init(summary: String?, era: String?, wins: Int?, losses: Int?) {
+            public let saves: Int?
+            public init(summary: String?, era: String?, wins: Int?, losses: Int?, saves: Int?) {
                 self.summary = summary
                 self.era = era
                 self.wins = wins
                 self.losses = losses
+                self.saves = saves
             }
         }
         
