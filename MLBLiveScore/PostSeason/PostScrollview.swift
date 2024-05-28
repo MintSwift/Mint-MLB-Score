@@ -65,9 +65,9 @@ struct PostScrollview: View {
                     PostNode(away: interactor.nationalWildCardLeaders[2].team.abbreviation, home: interactor.nationalWildCardLeaders[0].team.abbreviation, alignment: .leading, circleWidth: 80, teamSpace: 6)
                 }
             }
-            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 20)
+            .offset(y: -55)
         }
     }
 }
