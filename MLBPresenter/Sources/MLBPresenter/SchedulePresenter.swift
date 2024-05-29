@@ -225,6 +225,7 @@ extension String {
 public struct GamePresenter: Identifiable, Equatable, Hashable {
     public var id: String
     public let startDate: Date
+    public let gameId: Int
     public let status: StatusPresenter
     public let away: TeamPresenter
     public let home: TeamPresenter
@@ -235,7 +236,7 @@ public struct GamePresenter: Identifiable, Equatable, Hashable {
         startDate = game.gameDate.toISODate(region: .UTC)?.date ?? .now
         away = TeamPresenter(game.teams.away, decisions: game.decisions)
         home = TeamPresenter(game.teams.home, decisions: game.decisions)
-     
+        gameId = game.gamePk
         linescore = LinescorePresenter(game.linescore)
         
         

@@ -2,7 +2,7 @@ import Foundation
 
 public protocol ScheduleUseCase {
     func all() async -> [Schedule]
-    func team(id: Int) async
+    func live(pk: Int) async -> Live?
 }
 
 public class BaseScheduleUseCase: ScheduleUseCase {
@@ -17,7 +17,8 @@ public class BaseScheduleUseCase: ScheduleUseCase {
         return object
     }
     
-    public func team(id: Int) async {
-       _ = await repository.team(1)
+    public func live(pk: Int) async -> Live? {
+        let object = await repository.live(pk)
+        return object
     }
 }

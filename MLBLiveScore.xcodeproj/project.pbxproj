@@ -113,6 +113,8 @@
 		3BFD1DA82C059CCA00B9C4B7 /* PostNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA72C059CCA00B9C4B7 /* PostNode.swift */; };
 		3BFD1DAA2C059D2E00B9C4B7 /* PostScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DA92C059D2E00B9C4B7 /* PostScrollview.swift */; };
 		3BFD1DAC2C05A59400B9C4B7 /* PostSeasonInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DAB2C05A59400B9C4B7 /* PostSeasonInteractor.swift */; };
+		3BFD1DAF2C06AA3A00B9C4B7 /* LiveScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DAE2C06AA3A00B9C4B7 /* LiveScoreView.swift */; };
+		3BFD1DB12C071A2300B9C4B7 /* BatterLineUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFD1DB02C071A2300B9C4B7 /* BatterLineUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,6 +256,8 @@
 		3BFD1DA72C059CCA00B9C4B7 /* PostNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNode.swift; sourceTree = "<group>"; };
 		3BFD1DA92C059D2E00B9C4B7 /* PostScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScrollview.swift; sourceTree = "<group>"; };
 		3BFD1DAB2C05A59400B9C4B7 /* PostSeasonInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSeasonInteractor.swift; sourceTree = "<group>"; };
+		3BFD1DAE2C06AA3A00B9C4B7 /* LiveScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveScoreView.swift; sourceTree = "<group>"; };
+		3BFD1DB02C071A2300B9C4B7 /* BatterLineUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatterLineUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 		3B9616082C006E6C00F6E865 /* SeasonSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				3BFD1DAD2C06AA2800B9C4B7 /* Live */,
 				3B9616162C0080D800F6E865 /* Enum */,
 				3B9616112C007DF300F6E865 /* Views */,
 				3B9616092C006E8D00F6E865 /* SeasonScheduleView.swift */,
@@ -618,6 +623,15 @@
 			path = PostSeason;
 			sourceTree = "<group>";
 		};
+		3BFD1DAD2C06AA2800B9C4B7 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				3BFD1DAE2C06AA3A00B9C4B7 /* LiveScoreView.swift */,
+				3BFD1DB02C071A2300B9C4B7 /* BatterLineUp.swift */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -821,6 +835,7 @@
 				3BFD1D9C2C055DA300B9C4B7 /* WildCardRankInteractor.swift in Sources */,
 				3BFD1DA82C059CCA00B9C4B7 /* PostNode.swift in Sources */,
 				3B9616102C0075D500F6E865 /* ScoreboardCell.swift in Sources */,
+				3BFD1DAF2C06AA3A00B9C4B7 /* LiveScoreView.swift in Sources */,
 				3BFD1D912C04685400B9C4B7 /* ProbableContainerView.swift in Sources */,
 				3BBAEAAD2BED91E800192FED /* Interactor.swift in Sources */,
 				3BDBEFA32BF1D47C0093592E /* GameStateView.swift in Sources */,
@@ -847,6 +862,7 @@
 				3BFD1D932C047F8700B9C4B7 /* FooterInfoCell.swift in Sources */,
 				3B9616152C007FE600F6E865 /* TeamInfoView.swift in Sources */,
 				3B0B150F2BEF1B4500E91AEE /* OutCountView.swift in Sources */,
+				3BFD1DB12C071A2300B9C4B7 /* BatterLineUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,5 +2,5 @@ import Foundation
 
 public protocol ScheduleRepository {
     func all() async -> [Schedule]
-    func team(_ id: Int) async -> [Schedule]
+    func live(_ pk: Int) async -> Live?
 }

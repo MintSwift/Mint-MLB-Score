@@ -42,6 +42,25 @@ public class MLBStandingMockProvider: Provider {
     }
 }
 
+public class MLBLiveMockProvider: Provider {
+    public init() {}
+    public func fetch<T>(_ endpoint: EndPoint, type: T.Type) async -> T? where T : Decodable {
+        do {
+            if let data = liveMock.data(using: .utf8) {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(T.self, from: data)
+                return result
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error", error)
+            return nil
+        }
+        
+    }
+}
+
 public class MLBProvider: Provider {
     
     public init() {}

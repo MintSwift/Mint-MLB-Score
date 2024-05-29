@@ -3,7 +3,7 @@ import MLBStatsAPI
 
 public protocol ScheduleDataSource {
     func all() async -> MLBScheduleDTO?
-    func team(_ id: Int) async -> MLBScheduleDTO?
+    func live(_ pk: Int) async -> MLBLiveDTO?
 }
 
 public class BaseScheduleDataSource: ScheduleDataSource {
@@ -17,7 +17,7 @@ public class BaseScheduleDataSource: ScheduleDataSource {
         await provier.fetch(.allSchedule, type: MLBScheduleDTO.self)
     }
     
-    public func team(_ id: Int) async -> MLBScheduleDTO? {
-        await provier.fetch(.teamSchedule(teamId: id), type: MLBScheduleDTO.self)
+    public func live(_ pk: Int) async -> MLBLiveDTO? {
+        await provier.fetch(.live(pk: "\(pk)"), type: MLBLiveDTO.self)
     }
 }

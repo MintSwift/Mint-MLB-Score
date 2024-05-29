@@ -35,6 +35,7 @@ struct ScoreboardCell: View {
             
             Divider()
         }
+        .background(colorScheme == .light ?  Color.background : Color.secondaryBackground)
     }
     
     var chevronImage: some View {

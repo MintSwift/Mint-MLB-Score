@@ -7,7 +7,9 @@ struct SeasonScheduleView: View {
         NavigationSplitView {
             ScheduleSidebar()
         } detail: {
-            
+            if let selection = interactor.selection {
+                LiveScoreView(game: selection)
+            }
         }
         .environmentObject(interactor)
         .onAppear {

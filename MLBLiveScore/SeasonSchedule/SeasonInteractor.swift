@@ -18,6 +18,10 @@ class SeasonInteractor: ObservableObject {
     }
     
     @Published var schedules: [SchedulePresenter] = []
+    @Published var selection: GamePresenter? = nil
+    
+    @Published var liveGame: LiveGamePresenter? = nil
+
     
     let usecase: ScheduleUseCase
     
@@ -29,6 +33,11 @@ class SeasonInteractor: ObservableObject {
         let schedules = await usecase.all()
         let presenters = SchedulePresenter.create(schedules)
         self.schedules = presenters
-        
+    }
+    
+    func live(pk: Int) async {
+        if let schedules = await usecase.live(pk: pk) {
+            self.liveGame = LiveGamePresenter.create(schedules)
+        }
     }
 }

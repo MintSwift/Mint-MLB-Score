@@ -10,13 +10,14 @@ public class BaseScheduleRepository {
 }
 
 extension BaseScheduleRepository: ScheduleRepository {
+    
     public func all() async -> [MLBDomain.Schedule] {
         let response = await dataSource.all()
         return response?.dates.map { $0.toDomain() } ?? []
     }
     
-    public func team(_ id: Int) async -> [MLBDomain.Schedule] {
-        let response = await dataSource.team(id)
-        return []
+    public func live(_ pk: Int) async -> MLBDomain.Live? {
+        let response = await dataSource.live(pk)
+        return response?.toDomain()
     }
 }

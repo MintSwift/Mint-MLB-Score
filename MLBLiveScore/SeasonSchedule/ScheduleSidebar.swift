@@ -4,11 +4,23 @@ struct ScheduleSidebar: View {
     @EnvironmentObject var interactor: SeasonInteractor
     
     var body: some View {
-        List {
+        List(selection: $interactor.selection) {
             ForEach(interactor.schedules) { schedule in
                 Section {
                     ForEach(schedule.games) { game in
-                        ScoreboardCell(game: game)
+                        ZStack {
+                            NavigationLink(value: game) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            
+                            ScoreboardCell(game: game)
+                        }
+//                        Button {
+//                            interactor.selection = game
+//                        } label: {
+//                        }
+//                        .buttonStyle(.plain)
                     }
                 } header: {
                     Text(schedule.date)
