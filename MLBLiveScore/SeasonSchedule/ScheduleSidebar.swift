@@ -52,6 +52,9 @@ struct ScheduleSidebar: View {
         .refreshable {
             await interactor.retrieveSchedule()
         }
+        .navigationDestination(item: $interactor.selection) { selection in
+            LiveScoreView(game: selection)
+        }
     }
 }
 

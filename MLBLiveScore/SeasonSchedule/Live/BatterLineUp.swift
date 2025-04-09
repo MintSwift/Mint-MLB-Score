@@ -3,9 +3,16 @@ import MLBPresenter
 
 struct BatterLineUp: View {
     var batters: [BatterStatsPresenter]
-
-    init(_ batters: [BatterStatsPresenter]) {
+    var offense: OffensePresenter?
+    var defense: DefensePresenter?
+    
+    init(_ batters: [BatterStatsPresenter],
+         offense: OffensePresenter?,
+         defense: DefensePresenter?
+    ) {
         self.batters = batters
+        self.offense = offense
+        self.defense = defense
     }
     var body: some View {
         VStack {
@@ -18,18 +25,19 @@ struct BatterLineUp: View {
                             ZStack {
                                 if batter.battingOrder % 100 != 0 {
                                     HStack(spacing: 0) {
-//                                        if batter.number == player?.number {
-//                                            Image(systemName: "arrowtriangle.right.fill")
-//                                                .resizable()
-//                                                .frame(width: 5, height: 10)
-//                                                .foregroundStyle(.blue)
-//                                        }
+                                        if batter.number == offense?.batterNumber {
+                                            Image(systemName: "arrowtriangle.right.fill")
+                                                .resizable()
+                                                .frame(width: 5, height: 10)
+                                                .foregroundStyle(.blue)
+                                                .padding(.horizontal, 5)
+                                        }
                                         
                                         Image(systemName: "arrow.turn.down.right")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 10, height: 10)
-                                            .padding(.leading, 2)
+                                            .padding(.horizontal, 3)
                                         
                                         Text(batter.name)
                                             .font(.caption)
@@ -39,12 +47,13 @@ struct BatterLineUp: View {
                                     
                                 } else {
                                     HStack(spacing: 0) {
-//                                        if batter.number == player?.number {
-//                                            Image(systemName: "arrowtriangle.right.fill")
-//                                                .resizable()
-//                                                .frame(width: 5, height: 10)
-//                                                .foregroundStyle(.blue)
-//                                        }
+                                        if batter.number == offense?.batterNumber {
+                                            Image(systemName: "arrowtriangle.right.fill")
+                                                .resizable()
+                                                .frame(width: 5, height: 10)
+                                                .foregroundStyle(.blue)
+                                                .padding(.horizontal, 5)
+                                        }
                                         
                                         Text(batter.name)
                                             .font(.caption)
@@ -100,12 +109,12 @@ struct BatterLineUp: View {
                             }
                             .font(.caption)
                         }
-//                        .background {
-//                            if batter.number == player?.number {
-//                                Color.gray.opacity(0.5)
-//                                .padding(-3)
-//                            }
-//                        }
+                        .background {
+                            if batter.number == offense?.batterNumber {
+                                Color.gray.opacity(0.5)
+                                .padding(-3)
+                            }
+                        }
                         
                         Divider()
                     }

@@ -54,7 +54,7 @@ extension BoxScoreDTO {
 
 extension LiveDataDTO {
     func toDomain() -> LiveData {
-        LiveData(boxscore: boxscore.toDomain())
+        LiveData(boxscore: boxscore.toDomain(), linescore: linescore.toDomain())
     }
 }
 

@@ -4,13 +4,16 @@ struct SeasonScheduleView: View {
     @StateObject var interactor = SeasonInteractor.create()
     
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             ScheduleSidebar()
-        } detail: {
-            if let selection = interactor.selection {
-                LiveScoreView(game: selection)
-            }
         }
+//        NavigationSplitView {
+//            ScheduleSidebar()
+//        } detail: {
+//            if let selection = interactor.selection {
+//                LiveScoreView(game: selection)
+//            }
+//        }
         .environmentObject(interactor)
         .onAppear {
             Task {

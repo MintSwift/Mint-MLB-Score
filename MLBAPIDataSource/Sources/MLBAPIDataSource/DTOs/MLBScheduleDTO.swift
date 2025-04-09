@@ -162,13 +162,43 @@ public struct LineScoreTeamsDTO: Decodable {
     }
 }
 
+public struct DefenseDTO: Decodable {
+    public let pitcher: LivePlayerDTO.PlayerPersonDTO?
+
+    
+    enum CodingKeys: CodingKey {
+        case pitcher
+    }
+}
+
+public struct OffenseDTO: Decodable {
+    public let batter: LivePlayerDTO.PlayerPersonDTO?
+    public let first: LivePlayerDTO.PlayerPersonDTO?
+    public let second: LivePlayerDTO.PlayerPersonDTO?
+    public let third: LivePlayerDTO.PlayerPersonDTO?
+    public let onDeck: LivePlayerDTO.PlayerPersonDTO?
+    
+    enum CodingKeys: CodingKey {
+        case batter
+        case onDeck
+        case first
+        case second
+        case third
+    }
+}
+
 public struct LineScoreDTO: Decodable {
     public let currentInning: Int?
     public let currentInningOrdinal: String?
     public let inningState: String?
     public let innings: [InningDTO]
     public let teams: LineScoreTeamsDTO
+    public let offense: OffenseDTO
+    public let defense: DefenseDTO
     
+    public let balls: Int?
+    public let strikes: Int?
+    public let outs: Int?
     
     enum CodingKeys: CodingKey {
         case currentInning
@@ -176,6 +206,11 @@ public struct LineScoreDTO: Decodable {
         case inningState
         case innings
         case teams
+        case offense
+        case defense
+        case balls
+        case strikes
+        case outs
     }
 }
 

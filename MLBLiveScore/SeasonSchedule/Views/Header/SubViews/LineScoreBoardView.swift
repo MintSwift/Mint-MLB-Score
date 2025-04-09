@@ -13,17 +13,26 @@ struct LineScoreBoardView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(" ")
                         .font(.callout)
-                    Image(awayTeamName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 20)
-                
-                    Image(homwTeamName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 20)
+                    HStack {
+                        Image(awayTeamName)
+                            .resizable()
+                            .scaledToFit()
+
+                        Text(awayTeamName)
+                            .font(.footnote)
+                    }
+                    .frame(height: 20)
+                    
+                    HStack {
+                        Image(homwTeamName)
+                            .resizable()
+                            .scaledToFit()
+                        Text(homwTeamName)
+                            .font(.footnote)
+                    }
+                    .frame(height: 20)
                 }
-                .containerRelativeFrame(.horizontal, count: 100, span: 10, spacing: 0)
+                .containerRelativeFrame(.horizontal, count: 100, span: 20, spacing: 0, alignment: .center)
                 
                 HStack(spacing: 9) {
                     ForEach(linescore.innings) { inning in
@@ -58,8 +67,8 @@ struct LineScoreBoardView: View {
                         //                    .frame(width: 25)
                     }
                 }
-                .containerRelativeFrame(.horizontal, count: 100, span: 65, spacing: 0)
-
+//                .containerRelativeFrame(.horizontal, count: 100, span: 65, spacing: 0)
+                
                 
                 HStack {
                     VStack(alignment: .center, spacing: 5) {
@@ -108,7 +117,7 @@ struct LineScoreBoardView: View {
                     
                 }
                 .containerRelativeFrame(.horizontal, count: 100, span: 20, spacing: 0)
-                
+                .padding(.horizontal, 5)
             }
             .padding(.top, 5)
         }

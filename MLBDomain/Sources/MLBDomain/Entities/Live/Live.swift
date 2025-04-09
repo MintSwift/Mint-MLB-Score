@@ -145,8 +145,11 @@ public struct BoxScore: Equatable, Hashable {
 
 public struct LiveData: Equatable, Hashable {
     public let boxscore: BoxScore
-    public init(boxscore: BoxScore) {
+    public let linescore: LineScore
+    
+    public init(boxscore: BoxScore, linescore: LineScore) {
         self.boxscore = boxscore
+        self.linescore = linescore
     }
 }
 

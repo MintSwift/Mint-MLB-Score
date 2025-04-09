@@ -168,10 +168,15 @@ public struct LinescorePresenter: Identifiable, Equatable, Hashable {
     public var innings: [InningPresenter] = []
     public var teams: LinescoreTeamPresenter? = nil
     
+    public var offense: OffensePresenter? = nil
+    public var defense: DefensePresenter? = nil
+    
     public init(_ lineScore: LineScore?) {
         id = UUID().uuidString
-        
         if let lineScore {
+            self.offense = OffensePresenter(lineScore.offense)
+            self.defense = DefensePresenter(lineScore.defense)
+            
             let away = InningTeamPresenter(lineScore.teams.away)
             let home = InningTeamPresenter(lineScore.teams.home)
             self.teams = LinescoreTeamPresenter(away: away, home: home)

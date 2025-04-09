@@ -1,9 +1,12 @@
 import Foundation
+import WidgetKit
 
 import MLBDomain
 import MLBAPIDataSource
 import MLBStatsAPI
 import MLBPresenter
+
+import UIKit
 
 @MainActor
 class SeasonInteractor: ObservableObject {
@@ -33,11 +36,21 @@ class SeasonInteractor: ObservableObject {
         let schedules = await usecase.all()
         let presenters = SchedulePresenter.create(schedules)
         self.schedules = presenters
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func live(pk: Int) async {
         if let schedules = await usecase.live(pk: pk) {
             self.liveGame = LiveGamePresenter.create(schedules)
+            
+            if let liveGame = liveGame {
+                if liveGame.status.status != .final {
+                    UIApplication.shared.isIdleTimerDisabled = true
+                } else {
+                    UIApplication.shared.isIdleTimerDisabled = false
+                }
+            }
         }
     }
 }

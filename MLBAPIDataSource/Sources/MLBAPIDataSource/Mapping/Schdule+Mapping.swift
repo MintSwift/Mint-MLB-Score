@@ -87,9 +87,36 @@ extension LineScoreTeamsDTO {
     }
 }
 
+extension OffenseDTO {
+     func toDomain() -> Offense {
+         Offense(
+            batter: batter?.toDomain(),
+            first: first?.toDomain(),
+            second: second?.toDomain(),
+            third: third?.toDomain(),
+            onDeck: onDeck?.toDomain()
+         )
+    }
+}
+
+extension DefenseDTO {
+     func toDomain() -> Defense {
+         Defense(pitcher: pitcher?.toDomain())
+    }
+}
+
 extension LineScoreDTO {
      func toDomain() -> LineScore {
-         LineScore(currentInning: currentInning, currentInningOrdinal: currentInningOrdinal, inningState: inningState, innings: innings.map { $0.toDomain() }, teams: teams.toDomain())
+         LineScore(
+            currentInning: currentInning,
+            currentInningOrdinal: currentInningOrdinal,
+            inningState: inningState,
+            innings: innings.map { $0.toDomain() },
+            teams: teams.toDomain(),
+            offense: offense.toDomain(),
+            defense: defense.toDomain(),
+            count: BallCount(balls: balls, strikes: strikes, outs: outs)
+         )
     }
 }
 

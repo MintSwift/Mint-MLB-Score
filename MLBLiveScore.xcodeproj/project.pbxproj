@@ -80,6 +80,7 @@
 		3BCADD3C2BF5C18300340FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCADD3B2BF5C18300340FAD /* Assets.xcassets */; };
 		3BCADD402BF5C18300340FAD /* MLBLiveWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3BCADD302BF5C18300340FAD /* MLBLiveWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3BCADD462BF6DA4300340FAD /* TeamScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */; };
+		3BCEBAAE2DA64B290082BBBD /* DiamondGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BCEBAAD2DA64B270082BBBD /* DiamondGView.swift */; };
 		3BD1C3962C04BD9C00B72180 /* Color+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD1C3952C04BD9C00B72180 /* Color+Ex.swift */; };
 		3BDBEF8A2BF18CA70093592E /* DailyScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */; };
 		3BDBEF8D2BF18D180093592E /* DailySidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDBEF8C2BF18D180093592E /* DailySidebar.swift */; };
@@ -223,6 +224,7 @@
 		3BCADD3B2BF5C18300340FAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BCADD3D2BF5C18300340FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCADD452BF6DA4300340FAD /* TeamScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScheduleProvider.swift; sourceTree = "<group>"; };
+		3BCEBAAD2DA64B270082BBBD /* DiamondGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondGView.swift; sourceTree = "<group>"; };
 		3BD1C3952C04BD9C00B72180 /* Color+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ex.swift"; sourceTree = "<group>"; };
 		3BDBEF892BF18CA70093592E /* DailyScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyScheduleView.swift; sourceTree = "<group>"; };
 		3BDBEF8C2BF18D180093592E /* DailySidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySidebar.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 		3BFD1DAD2C06AA2800B9C4B7 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				3BCEBAAD2DA64B270082BBBD /* DiamondGView.swift */,
 				3BFD1DAE2C06AA3A00B9C4B7 /* LiveScoreView.swift */,
 				3BFD1DB02C071A2300B9C4B7 /* BatterLineUp.swift */,
 			);
@@ -832,6 +835,7 @@
 				3BDBEF9F2BF1D0360093592E /* DailyCell.swift in Sources */,
 				3BAFBCEA2BF73EA50077FB82 /* TeamScheduleSidebarView.swift in Sources */,
 				3B9615F12BFF02C700F6E865 /* ScheduleFactory.swift in Sources */,
+				3BCEBAAE2DA64B290082BBBD /* DiamondGView.swift in Sources */,
 				3BFD1D9C2C055DA300B9C4B7 /* WildCardRankInteractor.swift in Sources */,
 				3BFD1DA82C059CCA00B9C4B7 /* PostNode.swift in Sources */,
 				3B9616102C0075D500F6E865 /* ScoreboardCell.swift in Sources */,
