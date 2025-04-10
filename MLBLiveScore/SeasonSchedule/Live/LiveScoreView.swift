@@ -7,6 +7,7 @@ struct LiveScoreView: View {
     @EnvironmentObject var interactor: SeasonInteractor
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var count: Int = 0
+    @State private var selectedTab = 0
     var game: GamePresenter
 
     init(game: GamePresenter) {
@@ -14,8 +15,10 @@ struct LiveScoreView: View {
     }
 
     var body: some View {
-        ScrollView {
+        VStack(spacing: 0) {
             if let liveGame = interactor.liveGame {
+                HeaderScoreboardCell(game: game)
+                
                 LineScoreBoardView(
                     linescore: liveGame.linescore,
                     awayTeamName: game.away.abbreviation,
@@ -23,8 +26,44 @@ struct LiveScoreView: View {
                 )
                 .padding(.bottom, 10)
                 
-                lineup
+                Picker("", selection: $selectedTab) {
+                    ForEach(0...1, id: \.self) { element in
+                        Text(element == 0 ?
+                             "\(game.away.locationName) \(game.away.teamName)" :
+                                "\(game.home.locationName) \(game.home.teamName)")
+                            .fontWeight(selectedTab == element ? .bold : .regular)
+                            .padding(.vertical, 12)
+                            .frame(maxWidth: .infinity)
+                            .tag(element)
+                        
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
                 
+                TabView(selection: $selectedTab) {
+                    VStack {
+                        BatterLineUp(
+                            liveGame.away.batters,
+                            offense: liveGame.offense,
+                            defense: liveGame.defense,
+                        )
+                        Spacer()
+                    }
+                    .tag(0)
+                    
+                    VStack {
+                        BatterLineUp(
+                            liveGame.home.batters,
+                            offense: liveGame.offense,
+                            defense: liveGame.defense,
+                        )
+                        Spacer()
+                    }
+                    .tag(1)
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 
                 if liveGame.status.status != .final {
                     HStack {
@@ -39,29 +78,37 @@ struct LiveScoreView: View {
                             )
                         )
                         .containerRelativeFrame(.horizontal, count: 10, span: 4, spacing: 0)
-                        
                     }
+                    .padding(.vertical, 30)
+                    .padding(.bottom, 20)
+                } else {
+                    Spacer()
                 }
             }
         }
         .onAppear {
-            Task {
-                await interactor.live(pk: game.gameId)
-            }
+            refresh()
         }
+        .onChange(of: interactor.liveGame?.linescore.inningState, { oldValue, newValue in
+            if newValue == .middle {
+                selectedTab = 1
+                refresh()
+            } else if newValue == .end {
+                selectedTab = 0
+                refresh()
+            }
+            
+        })
         .onDisappear(perform: {
             self.timer.upstream.connect().cancel()
         })
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    Task {
-                        await interactor.live(pk: game.gameId)
-                    }
-                    count = 0
+                    refresh()
                 } label: {
                     ZStack {
-                        Text("\(30 - count)")
+                        Text("\(15 - count)")
                             .font(.footnote)
                         
                         Image(systemName: "arrow.circlepath")
@@ -74,16 +121,20 @@ struct LiveScoreView: View {
             if game.status.status == .final {
              self.timer.upstream.connect().cancel()
             } else {
-                if count >= 30 {
-                    Task {
-                        await interactor.live(pk: game.gameId)
-                    }
-                    count = 0
+                if count >= 15 {
+                    refresh()
                 } else {
                     count += 1
                 }
             }
         }
+    }
+    
+    func refresh() {
+        Task {
+            await interactor.live(pk: game.gameId)
+        }
+        count = 0
     }
     
     @ViewBuilder

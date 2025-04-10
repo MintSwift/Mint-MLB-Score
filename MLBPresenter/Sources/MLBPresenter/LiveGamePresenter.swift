@@ -221,16 +221,22 @@ public struct LiveGamePresenter: Identifiable, Equatable, Hashable {
     public let count: BallCountPresenter
     
     
+    
     public init(_ live: Live) {
         id = UUID().uuidString
+        
         let balls =  live.liveData.linescore.count.balls
         let strikes =  live.liveData.linescore.count.strikes
         let outs =  live.liveData.linescore.count.outs
-
-        count = BallCountPresenter(balls: balls, strikes: strikes, outs: outs)
         
         let state = live.liveData.linescore.inningState ?? ""
         let inningState = InningState(rawValue: state) ?? .top
+        if inningState == .middle || inningState == .end {
+            count = BallCountPresenter(balls: 0, strikes: 0, outs: 0)
+        } else {
+            count = BallCountPresenter(balls: balls, strikes: strikes, outs: outs)
+        }
+        
         self.status = StatusPresenter(
             status: live.gameData.status,
             startDate: .now,
@@ -248,6 +254,8 @@ public struct LiveGamePresenter: Identifiable, Equatable, Hashable {
         self.offense = OffensePresenter(live.liveData.linescore.offense)
         self.defense = DefensePresenter(live.liveData.linescore.defense)
         self.linescore = LinescorePresenter(live.liveData.linescore)
+       
+    
     }
     
     public static func create(_ live: Live) -> LiveGamePresenter {

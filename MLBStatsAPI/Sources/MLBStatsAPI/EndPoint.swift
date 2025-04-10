@@ -18,9 +18,22 @@ public enum EndPoint {
     package func url() -> URL? {
         switch self {
         case .allSchedule:
-            let start = Date.now - 1.days
-            let startString = DateInRegion(start, region: .UTC).toFormat("MM/dd/yyyy")
-            let end = DateInRegion(.now, region: .UTC).dateByAdding(5, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
+            
+            let start: Date
+            let dateByAdding: Int
+            
+            if Date.now.hour >= 9 {
+                start = Date.now - 1.days
+                dateByAdding = 1
+            } else {
+                start = Date.now
+                dateByAdding = 0
+            }
+            
+            let standardDate = DateInRegion(start, region: .UTC).dateAtStartOf(.day)
+            
+            let startString = standardDate.toFormat("MM/dd/yyyy")
+            let end = standardDate.dateByAdding(dateByAdding, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
             let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(startString)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore,stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
             

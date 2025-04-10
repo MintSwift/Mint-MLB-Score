@@ -252,6 +252,25 @@ public struct GamePresenter: Identifiable, Equatable, Hashable {
             inningState: linescore.inningState
         )
     }
+    
+
+    
+    public init(
+        gameId: Int,
+        startDate: Date,
+        status: StatusPresenter,
+        away: TeamPresenter,
+        home: TeamPresenter,
+        linescore: LinescorePresenter
+    ) {
+        id = UUID().uuidString
+        self.startDate = startDate
+        self.away = away
+        self.home = home
+        self.gameId = gameId
+        self.linescore = linescore
+        self.status = status
+    }
 }
 
 

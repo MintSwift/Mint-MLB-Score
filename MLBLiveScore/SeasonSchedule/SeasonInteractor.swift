@@ -37,11 +37,19 @@ class SeasonInteractor: ObservableObject {
         let presenters = SchedulePresenter.create(schedules)
         self.schedules = presenters
         
+        if let selection {
+            let games = presenters.flatMap { $0.games }
+            let select = games.first { $0.gameId == selection.gameId }
+            self.selection = select
+        }
+        
         WidgetCenter.shared.reloadAllTimelines()
     }
     
     func live(pk: Int) async {
         if let schedules = await usecase.live(pk: pk) {
+            await retrieveSchedule()
+
             self.liveGame = LiveGamePresenter.create(schedules)
             
             if let liveGame = liveGame {

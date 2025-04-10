@@ -121,6 +121,7 @@ struct BatterLineUp: View {
                 }
             }
         }
+        .padding(.horizontal, 8)
     }
     
     var header: some View {
