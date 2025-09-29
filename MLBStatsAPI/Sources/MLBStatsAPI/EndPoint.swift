@@ -21,14 +21,46 @@ public enum EndPoint {
             
             let start: Date
             let dateByAdding: Int
+
+            let postSessionStart = "09/28/\(Date.now.year)".toDate("MM/dd/yyyy")?.date
+            let postSessionEnd = "11/03/\(Date.now.year)".toDate("MM/dd/yyyy")?.date
             
-            if Date.now.hour >= 9 {
-                start = Date.now - 1.days
-                dateByAdding = 1
+            if let startP = postSessionStart, let endP = postSessionEnd {
+                let isIn = Date.now.isInRange(date: startP, and: endP)
+                
+                if isIn {
+                    start = Date.now - 1.days
+                    dateByAdding = 7
+                } else {
+                    if Date.now.hour >= 9 {
+                        start = Date.now - 1.days
+                        dateByAdding = 1
+                    } else {
+                        start = Date.now
+                        dateByAdding = 0
+                    }
+                }
             } else {
-                start = Date.now
-                dateByAdding = 0
+                if Date.now.hour >= 9 {
+                    start = Date.now - 1.days
+                    dateByAdding = 1
+                } else {
+                    start = Date.now
+                    dateByAdding = 0
+                }
             }
+            
+//            if Date.now.month >= 9 && Date.now.day >= 28 {
+//                start = Date.now - 1.days
+//                dateByAdding = 7
+//            } else if Date.now.hour >= 9 {
+//                start = Date.now - 1.days
+//                dateByAdding = 1
+//            } else {
+//                start = Date.now
+//                dateByAdding = 0
+//            }
+            
             
             let standardDate = DateInRegion(start, region: .UTC).dateAtStartOf(.day)
             
@@ -37,9 +69,10 @@ public enum EndPoint {
             let endPoint = "https://statsapi.mlb.com/api/v1/schedule?startDate=\(startString)&endDate=\(end)&sportId=1&hydrate=team(league),decisions,probablePitcher,linescore,stats(group=[pitching],type=season,sportId=1),currentTeam".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             return URL(string: endPoint)
             
+            
         case .teamSchedule(let teamId):
             let today = Date.now
-            let startDate = today - 2.days
+            let startDate = today - 30.days
             
             let start = DateInRegion(startDate, region: .UTC).toFormat("MM/dd/yyyy")
             let end = DateInRegion(today, region: .UTC).dateByAdding(10, .day).dateAtStartOf(.day).toFormat("MM/dd/yyyy")
