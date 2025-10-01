@@ -29,7 +29,7 @@ public enum EndPoint {
                 let isIn = Date.now.isInRange(date: startP, and: endP)
                 
                 if isIn {
-                    start = Date.now
+                    start = Date.now - 1.days
                     dateByAdding = 7
                 } else {
                     if Date.now.hour >= 9 {
