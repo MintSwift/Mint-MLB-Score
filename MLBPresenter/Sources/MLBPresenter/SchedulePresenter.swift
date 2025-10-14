@@ -74,6 +74,8 @@ public struct TeamPresenter : Equatable, Hashable {
     public let abbreviation: String
     public let teamName: String
     public let locationName: String
+    public let leagueName: String
+    public let leagueAbbreviation: String
     
     public let winner: PlayerPresenter?
     public let loser: PlayerPresenter?
@@ -85,7 +87,8 @@ public struct TeamPresenter : Equatable, Hashable {
         self.seasonRecord = RecordPresenter(team.leagueRecord)
         self.probablePitcher = PlayerPresenter(team.probablePitcher)
         self.score = team.score?.toString() ?? "0"
-        
+        self.leagueName = team.team.leagueName
+        self.leagueAbbreviation = team.team.leagueAbbreviation
         self.abbreviation = team.team.abbreviation
         self.teamName = team.team.teamName
         self.locationName = team.team.franchiseName
@@ -227,14 +230,61 @@ extension String {
     }
 }
 
+public enum GameTypePresenter: String, Codable {
+    case world = "F"
+    case division = "D"
+    case championship = "L"
+    case wild = "W"
+    case regular = "R"
+    case post = "PostSeason"
+    
+    public func name(_ leagueName: String) -> String {
+        switch self {
+        case .world:
+            "World Series"
+        case .division:
+            "\(leagueName)DS"
+        case .championship:
+            "\(leagueName)CS"
+        case .wild:
+            "\(leagueName)WC"
+        case .post:
+            "PostSeason"
+        case .regular:
+            "Season"
+        }
+    }
+    
+    public func isPostSeason() -> Bool {
+        switch self {
+        case .world:
+            true
+        case .division:
+            true
+        case .championship:
+            true
+        case .wild:
+            true
+        case .post:
+            true
+        case .regular:
+            false
+        }
+    }
+}
+
 public struct GamePresenter: Identifiable, Equatable, Hashable {
     public var id: String
     public let startDate: Date
     public let gameId: Int
     public let status: StatusPresenter
+    public let type: GameTypePresenter
     public let away: TeamPresenter
     public let home: TeamPresenter
     public let linescore: LinescorePresenter
+    public let description: String
+    public let seriesGameNumber: String
+    public let ifNecessary: Bool
     
     public init(_ game: Game) {
         id = UUID().uuidString
@@ -251,17 +301,24 @@ public struct GamePresenter: Identifiable, Equatable, Hashable {
             currentInning: linescore.currentInningOrdinal,
             inningState: linescore.inningState
         )
+        
+        type = GameTypePresenter(rawValue: game.gameType) ?? .post
+        description = game.description
+        seriesGameNumber = game.seriesGameNumber
+        ifNecessary = game.ifNecessary
     }
-    
-
     
     public init(
         gameId: Int,
         startDate: Date,
+        type: GameTypePresenter,
         status: StatusPresenter,
         away: TeamPresenter,
         home: TeamPresenter,
-        linescore: LinescorePresenter
+        linescore: LinescorePresenter,
+        description: String,
+        seriesGameNumber: String,
+        ifNecessary: Bool
     ) {
         id = UUID().uuidString
         self.startDate = startDate
@@ -270,6 +327,10 @@ public struct GamePresenter: Identifiable, Equatable, Hashable {
         self.gameId = gameId
         self.linescore = linescore
         self.status = status
+        self.type = type
+        self.description = description
+        self.seriesGameNumber = seriesGameNumber
+        self.ifNecessary = ifNecessary
     }
 }
 
@@ -282,7 +343,7 @@ public struct SchedulePresenter: Identifiable, Equatable, Hashable {
     public init(_ schedule: Schedule) {
         id = UUID().uuidString
         games = schedule.games.map { GamePresenter($0) }
-        date = games.first?.startDate.toFormat("yyyy-MM-dd Z", locale: Locales.current) ?? ""
+        date = games.first?.startDate.toFormat("yyyy-MM-dd(E) Z", locale: Locales.korean) ?? ""
     }
     
     public static func create(_ schedules: [Schedule]) -> [SchedulePresenter] {

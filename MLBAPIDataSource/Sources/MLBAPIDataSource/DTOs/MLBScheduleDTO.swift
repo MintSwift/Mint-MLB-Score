@@ -90,6 +90,16 @@ public struct TeamsDTO: Decodable {
             public let teamName: String
             public let locationName: String
             public let franchiseName: String
+            public let league: LeagueDTO
+            
+            public struct LeagueDTO: Decodable {
+                public let name: String
+                public let abbreviation: String
+                enum CodingKeys: CodingKey {
+                    case name
+                    case abbreviation
+                }
+            }
             
             enum CodingKeys: CodingKey {
                 case abbreviation
@@ -97,6 +107,7 @@ public struct TeamsDTO: Decodable {
                 case locationName
                 case id
                 case franchiseName
+                case league
             }
         }
         
@@ -217,19 +228,28 @@ public struct LineScoreDTO: Decodable {
 
 public struct GameDTO: Decodable {
     public let gamePk: Int
+    public let seriesGameNumber: Int
     public let gameDate: String
+    public let gameType: String
+    public let description: String
     public let status: StatusDTO
     public let teams: TeamsDTO
     public let decisions: DecisionsDTO?
     public let linescore: LineScoreDTO?
+    public let ifNecessary: String
+    
     
     enum CodingKeys: CodingKey {
         case gamePk
         case gameDate
+        case gameType
         case status
         case teams
         case decisions
         case linescore
+        case description
+        case seriesGameNumber
+        case ifNecessary
     }
 }
 

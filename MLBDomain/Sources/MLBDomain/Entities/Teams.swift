@@ -30,12 +30,17 @@ public struct Teams: Equatable, Hashable {
             public let teamName: String
             public let locationName: String
             public let franchiseName: String
-            public init(id: Int, abbreviation: String, teamName: String, locationName: String, franchiseName: String) {
+            public let leagueName: String
+            public let leagueAbbreviation: String
+            
+            public init(id: Int, abbreviation: String, teamName: String, locationName: String, franchiseName: String, leagueName: String, leagueAbbreviation: String) {
                 self.id = id
                 self.abbreviation = abbreviation
                 self.teamName = teamName
                 self.locationName = locationName
                 self.franchiseName = franchiseName
+                self.leagueName = leagueName
+                self.leagueAbbreviation = leagueAbbreviation
             }
         }
         

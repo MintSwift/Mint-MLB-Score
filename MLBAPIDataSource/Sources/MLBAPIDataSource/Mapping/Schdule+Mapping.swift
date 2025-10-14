@@ -47,7 +47,15 @@ extension PlayerDTO {
 
 extension TeamsDTO.TeamDTO.EachTeamDTO {
     func toDomain() -> Teams.Team.EachTeam {
-        Teams.Team.EachTeam(id: id, abbreviation: abbreviation, teamName: teamName, locationName: locationName, franchiseName: franchiseName)
+        Teams.Team.EachTeam(
+            id: id,
+            abbreviation: abbreviation,
+            teamName: teamName,
+            locationName: locationName,
+            franchiseName: franchiseName,
+            leagueName: league.name,
+            leagueAbbreviation: league.abbreviation
+        )
     }
 }
 
@@ -124,11 +132,16 @@ extension LineScoreDTO {
 extension GameDTO {
      func toDomain() -> Game {
          Game(gamePk: gamePk,
+              type: gameType,
               gameDate: gameDate,
               status: status.toDomain(),
               teams: teams.toDomain(),
               decisions: decisions?.toDomain(),
-              linescore: linescore?.toDomain())
+              linescore: linescore?.toDomain(),
+              description: description,
+              seriesGameNumber: seriesGameNumber,
+              ifNecessary: ifNecessary == "Y" ? false : true
+         )
     }
 }
 
