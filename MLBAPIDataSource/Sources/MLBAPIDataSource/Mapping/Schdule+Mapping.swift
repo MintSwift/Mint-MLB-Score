@@ -53,8 +53,8 @@ extension TeamsDTO.TeamDTO.EachTeamDTO {
             teamName: teamName,
             locationName: locationName,
             franchiseName: franchiseName,
-            leagueName: league.name,
-            leagueAbbreviation: league.abbreviation
+            leagueName: league.name ?? "?",
+            leagueAbbreviation: league.abbreviation ?? "??"
         )
     }
 }

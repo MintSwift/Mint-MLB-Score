@@ -93,8 +93,9 @@ public struct TeamsDTO: Decodable {
             public let league: LeagueDTO
             
             public struct LeagueDTO: Decodable {
-                public let name: String
-                public let abbreviation: String
+                public let name: String?
+                public let abbreviation: String?
+                
                 enum CodingKeys: CodingKey {
                     case name
                     case abbreviation
